@@ -5,14 +5,14 @@ using UnityEngine.UI;
 using TMPro;
 public class PieChart : MonoBehaviour
 {
-    public Image[] imagesPieChart;
-    public float[] values;
     public TMP_Text txt;
+    public GameObject prefab_pie;
+    public GameObject prefab_month_icon;
+    public GameObject parent_icon;
     // Start is called before the first frame update
     void Start()
     {
-        setValues(values);
-        txt = GetComponent<TMP_Text>();
+
     }
 
     // Update is called once per frame
@@ -21,16 +21,30 @@ public class PieChart : MonoBehaviour
         
     }
 
-    public void setValues(float[] valuesToSet)
+    public void setValues(Dictionary<string, float> valuesToSet)
     {
         float totalValues = 0;
-        float totalAmount = TotalAmount(valuesToSet);
-        txt.text = totalAmount.ToString();
-        Debug.Log("txt: " + totalAmount.ToString());
-        for (int i = 0; i < imagesPieChart.Length; i++)
+        float[] expenses = new float[valuesToSet.Count];
+        int i = 0;
+        foreach(KeyValuePair<string, float> cat in valuesToSet)
         {
-            totalValues += valuesToSet[i]/totalAmount;
-            imagesPieChart[i].fillAmount = totalValues;
+            expenses[i++] = cat.Value;
+        }
+        float totalAmount = TotalAmount(expenses);
+        CategoryManager category_manager = CategoryManager.Instance;
+        txt.GetComponent<TMP_Text>().text = totalAmount.ToString();
+        foreach (KeyValuePair<string, float> cat in valuesToSet)
+        {
+            totalValues += cat.Value/totalAmount;
+            GameObject pie = Instantiate(prefab_pie,gameObject.transform);
+            pie.transform.SetAsFirstSibling();
+            pie.GetComponent<Image>().color = category_manager.category[cat.Key].color;
+            pie.GetComponent<Image>().fillAmount = totalValues;
+            GameObject icon_obj = Instantiate(prefab_month_icon,parent_icon.transform);
+            icon_obj.GetComponentInChildren<Image>().sprite = Resources.Load<Sprite>("images/month_sceen/"+category_manager.category[cat.Key].icon);
+            icon_obj.GetComponentInChildren<TMP_Text>().text = category_manager.category[cat.Key].name;
+            icon_obj.GetComponentInChildren<TMP_Text>().color = category_manager.category[cat.Key].color;
+            icon_obj.GetComponentInChildren<Image>().color = category_manager.category[cat.Key].color;
         }
 
     }
@@ -42,5 +56,17 @@ public class PieChart : MonoBehaviour
             totalAmount += valueToSet[i];
         }
         return totalAmount;
+    }
+
+    public void clear()
+    {
+        foreach (Transform child in gameObject.transform)
+        {
+            Destroy(child.gameObject);
+        }
+        foreach (Transform icon in parent_icon.transform)
+        {
+            Destroy(icon.gameObject);
+        }
     }
 }
