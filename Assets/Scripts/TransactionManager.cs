@@ -10,6 +10,8 @@ public class TransactionManager : MonoBehaviour
     public MonthChooser monthChooser;
     private int month_curr;
     private int year_curr;
+
+    public WebRequestManager webRequest;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,13 +19,7 @@ public class TransactionManager : MonoBehaviour
         HashSet<KeyValuePair<int, int>> get_month = GetUniqueMonths();
         monthChooser.setValues(get_month,this);
         BuildPieChart(month_curr,year_curr);
-        // float[] expenses = new float[category_dic.Count];
-        // int i = 0;
-        // foreach(KeyValuePair<string, float> cat in category_dic)
-        // {
-        //     expenses[i++] = cat.Value;
-        // }
-        
+        webRequest.SetTransactionManager(this);
     }
 
     // Update is called once per frame
@@ -32,7 +28,7 @@ public class TransactionManager : MonoBehaviour
         
     }
 
-    DateTime ConvertTimeStampToDataTime(int timestamp)
+    DateTime ConvertTimeStampToDataTime(long timestamp)
     {
         return DateTimeOffset.FromUnixTimeSeconds(timestamp).UtcDateTime;
     }
@@ -94,10 +90,23 @@ public class TransactionManager : MonoBehaviour
 
     public void BuildPieChart(int month,int year)
     {
+        month_curr = month;
+        year_curr = year;
         List<TransactionModel> month_list = GetExpansesByMonth(month,year);
         Dictionary<string, float> category_dic = GetExpanseByCatagory(month_list);
         pie.clear();
         pie.setValues(category_dic);
 
+    }
+
+    public void RebuildPieChart()
+    {
+        BuildPieChart(month_curr, year_curr);
+    }
+
+    public void AddTransaction(TransactionModel transactionModel)
+    {
+        transactions.Add(transactionModel);
+        RebuildPieChart();
     }
 }

@@ -20,29 +20,21 @@ public class CategoryManager : MonoBehaviour
                     GameObject obj = new GameObject("Singleton");
                     instance = obj.AddComponent<CategoryManager>();
                 }
+                instance.createDic();
             }
             return instance;
         }
     }
     private void Awake()
     {
-        if (instance == null)
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
     }
 
     private void Start() {
-        createDic();
     }
 
     private void createDic()
     {
+        category = new Dictionary<string, CategoryModel>();
         foreach (CategoryModel cat in cat_list)
         {
             category.Add(cat.name,cat);
