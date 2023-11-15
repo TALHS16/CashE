@@ -1,0 +1,95 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5756747333666308274
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8818655996159450847}
+  - component: {fileID: 5791980453425572647}
+  m_Layer: 0
+  m_Name: CategoryManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8818655996159450847
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5756747333666308274}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 488.91504, y: 758.64594, z: 1.7470297}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5791980453425572647
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5756747333666308274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3c4bd201927d2f4e88f07fe97bb19cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cat_list:
+  - name: "\u05E7\u05E0\u05D9\u05D5\u05EA"
+    icon: house-48
+    color: {r: 0.654902, g: 0.29803923, b: 0.39607844, a: 1}
+  - name: "\u05DE\u05E1\u05E2\u05D3\u05D5\u05EA \u05D5\u05D1\u05E8\u05D9\u05DD"
+    icon: hamburger-48
+    color: {r: 0.5686275, g: 0.67058825, b: 0.7607843, a: 1}
+  - name: "\u05EA\u05D7\u05D1\u05D5\u05E8\u05D4"
+    icon: bus-3-48
+    color: {r: 0.6745098, g: 0.8745098, b: 0.5294118, a: 1}
+  - name: "\u05E9\u05D5\u05E0\u05D5\u05EA"
+    icon: icons8-add-48
+    color: {r: 0.34509805, g: 0.5019608, b: 0.40784314, a: 1}
+  - name: "\u05D4\u05DC\u05D1\u05E9\u05D4"
+    icon: icons8-cloth-64
+    color: {r: 0.7058824, g: 0.54509807, b: 0.60784316, a: 1}
+  - name: "\u05EA\u05E8\u05D1\u05D5\u05EA \u05D5\u05D1\u05D9\u05DC\u05D5\u05D9\u05D9\u05DD"
+    icon: icons8-museum-64
+    color: {r: 0.7921569, g: 0.7764706, b: 0.73333335, a: 1}
+  - name: "\u05D4\u05D8\u05D1\u05D5\u05EA"
+    icon: icons8-ticket-50
+    color: {r: 0.85882354, g: 0.67058825, b: 0.38039216, a: 1}
+  - name: "\u05D4\u05E2\u05D1\u05E8\u05EA \u05DB\u05E1\u05E4\u05D9\u05DD"
+    icon: icons8-soccer-yellow-card-50
+    color: {r: 0.28627452, g: 0.37254903, b: 0.46666667, a: 1}
+  - name: "\u05D7\u05E9\u05D1\u05D5\u05E0\u05D5\u05EA \u05D4\u05D1\u05D9\u05EA"
+    icon: icons8-bill-50
+    color: {r: 1, g: 0.4, b: 0.3882353, a: 1}
+  - name: "\u05E8\u05E4\u05D5\u05D0\u05D4"
+    icon: icons8-pills-64
+    color: {r: 0.10980392, g: 0.59607846, b: 0.53333336, a: 1}
+  - name: "\u05DE\u05E9\u05DB\u05D5\u05E8\u05EA"
+    icon: icons8-money-transfer-64
+    color: {r: 1, g: 0.8666667, b: 0.2901961, a: 1}
+  - name: "\u05DE\u05EA\u05E0\u05D5\u05EA"
+    icon: icons8-gift-50
+    color: {r: 0.40784314, g: 0.32941177, b: 0.5294118, a: 1}
+  - name: "\u05D4\u05D7\u05D6\u05E8\u05D9\u05DD"
+    icon: icons8-transaction-50
+    color: {r: 0.5254902, g: 0.08627451, b: 0.34117648, a: 1}
+  - name: "\u05DE\u05E9\u05D7\u05E7\u05D9\u05DD"
+    icon: icons8-game-controller-50
+    color: {r: 0.30980393, g: 0.6862745, b: 0.26666668, a: 1}
+  - name: "\u05DB\u05E1\u05E4\u05D5\u05DE\u05D8"
+    icon: icons8-atm-64
+    color: {r: 0.7882353, g: 0.65882355, b: 0.5529412, a: 1}
+  - name: "\u05EA\u05E1\u05E4\u05D5\u05E8\u05EA"
+    icon: icons8-barber-scissors-50
+    color: {r: 0.6509804, g: 0.23758811, b: 0.10090195, a: 1}

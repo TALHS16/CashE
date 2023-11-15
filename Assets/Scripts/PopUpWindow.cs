@@ -9,6 +9,8 @@ public class PopUpWindow : MonoBehaviour
     public GameObject white_screen;
     public GameObject place;
 
+    public TMP_Text title;
+
     public GameObject container_expanse;
     public GameObject container_category;
     public GameObject container_currency;
@@ -24,15 +26,17 @@ public class PopUpWindow : MonoBehaviour
     public TMP_InputField amount_txt;
     public float amount;
 
+    public Dictionary<string, string> first_words;
+
     public CategoryBtn selected_category;
     public CategoryBtn current_category;
+
+    public Dictionary<string,CategoryBtn> dict_cat_btn;
 
     public CurrencySelect selected_currency;
     public CurrencySelect current_currency;
 
-    public TransactionManager transactionManager;
-
-    public GameObject error_MSG;
+    public GameObject error_MSG; 
     public TMP_Text error_contant;
 
     private string cat_name = "";
@@ -40,13 +44,16 @@ public class PopUpWindow : MonoBehaviour
     private string currency_name = "NIS";
     private bool open;
 
-    private string[] arr_currency = {"NIS","USD", "EUR","GBP","JPY"}; 
+    private bool expanseFlage;
 
-    public WebRequestManager webRequest;
+    private string[] arr_currency = {"NIS","USD", "EUR","GBP","JPY","ZAR","THB","SGD","NZD","MYR","MXN","PHP","KRW","INR","IDR","CAD","BRL","AUD","RUB","HRK","CHF","PLN","DKK","ISK","NOK","SEK","HUF","BGN","CZK","CNY","HKD"}; 
+    public  AddBTN animationBTN;
 
     // Start is called before the first frame update
     void Start()
     {
+        dict_cat_btn = new Dictionary<string, CategoryBtn>();
+        first_words = TransactionManager.Instance.GetFirstWordDict();
         CategoryManager category_manager = CategoryManager.Instance;
         foreach (KeyValuePair<string, CategoryModel> item in category_manager.category)
         {
@@ -56,6 +63,7 @@ public class PopUpWindow : MonoBehaviour
             icon_obj.GetComponentInChildren<TMP_Text>().color = item.Value.color;
             icon_obj.transform.GetChild(0).GetComponent<Image>().color = item.Value.color;
             CategoryBtn temp = icon_obj.GetComponent<CategoryBtn>();
+            dict_cat_btn.Add(item.Key,temp);
             temp.category_name = item.Value.name;
             temp.SetBtn(this);
         }
@@ -70,6 +78,17 @@ public class PopUpWindow : MonoBehaviour
         }
         container_category.SetActive(false);
         container_category.GetComponentInChildren<ScrollRect>().horizontal = true;
+    }
+
+    public void CheckFirstWord()
+    {
+        string cat_first_word = ((category_input.text).Split())[0];
+        if(first_words.ContainsKey(cat_first_word))
+        {
+            current_category = dict_cat_btn[first_words[cat_first_word]];
+            SelectCategory();
+        }
+
     }
 
     public void SelectCategory()
@@ -108,8 +127,11 @@ public class PopUpWindow : MonoBehaviour
         else
         {
             amount = float.Parse(amount_txt.text);
-            TransactionModel trans = new TransactionModel(amount,cat_name,category_input.text,0,currency_name,webRequest);
-            transactionManager.AddTransaction(trans);
+            TransactionModel trans = new TransactionModel(amount,cat_name,category_input.text,expanseFlage,currency_name);
+            if(currency_name == "NIS")
+            {
+                TransactionManager.Instance.AddTransaction(trans);
+            } 
             CloseWindow();
         }
         
@@ -130,10 +152,22 @@ public class PopUpWindow : MonoBehaviour
         white_screen.SetActive(open);
     }
 
-    public void OpenWindow()
+    public void OpenWindow(bool expanse)
     {
         open = true;
         SetActiveScreen();
+        animationBTN.SwitchState();
+        expanseFlage = expanse;
+        category_input.text = "";
+        amount_txt.text = "";
+        if(expanseFlage)
+        {
+            title.text = "הוסף הוצאה:";
+        }
+        else
+        {
+            title.text = "הוסף הכנסה:";
+        }
         iTween.ScaleTo(gameObject, iTween.Hash ("scale", new Vector3 (1, 1, 1), "time", 0.7f, "easetype", "easeOutCubic"));
         iTween.MoveTo(gameObject, iTween.Hash("position", white_screen.transform.position , "time", 0.7f, "easetype", "easeOutCubic"));
         iTween.ColorTo(white_screen, iTween.Hash ("a", 0.8, "time", 0.7f, "easetype", "easeOutCubic"));
@@ -143,6 +177,9 @@ public class PopUpWindow : MonoBehaviour
     public void CloseWindow()
     {
         open = false;
+        CloseError();
+        SwitchToCategories(false);
+        SwitchToCurrency(false);
         iTween.ColorTo(white_screen, iTween.Hash ("a", 0, "time", 0.7f, "easetype", "easeOutCubic"));
         iTween.ScaleTo(gameObject, iTween.Hash ("scale", new Vector3 (0, 0, 0), "time", 0.7f, "easetype", "easeOutCubic"));
         iTween.MoveTo(gameObject, iTween.Hash("position", place.transform.position , "time", 0.7f, "easetype", "easeOutCubic","oncomplete", "SetActiveScreen",

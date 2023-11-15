@@ -20,7 +20,7 @@ public class CurrencySelect : MonoBehaviour
 
     public void Activate()
     {
-        SetAlpha(0.4f);
+        SetAlpha(1.0f);
         if (holder.current_currency != null)
             holder.current_currency.SetAlpha(0f);
         holder.current_currency = this;

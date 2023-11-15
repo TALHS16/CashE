@@ -9,10 +9,9 @@ public class MonthChooser : MonoBehaviour
     public GameObject prefab_month;
     public MonthBTN current;
 
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        
+        TransactionManager.Instance.Month = this;
     }
 
     // Update is called once per frame

@@ -19,7 +19,7 @@ public class CategoryBtn : MonoBehaviour
 
     public void Activate()
     {
-        SetAlpha(0.4f);
+        SetAlpha(1.0f);
         if (holder.current_category != null)
             holder.current_category.SetAlpha(0f);
         holder.current_category = this;
@@ -27,6 +27,6 @@ public class CategoryBtn : MonoBehaviour
 
     public void SetAlpha(float alpha)
     {
-        my_image.color = new Color(my_image.color.r, my_image.color.g, my_image.color.b, alpha);
+        my_image.color = new Color(category_icon.color.r, category_icon.color.g, category_icon.color.b, alpha);
     }
 }

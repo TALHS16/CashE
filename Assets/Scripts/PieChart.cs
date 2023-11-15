@@ -9,10 +9,14 @@ public class PieChart : MonoBehaviour
     public GameObject prefab_pie;
     public GameObject prefab_month_icon;
     public GameObject parent_icon;
+    public GameObject container_pie;
+    public GameObject container_details;
+
+
     // Start is called before the first frame update
     void Start()
     {
-
+        TransactionManager.Instance.Pie = this;
     }
 
     // Update is called once per frame
@@ -32,7 +36,7 @@ public class PieChart : MonoBehaviour
         }
         float totalAmount = TotalAmount(expenses);
         CategoryManager category_manager = CategoryManager.Instance;
-        txt.GetComponent<TMP_Text>().text = totalAmount.ToString();
+        txt.GetComponent<TMP_Text>().text = totalAmount.ToString("F2");
         foreach (KeyValuePair<string, float> cat in valuesToSet)
         {
             totalValues += cat.Value/totalAmount;
@@ -45,9 +49,24 @@ public class PieChart : MonoBehaviour
             icon_obj.GetComponentInChildren<TMP_Text>().text = category_manager.category[cat.Key].name;
             icon_obj.GetComponentInChildren<TMP_Text>().color = category_manager.category[cat.Key].color;
             icon_obj.GetComponentInChildren<Image>().color = category_manager.category[cat.Key].color;
+            icon_obj.GetComponent<Button>().onClick.AddListener(delegate() {SwitchToDetails(category_manager.category[cat.Key].name);});
         }
 
     }
+
+    private void SwitchToDetails(string catagory)
+    {
+        container_pie.SetActive(false);
+        container_details.SetActive(true);
+        TransactionManager.Instance.BuildDetailList(catagory);
+    }
+
+    public void SwitchToPieFromDetail()
+    {
+        container_pie.SetActive(true);
+        container_details.SetActive(false);
+    }
+
     private float TotalAmount(float[] valueToSet)
     {
         float totalAmount = 0;

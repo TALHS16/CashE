@@ -31,14 +31,18 @@ public class TransactionModel
     public long timestamp; 
     public string currency;
 
-    
-    public TransactionModel(float amount_,string category_, string description_, int type_,string currency_,WebRequestManager webRequest)
+    public string name;
+    public string user_name;
+
+    public TransactionModel(float amount_,string category_, string description_, bool type_,string currency_)
     {
         amount = amount_;
         category = category_;
         description = description_;
         currency = currency_;
-        if (type_ == 0)
+        name = UserManager.Instance.GetCurrentUser().name;
+        user_name = UserManager.Instance.GetCurrentUser().user_name;
+        if (type_)
         {
             type = TransactionType.EXPENSE;
         }
@@ -50,7 +54,7 @@ public class TransactionModel
         original_amount = amount;
         if(currency_!="NIS")
         {
-            webRequest.ConvertCurrency(currency, SetAmount);
+            WebRequestManager.ConvertCurrency(TransactionManager.Instance,currency, SetAmount,type_);
         }        
     }
 
@@ -58,5 +62,18 @@ public class TransactionModel
     {
         CurrencyContainer currencyContainer = JsonUtility.FromJson<CurrencyContainer>(result);
         amount = original_amount*currencyContainer.data.ILS;
+        TransactionManager.Instance.AddTransaction(this);
+    }
+}
+
+[Serializable]
+public class TransactionsList
+{
+    public List<TransactionModel> transactions;
+
+    public static TransactionsList LoadFromJson(string json)
+    {
+        TransactionsList trans_list = JsonUtility.FromJson<TransactionsList>(json);
+        return trans_list;
     }
 }
