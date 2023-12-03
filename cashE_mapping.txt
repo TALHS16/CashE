@@ -2942,8 +2942,9 @@ com.google.android.gms.common.api.Status -> com.google.android.gms.common.api.St
     void writeToParcel(android.os.Parcel,int) -> writeToParcel
     boolean equals(java.lang.Object) -> equals
     boolean hasResolution() -> e
-    boolean isSuccess() -> f
-    java.lang.String zza() -> g
+    boolean isCanceled() -> f
+    boolean isSuccess() -> g
+    java.lang.String zza() -> h
 com.google.android.gms.common.api.UnsupportedApiCallException -> com.google.android.gms.common.api.k:
     com.google.android.gms.common.Feature zza -> a
     java.lang.String getMessage() -> getMessage
@@ -25215,12 +25216,12 @@ com.google.firebase.annotations.concurrent.Background -> com.google.firebase.a.a
 com.google.firebase.annotations.concurrent.Blocking -> com.google.firebase.a.a.b:
 com.google.firebase.annotations.concurrent.Lightweight -> com.google.firebase.a.a.c:
 com.google.firebase.annotations.concurrent.UiThread -> com.google.firebase.a.a.d:
-com.google.firebase.appcheck.AppCheckTokenResult -> com.google.firebase.b.a:
+com.google.firebase.appcheck.AppCheckTokenResult -> com.google.firebase.appcheck.a:
     void <init>() -> <init>
     java.lang.String getToken() -> a
     java.lang.Exception getError() -> b
-com.google.firebase.appcheck.interop.AppCheckTokenListener -> com.google.firebase.b.a.a:
-com.google.firebase.appcheck.interop.InteropAppCheckTokenProvider -> com.google.firebase.b.a.b:
+com.google.firebase.appcheck.interop.AppCheckTokenListener -> com.google.firebase.appcheck.interop.a:
+com.google.firebase.appcheck.interop.InteropAppCheckTokenProvider -> com.google.firebase.appcheck.interop.InteropAppCheckTokenProvider:
     com.google.android.gms.tasks.Task getToken(boolean) -> a
     void addAppCheckTokenListener(com.google.firebase.appcheck.interop.AppCheckTokenListener) -> a
 com.google.firebase.auth.ActionCodeEmailInfo -> com.google.firebase.auth.a:
@@ -25879,7 +25880,7 @@ com.google.firebase.auth.internal.GenericIdpActivity -> com.google.firebase.auth
     void zzf(android.net.Uri,java.lang.String,com.google.firebase.inject.Provider) -> zzf
 com.google.firebase.auth.internal.IdTokenListener -> com.google.firebase.auth.internal.IdTokenListener:
     void onIdTokenChanged(com.google.firebase.internal.InternalTokenResult) -> onIdTokenChanged
-com.google.firebase.auth.internal.InternalAuthProvider -> com.google.firebase.auth.internal.a:
+com.google.firebase.auth.internal.InternalAuthProvider -> com.google.firebase.auth.internal.InternalAuthProvider:
     com.google.android.gms.tasks.Task getAccessToken(boolean) -> getAccessToken
     void addIdTokenListener(com.google.firebase.auth.internal.IdTokenListener) -> addIdTokenListener
 com.google.firebase.auth.internal.RecaptchaActivity -> com.google.firebase.auth.internal.RecaptchaActivity:
@@ -25903,7 +25904,7 @@ com.google.firebase.auth.internal.RecaptchaActivity -> com.google.firebase.auth.
     void zze(java.lang.String,com.google.android.gms.common.api.Status) -> zze
     void zzf(android.net.Uri,java.lang.String,com.google.firebase.inject.Provider) -> zzf
     void zzh(java.lang.String,com.google.android.gms.tasks.Task) -> a
-com.google.firebase.auth.internal.zza -> com.google.firebase.auth.internal.b:
+com.google.firebase.auth.internal.zza -> com.google.firebase.auth.internal.a:
     com.google.firebase.auth.internal.zzf zza -> a
     com.google.android.gms.tasks.TaskCompletionSource zzb -> b
     com.google.firebase.auth.FirebaseAuth zzc -> c
@@ -25911,15 +25912,15 @@ com.google.firebase.auth.internal.zza -> com.google.firebase.auth.internal.b:
     android.app.Activity zze -> e
     void <init>(com.google.firebase.auth.internal.zzf,com.google.android.gms.tasks.TaskCompletionSource,com.google.firebase.auth.FirebaseAuth,com.google.firebase.auth.internal.zzbz,android.app.Activity) -> <init>
     void onComplete(com.google.android.gms.tasks.Task) -> onComplete
-com.google.firebase.auth.internal.zzaa -> com.google.firebase.auth.internal.c:
+com.google.firebase.auth.internal.zzaa -> com.google.firebase.auth.internal.b:
     java.lang.Object createFromParcel(android.os.Parcel) -> createFromParcel
     void <init>() -> <init>
     java.lang.Object[] newArray(int) -> newArray
-com.google.firebase.auth.internal.zzac -> com.google.firebase.auth.internal.d:
+com.google.firebase.auth.internal.zzac -> com.google.firebase.auth.internal.c:
     com.google.firebase.auth.internal.zzx zza -> a
     java.util.List getEnrolledFactors() -> a
     void <init>(com.google.firebase.auth.internal.zzx) -> <init>
-com.google.firebase.auth.internal.zzae -> com.google.firebase.auth.internal.e:
+com.google.firebase.auth.internal.zzae -> com.google.firebase.auth.internal.d:
     android.os.Parcelable$Creator CREATOR -> CREATOR
     java.util.List zza -> a
     com.google.firebase.auth.internal.zzag zzb -> b
@@ -25930,7 +25931,7 @@ com.google.firebase.auth.internal.zzae -> com.google.firebase.auth.internal.e:
     void <clinit>() -> <clinit>
     void <init>(java.util.List,com.google.firebase.auth.internal.zzag,java.lang.String,com.google.firebase.auth.zze,com.google.firebase.auth.internal.zzx,java.util.List) -> <init>
     void writeToParcel(android.os.Parcel,int) -> writeToParcel
-com.google.firebase.auth.internal.zzaf -> com.google.firebase.auth.internal.f:
+com.google.firebase.auth.internal.zzaf -> com.google.firebase.auth.internal.e:
     java.lang.Object createFromParcel(android.os.Parcel) -> createFromParcel
     void <init>() -> <init>
     java.lang.Object[] newArray(int) -> newArray
@@ -25949,27 +25950,27 @@ com.google.firebase.auth.internal.zzag -> com.google.firebase.auth.internal.zzag
     void <init>(java.lang.String,java.lang.String,java.util.List,java.util.List,com.google.firebase.auth.internal.zzx) -> <init>
     void writeToParcel(android.os.Parcel,int) -> writeToParcel
     boolean zzf() -> c
-com.google.firebase.auth.internal.zzah -> com.google.firebase.auth.internal.g:
+com.google.firebase.auth.internal.zzah -> com.google.firebase.auth.internal.f:
     java.lang.Object createFromParcel(android.os.Parcel) -> createFromParcel
     void <init>() -> <init>
     java.lang.Object[] newArray(int) -> newArray
-com.google.firebase.auth.internal.zzai -> com.google.firebase.auth.internal.h:
+com.google.firebase.auth.internal.zzai -> com.google.firebase.auth.internal.g:
     com.google.android.gms.common.api.Status zzb(java.lang.String,java.lang.String) -> a
     com.google.android.gms.common.api.Status zza(java.lang.String) -> a
-com.google.firebase.auth.internal.zzaj -> com.google.firebase.auth.internal.i:
+com.google.firebase.auth.internal.zzaj -> com.google.firebase.auth.internal.h:
     java.util.List zza -> a
     java.util.List getSignInMethods() -> getSignInMethods
     void <init>(java.util.List) -> <init>
-com.google.firebase.auth.internal.zzak -> com.google.firebase.auth.internal.j:
+com.google.firebase.auth.internal.zzak -> com.google.firebase.auth.internal.i:
     com.google.firebase.auth.internal.zzal zza -> a
     void <init>(com.google.firebase.auth.internal.zzal) -> <init>
     void onFailure(java.lang.Exception) -> onFailure
-com.google.firebase.auth.internal.zzal -> com.google.firebase.auth.internal.k:
+com.google.firebase.auth.internal.zzal -> com.google.firebase.auth.internal.j:
     java.lang.String zzb -> b
     com.google.firebase.auth.internal.zzam zza -> a
     void <init>(com.google.firebase.auth.internal.zzam,java.lang.String) -> <init>
     void run() -> run
-com.google.firebase.auth.internal.zzam -> com.google.firebase.auth.internal.l:
+com.google.firebase.auth.internal.zzam -> com.google.firebase.auth.internal.k:
     com.google.android.gms.common.logging.Logger zzg -> g
     com.google.firebase.FirebaseApp zzh -> h
     long zza -> a
@@ -25984,41 +25985,41 @@ com.google.firebase.auth.internal.zzam -> com.google.firebase.auth.internal.l:
     void zzb() -> b
     void zzc() -> c
     void zzd() -> d
-com.google.firebase.auth.internal.zzan -> com.google.firebase.auth.internal.m:
+com.google.firebase.auth.internal.zzan -> com.google.firebase.auth.internal.l:
     void zza() -> a
-com.google.firebase.auth.internal.zzao -> com.google.firebase.auth.internal.n:
+com.google.firebase.auth.internal.zzao -> com.google.firebase.auth.internal.m:
     void zzb(com.google.android.gms.common.api.Status) -> a
-com.google.firebase.auth.internal.zzap -> com.google.firebase.auth.internal.o:
+com.google.firebase.auth.internal.zzap -> com.google.firebase.auth.internal.n:
     com.google.android.gms.tasks.TaskCompletionSource zza -> a
     android.content.Context zzb -> b
     void <init>(com.google.firebase.auth.internal.zzax,com.google.android.gms.tasks.TaskCompletionSource,android.content.Context) -> <init>
     void onFailure(java.lang.Exception) -> onFailure
-com.google.firebase.auth.internal.zzaq -> com.google.firebase.auth.internal.p:
+com.google.firebase.auth.internal.zzaq -> com.google.firebase.auth.internal.o:
     com.google.android.gms.tasks.TaskCompletionSource zza -> a
     android.content.Context zzb -> b
     void <init>(com.google.firebase.auth.internal.zzax,com.google.android.gms.tasks.TaskCompletionSource,android.content.Context) -> <init>
     void onSuccess(java.lang.Object) -> onSuccess
-com.google.firebase.auth.internal.zzar -> com.google.firebase.auth.internal.q:
+com.google.firebase.auth.internal.zzar -> com.google.firebase.auth.internal.p:
     com.google.android.gms.tasks.TaskCompletionSource zza -> a
     android.content.Context zzb -> b
     void <init>(com.google.firebase.auth.internal.zzax,com.google.android.gms.tasks.TaskCompletionSource,android.content.Context) -> <init>
     void onFailure(java.lang.Exception) -> onFailure
-com.google.firebase.auth.internal.zzas -> com.google.firebase.auth.internal.r:
+com.google.firebase.auth.internal.zzas -> com.google.firebase.auth.internal.q:
     com.google.android.gms.tasks.TaskCompletionSource zza -> a
     android.content.Context zzb -> b
     void <init>(com.google.firebase.auth.internal.zzax,com.google.android.gms.tasks.TaskCompletionSource,android.content.Context) -> <init>
     void onSuccess(java.lang.Object) -> onSuccess
-com.google.firebase.auth.internal.zzat -> com.google.firebase.auth.internal.s:
+com.google.firebase.auth.internal.zzat -> com.google.firebase.auth.internal.r:
     com.google.android.gms.tasks.TaskCompletionSource zza -> a
     android.content.Context zzb -> b
     void <init>(com.google.firebase.auth.internal.zzax,com.google.android.gms.tasks.TaskCompletionSource,android.content.Context) -> <init>
     void onFailure(java.lang.Exception) -> onFailure
-com.google.firebase.auth.internal.zzau -> com.google.firebase.auth.internal.t:
+com.google.firebase.auth.internal.zzau -> com.google.firebase.auth.internal.s:
     com.google.android.gms.tasks.TaskCompletionSource zza -> a
     android.content.Context zzb -> b
     void <init>(com.google.firebase.auth.internal.zzax,com.google.android.gms.tasks.TaskCompletionSource,android.content.Context) -> <init>
     void onSuccess(java.lang.Object) -> onSuccess
-com.google.firebase.auth.internal.zzav -> com.google.firebase.auth.internal.u:
+com.google.firebase.auth.internal.zzav -> com.google.firebase.auth.internal.t:
     java.lang.ref.WeakReference zzb -> b
     com.google.android.gms.tasks.TaskCompletionSource zzc -> c
     com.google.firebase.auth.FirebaseAuth zzd -> d
@@ -26026,13 +26027,13 @@ com.google.firebase.auth.internal.zzav -> com.google.firebase.auth.internal.u:
     com.google.firebase.auth.internal.zzax zza -> a
     void <init>(com.google.firebase.auth.internal.zzax,android.app.Activity,com.google.android.gms.tasks.TaskCompletionSource,com.google.firebase.auth.FirebaseAuth,com.google.firebase.auth.FirebaseUser) -> <init>
     void onReceive(android.content.Context,android.content.Intent) -> onReceive
-com.google.firebase.auth.internal.zzaw -> com.google.firebase.auth.internal.v:
+com.google.firebase.auth.internal.zzaw -> com.google.firebase.auth.internal.u:
     java.lang.ref.WeakReference zzb -> b
     com.google.android.gms.tasks.TaskCompletionSource zzc -> c
     com.google.firebase.auth.internal.zzax zza -> a
     void <init>(com.google.firebase.auth.internal.zzax,android.app.Activity,com.google.android.gms.tasks.TaskCompletionSource) -> <init>
     void onReceive(android.content.Context,android.content.Intent) -> onReceive
-com.google.firebase.auth.internal.zzax -> com.google.firebase.auth.internal.w:
+com.google.firebase.auth.internal.zzax -> com.google.firebase.auth.internal.v:
     com.google.firebase.auth.internal.zzax zza -> a
     boolean zzb -> b
     android.content.BroadcastReceiver zzc -> c
@@ -26046,36 +26047,36 @@ com.google.firebase.auth.internal.zzax -> com.google.firebase.auth.internal.w:
     boolean zzf(android.app.Activity,com.google.android.gms.tasks.TaskCompletionSource,com.google.firebase.auth.FirebaseAuth,com.google.firebase.auth.FirebaseUser) -> a
     boolean zzg(android.app.Activity,com.google.android.gms.tasks.TaskCompletionSource) -> a
     com.google.firebase.auth.AuthCredential zzi(android.content.Intent) -> a
-com.google.firebase.auth.internal.zzay -> com.google.firebase.auth.internal.x:
+com.google.firebase.auth.internal.zzay -> com.google.firebase.auth.internal.w:
     com.google.firebase.auth.internal.GenericIdpActivity zza -> a
     java.lang.String zzb -> b
     void <init>(com.google.firebase.auth.internal.GenericIdpActivity,java.lang.String) -> <init>
     void onComplete(com.google.android.gms.tasks.Task) -> onComplete
-com.google.firebase.auth.internal.zzaz -> com.google.firebase.auth.internal.y:
+com.google.firebase.auth.internal.zzaz -> com.google.firebase.auth.internal.x:
     android.net.Uri zza -> a
     java.lang.Object then(com.google.android.gms.tasks.Task) -> then
     void <init>(android.net.Uri) -> <init>
-com.google.firebase.auth.internal.zzb -> com.google.firebase.auth.internal.z:
+com.google.firebase.auth.internal.zzb -> com.google.firebase.auth.internal.y:
     java.lang.String zza -> a
     com.google.android.play.core.integrity.IntegrityManager zzb -> b
     com.google.firebase.auth.internal.zzf zzc -> c
     java.lang.Object then(com.google.android.gms.tasks.Task) -> then
     void <init>(com.google.firebase.auth.internal.zzf,java.lang.String,com.google.android.play.core.integrity.IntegrityManager) -> <init>
-com.google.firebase.auth.internal.zzba -> com.google.firebase.auth.internal.aa:
+com.google.firebase.auth.internal.zzba -> com.google.firebase.auth.internal.z:
     com.google.android.gms.common.logging.Logger zza -> a
     com.google.firebase.auth.GetTokenResult zza(java.lang.String) -> a
     void <clinit>() -> <clinit>
-com.google.firebase.auth.internal.zzbb -> com.google.firebase.auth.internal.ab:
+com.google.firebase.auth.internal.zzbb -> com.google.firebase.auth.internal.aa:
     com.google.android.gms.common.logging.Logger zza -> a
     java.util.List zza(org.json.JSONArray) -> a
     java.util.Map zzb(java.lang.String) -> a
     java.util.Map zzc(java.lang.String) -> b
     java.util.Map zzd(org.json.JSONObject) -> a
     void <clinit>() -> <clinit>
-com.google.firebase.auth.internal.zzbc -> com.google.firebase.auth.internal.ac:
+com.google.firebase.auth.internal.zzbc -> com.google.firebase.auth.internal.ab:
     com.google.firebase.auth.MultiFactorInfo zza(com.google.android.gms.internal.firebase-auth-api.zzahf) -> a
     java.util.List zzb(java.util.List) -> a
-com.google.firebase.auth.internal.zzbd -> com.google.firebase.auth.internal.ad:
+com.google.firebase.auth.internal.zzbd -> com.google.firebase.auth.internal.ac:
     android.os.Parcelable$Creator CREATOR -> CREATOR
     java.util.List zza -> a
     java.util.List zzb -> b
@@ -26083,11 +26084,11 @@ com.google.firebase.auth.internal.zzbd -> com.google.firebase.auth.internal.ad:
     void <clinit>() -> <clinit>
     void <init>(java.util.List,java.util.List) -> <init>
     void writeToParcel(android.os.Parcel,int) -> writeToParcel
-com.google.firebase.auth.internal.zzbe -> com.google.firebase.auth.internal.ae:
+com.google.firebase.auth.internal.zzbe -> com.google.firebase.auth.internal.ad:
     java.lang.Object createFromParcel(android.os.Parcel) -> createFromParcel
     void <init>() -> <init>
     java.lang.Object[] newArray(int) -> newArray
-com.google.firebase.auth.internal.zzbf -> com.google.firebase.auth.internal.af:
+com.google.firebase.auth.internal.zzbf -> com.google.firebase.auth.internal.ae:
     com.google.android.gms.internal.firebase-auth-api.zzam zza -> a
     com.google.firebase.auth.internal.zzbf zzb -> b
     com.google.android.gms.tasks.Task zzc -> c
@@ -26101,50 +26102,50 @@ com.google.firebase.auth.internal.zzbf -> com.google.firebase.auth.internal.af:
     void zzd(android.content.Context) -> a
     void zze(com.google.firebase.auth.FirebaseAuth) -> a
     void zzf(android.content.SharedPreferences) -> a
-com.google.firebase.auth.internal.zzbg -> com.google.firebase.auth.internal.ag:
+com.google.firebase.auth.internal.zzbg -> com.google.firebase.auth.internal.af:
     com.google.firebase.auth.internal.RecaptchaActivity zza -> a
     java.lang.String zzb -> b
     void <init>(com.google.firebase.auth.internal.RecaptchaActivity,java.lang.String) -> <init>
     void onComplete(com.google.android.gms.tasks.Task) -> onComplete
-com.google.firebase.auth.internal.zzbh -> com.google.firebase.auth.internal.ah:
+com.google.firebase.auth.internal.zzbh -> com.google.firebase.auth.internal.ag:
     android.net.Uri zza -> a
     java.lang.Object then(com.google.android.gms.tasks.Task) -> then
     void <init>(android.net.Uri) -> <init>
-com.google.firebase.auth.internal.zzbi -> com.google.firebase.auth.internal.ai:
+com.google.firebase.auth.internal.zzbi -> com.google.firebase.auth.internal.ah:
     com.google.android.recaptcha.RecaptchaAction zza -> a
     com.google.firebase.auth.FirebaseAuth zzb -> b
     java.lang.String zzc -> c
     com.google.android.gms.tasks.Continuation zzd -> d
     java.lang.Object then(com.google.android.gms.tasks.Task) -> then
     void <init>(com.google.android.recaptcha.RecaptchaAction,com.google.firebase.auth.FirebaseAuth,java.lang.String,com.google.android.gms.tasks.Continuation) -> <init>
-com.google.firebase.auth.internal.zzbj -> com.google.firebase.auth.internal.aj:
+com.google.firebase.auth.internal.zzbj -> com.google.firebase.auth.internal.ai:
     com.google.firebase.auth.internal.zzbl zza -> a
     java.lang.Object then(com.google.android.gms.tasks.Task) -> then
     void <init>(com.google.firebase.auth.internal.zzbl) -> <init>
-com.google.firebase.auth.internal.zzbk -> com.google.firebase.auth.internal.ak:
+com.google.firebase.auth.internal.zzbk -> com.google.firebase.auth.internal.aj:
     java.lang.String zza -> a
     com.google.firebase.auth.internal.zzbr zzb -> b
     com.google.android.recaptcha.RecaptchaAction zzc -> c
     com.google.android.gms.tasks.Continuation zzd -> d
     java.lang.Object then(com.google.android.gms.tasks.Task) -> then
     void <init>(java.lang.String,com.google.firebase.auth.internal.zzbr,com.google.android.recaptcha.RecaptchaAction,com.google.android.gms.tasks.Continuation) -> <init>
-com.google.firebase.auth.internal.zzbl -> com.google.firebase.auth.internal.al:
+com.google.firebase.auth.internal.zzbl -> com.google.firebase.auth.internal.ak:
     com.google.android.gms.tasks.Task zza(java.lang.String) -> a
     com.google.android.gms.tasks.Task zzd(com.google.firebase.auth.internal.zzbr,com.google.android.recaptcha.RecaptchaAction,java.lang.String,com.google.android.gms.tasks.Continuation) -> a
     com.google.android.gms.tasks.Task zzb(com.google.firebase.auth.FirebaseAuth,java.lang.String,com.google.android.recaptcha.RecaptchaAction) -> a
     com.google.android.gms.tasks.Task zzc(com.google.android.recaptcha.RecaptchaAction,com.google.firebase.auth.FirebaseAuth,java.lang.String,com.google.android.gms.tasks.Continuation,com.google.android.gms.tasks.Task) -> a
     void <init>() -> <init>
-com.google.firebase.auth.internal.zzbm -> com.google.firebase.auth.internal.am:
-com.google.firebase.auth.internal.zzbn -> com.google.firebase.auth.internal.an:
+com.google.firebase.auth.internal.zzbm -> com.google.firebase.auth.internal.al:
+com.google.firebase.auth.internal.zzbn -> com.google.firebase.auth.internal.am:
     void <init>() -> <init>
-com.google.firebase.auth.internal.zzbo -> com.google.firebase.auth.internal.ao:
+com.google.firebase.auth.internal.zzbo -> com.google.firebase.auth.internal.an:
     void <init>(java.lang.String) -> <init>
-com.google.firebase.auth.internal.zzbp -> com.google.firebase.auth.internal.ap:
+com.google.firebase.auth.internal.zzbp -> com.google.firebase.auth.internal.ao:
     java.lang.String zza -> a
     com.google.firebase.auth.internal.zzbr zzb -> b
     java.lang.Object then(com.google.android.gms.tasks.Task) -> then
     void <init>(com.google.firebase.auth.internal.zzbr,java.lang.String) -> <init>
-com.google.firebase.auth.internal.zzbq -> com.google.firebase.auth.internal.aq:
+com.google.firebase.auth.internal.zzbq -> com.google.firebase.auth.internal.ap:
     com.google.android.recaptcha.RecaptchaAction zza -> a
     java.lang.Object then(com.google.android.gms.tasks.Task) -> then
     void <init>(com.google.firebase.auth.internal.zzbr,com.google.android.recaptcha.RecaptchaAction) -> <init>
@@ -26162,7 +26163,7 @@ com.google.firebase.auth.internal.zzbr -> com.google.firebase.auth.internal.zzbr
     void <init>(com.google.firebase.FirebaseApp,com.google.firebase.auth.FirebaseAuth) -> <init>
     void zzd() -> a
     boolean zze() -> b
-com.google.firebase.auth.internal.zzbs -> com.google.firebase.auth.internal.ar:
+com.google.firebase.auth.internal.zzbs -> com.google.firebase.auth.internal.aq:
     void <init>(java.lang.String) -> <init>
 com.google.firebase.auth.internal.zzbt -> com.google.firebase.auth.internal.zzbt:
     android.content.Context zza -> a
@@ -26176,7 +26177,7 @@ com.google.firebase.auth.internal.zzbt -> com.google.firebase.auth.internal.zzbt
     void zzc(java.lang.String) -> a
     void zzd(com.google.firebase.auth.FirebaseUser) -> b
     void zze(com.google.firebase.auth.FirebaseUser,com.google.android.gms.internal.firebase-auth-api.zzahb) -> a
-com.google.firebase.auth.internal.zzbu -> com.google.firebase.auth.internal.as:
+com.google.firebase.auth.internal.zzbu -> com.google.firebase.auth.internal.ar:
     com.google.firebase.auth.internal.zzbv zza -> a
     void <init>(com.google.firebase.auth.internal.zzbv) -> <init>
     void onBackgroundStateChanged(boolean) -> a
@@ -26192,7 +26193,7 @@ com.google.firebase.auth.internal.zzbv -> com.google.firebase.auth.internal.zzbv
     void zze(com.google.android.gms.internal.firebase-auth-api.zzahb) -> a
     boolean zzf(com.google.firebase.auth.internal.zzbv) -> b
     boolean zzg() -> b
-com.google.firebase.auth.internal.zzbw -> com.google.firebase.auth.internal.at:
+com.google.firebase.auth.internal.zzbw -> com.google.firebase.auth.internal.as:
     java.lang.String zzc -> c
     java.lang.String zzd -> d
     int zze -> e
@@ -26203,7 +26204,7 @@ com.google.firebase.auth.internal.zzbw -> com.google.firebase.auth.internal.at:
     java.lang.String getSessionInfo() -> a
     void <init>(java.lang.String,java.lang.String,int,int,long,java.lang.String,com.google.firebase.auth.FirebaseAuth) -> <init>
 com.google.firebase.auth.internal.zzbx -> com.google.firebase.auth.internal.zzbx:
-com.google.firebase.auth.internal.zzby -> com.google.firebase.auth.internal.au:
+com.google.firebase.auth.internal.zzby -> com.google.firebase.auth.internal.at:
     java.util.Map zza -> a
     int zzb -> b
     com.google.android.gms.common.api.Status zza(android.content.Intent) -> a
@@ -26226,15 +26227,15 @@ com.google.firebase.auth.internal.zzbz -> com.google.firebase.auth.internal.zzbz
     void zzh(android.content.Context,com.google.firebase.auth.FirebaseAuth,com.google.firebase.auth.FirebaseUser) -> a
     boolean zzi(android.app.Activity,com.google.android.gms.tasks.TaskCompletionSource,com.google.firebase.auth.FirebaseAuth) -> a
     boolean zzj(android.app.Activity,com.google.android.gms.tasks.TaskCompletionSource,com.google.firebase.auth.FirebaseAuth,com.google.firebase.auth.FirebaseUser) -> a
-com.google.firebase.auth.internal.zzc -> com.google.firebase.auth.internal.av:
+com.google.firebase.auth.internal.zzc -> com.google.firebase.auth.internal.au:
     com.google.android.gms.tasks.TaskCompletionSource zza -> a
     void <init>(com.google.firebase.auth.internal.zzf,com.google.android.gms.tasks.TaskCompletionSource) -> <init>
     void onFailure(java.lang.Exception) -> onFailure
-com.google.firebase.auth.internal.zzd -> com.google.firebase.auth.internal.aw:
+com.google.firebase.auth.internal.zzd -> com.google.firebase.auth.internal.av:
     com.google.android.gms.tasks.TaskCompletionSource zza -> a
     void <init>(com.google.firebase.auth.internal.zzf,com.google.android.gms.tasks.TaskCompletionSource) -> <init>
     void onSuccess(java.lang.Object) -> onSuccess
-com.google.firebase.auth.internal.zze -> com.google.firebase.auth.internal.ax:
+com.google.firebase.auth.internal.zze -> com.google.firebase.auth.internal.aw:
     java.lang.String zza -> a
     java.lang.String zzb -> b
     java.lang.String zza() -> a
@@ -26252,11 +26253,11 @@ com.google.firebase.auth.internal.zzf -> com.google.firebase.auth.internal.zzf:
     void <init>() -> <init>
     void zzf(com.google.firebase.auth.FirebaseAuth,com.google.firebase.auth.internal.zzbz,android.app.Activity,com.google.android.gms.tasks.TaskCompletionSource) -> a
     void zze(com.google.android.gms.tasks.TaskCompletionSource,com.google.firebase.auth.FirebaseAuth,com.google.firebase.auth.internal.zzbz,android.app.Activity,com.google.android.gms.tasks.Task) -> a
-com.google.firebase.auth.internal.zzg -> com.google.firebase.auth.internal.ay:
+com.google.firebase.auth.internal.zzg -> com.google.firebase.auth.internal.ax:
     void zza(com.google.android.gms.internal.firebase-auth-api.zzahb,com.google.firebase.auth.FirebaseUser) -> a
-com.google.firebase.auth.internal.zzh -> com.google.firebase.auth.internal.az:
+com.google.firebase.auth.internal.zzh -> com.google.firebase.auth.internal.ay:
     com.google.android.gms.internal.firebase-auth-api.zzaic zza(com.google.firebase.auth.AuthCredential,java.lang.String) -> a
-com.google.firebase.auth.internal.zzi -> com.google.firebase.auth.internal.ba:
+com.google.firebase.auth.internal.zzi -> com.google.firebase.auth.internal.az:
     java.lang.String zza -> a
     java.lang.String zzb -> b
     java.lang.String zzc -> c
@@ -26268,7 +26269,7 @@ com.google.firebase.auth.internal.zzi -> com.google.firebase.auth.internal.ba:
     java.lang.String zzd() -> d
     java.lang.String zze() -> e
     void <init>(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String) -> <init>
-com.google.firebase.auth.internal.zzj -> com.google.firebase.auth.internal.bb:
+com.google.firebase.auth.internal.zzj -> com.google.firebase.auth.internal.ba:
     com.google.firebase.auth.internal.zzj zza -> a
     com.google.firebase.auth.internal.zzi zza(android.content.Context,java.lang.String,java.lang.String) -> a
     com.google.firebase.auth.internal.zzj zzb() -> a
@@ -26279,7 +26280,7 @@ com.google.firebase.auth.internal.zzj -> com.google.firebase.auth.internal.bb:
     void zzd(android.content.Context,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String) -> a
     void zze(android.content.Context,java.lang.String,java.lang.String,java.lang.String,java.lang.String) -> a
     android.content.SharedPreferences zzg(android.content.Context,java.lang.String) -> a
-com.google.firebase.auth.internal.zzk -> com.google.firebase.auth.internal.bc:
+com.google.firebase.auth.internal.zzk -> com.google.firebase.auth.internal.bb:
     com.google.firebase.auth.internal.zzk zza -> a
     java.lang.String zzb -> b
     com.google.android.gms.internal.firebase-auth-api.zzmj zzc -> c
@@ -26287,22 +26288,22 @@ com.google.firebase.auth.internal.zzk -> com.google.firebase.auth.internal.bc:
     java.lang.String zzb(java.lang.String) -> a
     java.lang.String zzc() -> a
     void <init>(android.content.Context,java.lang.String,boolean) -> <init>
-com.google.firebase.auth.internal.zzl -> com.google.firebase.auth.internal.bd:
+com.google.firebase.auth.internal.zzl -> com.google.firebase.auth.internal.bc:
     java.lang.String zza -> b
     void <init>(java.lang.String,java.lang.String) -> <init>
-com.google.firebase.auth.internal.zzm -> com.google.firebase.auth.internal.be:
+com.google.firebase.auth.internal.zzm -> com.google.firebase.auth.internal.bd:
     void <init>(java.lang.String) -> <init>
-com.google.firebase.auth.internal.zzn -> com.google.firebase.auth.internal.bf:
+com.google.firebase.auth.internal.zzn -> com.google.firebase.auth.internal.be:
     com.google.firebase.auth.MultiFactorInfo zza -> b
     void <init>(java.lang.String,com.google.firebase.auth.MultiFactorInfo) -> <init>
-com.google.firebase.auth.internal.zzo -> com.google.firebase.auth.internal.bg:
+com.google.firebase.auth.internal.zzo -> com.google.firebase.auth.internal.bf:
     int zza -> a
     java.lang.String zzb -> b
     java.lang.String zzc -> c
     com.google.firebase.auth.ActionCodeInfo zzd -> d
     int getOperation() -> a
     void <init>(com.google.android.gms.internal.firebase-auth-api.zzahk) -> <init>
-com.google.firebase.auth.internal.zzp -> com.google.firebase.auth.internal.bh:
+com.google.firebase.auth.internal.zzp -> com.google.firebase.auth.internal.bg:
     android.os.Parcelable$Creator CREATOR -> CREATOR
     java.lang.String zza -> a
     java.lang.String zzb -> b
@@ -26317,11 +26318,11 @@ com.google.firebase.auth.internal.zzp -> com.google.firebase.auth.internal.bh:
     void <init>(java.lang.String,java.lang.String,boolean) -> <init>
     void writeToParcel(android.os.Parcel,int) -> writeToParcel
     boolean isNewUser() -> isNewUser
-com.google.firebase.auth.internal.zzq -> com.google.firebase.auth.internal.bi:
+com.google.firebase.auth.internal.zzq -> com.google.firebase.auth.internal.bh:
     java.lang.Object createFromParcel(android.os.Parcel) -> createFromParcel
     void <init>() -> <init>
     java.lang.Object[] newArray(int) -> newArray
-com.google.firebase.auth.internal.zzr -> com.google.firebase.auth.internal.bj:
+com.google.firebase.auth.internal.zzr -> com.google.firebase.auth.internal.bi:
     android.os.Parcelable$Creator CREATOR -> CREATOR
     com.google.firebase.auth.internal.zzx zza -> a
     com.google.firebase.auth.internal.zzp zzb -> b
@@ -26334,11 +26335,11 @@ com.google.firebase.auth.internal.zzr -> com.google.firebase.auth.internal.bj:
     void <init>(com.google.firebase.auth.internal.zzx) -> <init>
     void <init>(com.google.firebase.auth.internal.zzx,com.google.firebase.auth.internal.zzp,com.google.firebase.auth.zze) -> <init>
     void writeToParcel(android.os.Parcel,int) -> writeToParcel
-com.google.firebase.auth.internal.zzs -> com.google.firebase.auth.internal.bk:
+com.google.firebase.auth.internal.zzs -> com.google.firebase.auth.internal.bj:
     java.lang.Object createFromParcel(android.os.Parcel) -> createFromParcel
     void <init>() -> <init>
     java.lang.Object[] newArray(int) -> newArray
-com.google.firebase.auth.internal.zzt -> com.google.firebase.auth.internal.bl:
+com.google.firebase.auth.internal.zzt -> com.google.firebase.auth.internal.bk:
     android.os.Parcelable$Creator CREATOR -> CREATOR
     java.lang.String zza -> a
     java.lang.String zzb -> b
@@ -26363,11 +26364,11 @@ com.google.firebase.auth.internal.zzt -> com.google.firebase.auth.internal.bl:
     void <init>(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,boolean,java.lang.String) -> <init>
     void writeToParcel(android.os.Parcel,int) -> writeToParcel
     boolean isEmailVerified() -> isEmailVerified
-com.google.firebase.auth.internal.zzu -> com.google.firebase.auth.internal.bm:
+com.google.firebase.auth.internal.zzu -> com.google.firebase.auth.internal.bl:
     java.lang.Object createFromParcel(android.os.Parcel) -> createFromParcel
     void <init>() -> <init>
     java.lang.Object[] newArray(int) -> newArray
-com.google.firebase.auth.internal.zzv -> com.google.firebase.auth.internal.bn:
+com.google.firebase.auth.internal.zzv -> com.google.firebase.auth.internal.bm:
     void <init>(com.google.firebase.FirebaseApp,com.google.firebase.inject.Provider,com.google.firebase.inject.Provider,java.util.concurrent.Executor,java.util.concurrent.Executor,java.util.concurrent.Executor,java.util.concurrent.ScheduledExecutorService,java.util.concurrent.Executor) -> <init>
 com.google.firebase.auth.internal.zzw -> com.google.firebase.auth.internal.zzw:
     java.lang.String zza -> a
@@ -26380,7 +26381,7 @@ com.google.firebase.auth.internal.zzw -> com.google.firebase.auth.internal.zzw:
     boolean zzc() -> c
     boolean zzd() -> d
     boolean zze() -> e
-com.google.firebase.auth.internal.zzx -> com.google.firebase.auth.internal.bo:
+com.google.firebase.auth.internal.zzx -> com.google.firebase.auth.internal.bn:
     android.os.Parcelable$Creator CREATOR -> CREATOR
     com.google.android.gms.internal.firebase-auth-api.zzahb zza -> a
     com.google.firebase.auth.internal.zzt zzb -> b
@@ -26429,11 +26430,11 @@ com.google.firebase.auth.internal.zzx -> com.google.firebase.auth.internal.bo:
     boolean isAnonymous() -> isAnonymous
     boolean isEmailVerified() -> isEmailVerified
     boolean zzs() -> e
-com.google.firebase.auth.internal.zzy -> com.google.firebase.auth.internal.bp:
+com.google.firebase.auth.internal.zzy -> com.google.firebase.auth.internal.bo:
     java.lang.Object createFromParcel(android.os.Parcel) -> createFromParcel
     void <init>() -> <init>
     java.lang.Object[] newArray(int) -> newArray
-com.google.firebase.auth.internal.zzz -> com.google.firebase.auth.internal.bq:
+com.google.firebase.auth.internal.zzz -> com.google.firebase.auth.internal.bp:
     android.os.Parcelable$Creator CREATOR -> CREATOR
     long zza -> a
     long zzb -> b
@@ -27021,7 +27022,59 @@ com.google.firebase.concurrent.ExecutorsRegistrar -> com.google.firebase.concurr
     java.util.concurrent.ScheduledExecutorService lambda$static$1() -> e
     java.util.concurrent.ScheduledExecutorService lambda$static$0() -> f
     void <clinit>() -> <clinit>
-com.google.firebase.concurrent.UiExecutor -> com.google.firebase.concurrent.d:
+com.google.firebase.concurrent.FirebaseExecutors -> com.google.firebase.concurrent.d:
+    java.util.concurrent.Executor newSequentialExecutor(java.util.concurrent.Executor) -> a
+    java.util.concurrent.Executor newLimitedConcurrencyExecutor(java.util.concurrent.Executor,int) -> a
+com.google.firebase.concurrent.LimitedConcurrencyExecutor -> com.google.firebase.concurrent.e:
+    java.util.concurrent.Executor delegate -> a
+    java.util.concurrent.Semaphore semaphore -> b
+    java.util.concurrent.LinkedBlockingQueue queue -> c
+    void <init>(java.util.concurrent.Executor,int) -> <init>
+    void execute(java.lang.Runnable) -> execute
+    void maybeEnqueueNext() -> a
+    java.lang.Runnable decorate(java.lang.Runnable) -> a
+    void lambda$decorate$0(java.lang.Runnable) -> b
+com.google.firebase.concurrent.SequentialExecutor -> com.google.firebase.concurrent.f:
+    java.util.logging.Logger log -> a
+    java.util.concurrent.Executor executor -> b
+    java.util.Deque queue -> c
+    com.google.firebase.concurrent.SequentialExecutor$WorkerRunningState workerRunningState -> d
+    long workerRunCount -> e
+    com.google.firebase.concurrent.SequentialExecutor$QueueWorker worker -> f
+    void <init>(java.util.concurrent.Executor) -> <init>
+    void execute(java.lang.Runnable) -> execute
+    java.lang.String toString() -> toString
+    java.util.Deque access$100(com.google.firebase.concurrent.SequentialExecutor) -> a
+    com.google.firebase.concurrent.SequentialExecutor$WorkerRunningState access$202(com.google.firebase.concurrent.SequentialExecutor,com.google.firebase.concurrent.SequentialExecutor$WorkerRunningState) -> a
+    com.google.firebase.concurrent.SequentialExecutor$WorkerRunningState access$200(com.google.firebase.concurrent.SequentialExecutor) -> b
+    long access$308(com.google.firebase.concurrent.SequentialExecutor) -> c
+    java.util.logging.Logger access$400() -> a
+    void <clinit>() -> <clinit>
+com.google.firebase.concurrent.SequentialExecutor$1 -> com.google.firebase.concurrent.f$1:
+    java.lang.Runnable val$task -> a
+    com.google.firebase.concurrent.SequentialExecutor this$0 -> b
+    void <init>(com.google.firebase.concurrent.SequentialExecutor,java.lang.Runnable) -> <init>
+    void run() -> run
+    java.lang.String toString() -> toString
+com.google.firebase.concurrent.SequentialExecutor$QueueWorker -> com.google.firebase.concurrent.f$a:
+    java.lang.Runnable task -> a
+    com.google.firebase.concurrent.SequentialExecutor this$0 -> b
+    void <init>(com.google.firebase.concurrent.SequentialExecutor) -> <init>
+    void run() -> run
+    void workOnQueue() -> a
+    java.lang.String toString() -> toString
+    void <init>(com.google.firebase.concurrent.SequentialExecutor,com.google.firebase.concurrent.SequentialExecutor$1) -> <init>
+com.google.firebase.concurrent.SequentialExecutor$WorkerRunningState -> com.google.firebase.concurrent.f$b:
+    com.google.firebase.concurrent.SequentialExecutor$WorkerRunningState IDLE -> a
+    com.google.firebase.concurrent.SequentialExecutor$WorkerRunningState QUEUING -> b
+    com.google.firebase.concurrent.SequentialExecutor$WorkerRunningState QUEUED -> c
+    com.google.firebase.concurrent.SequentialExecutor$WorkerRunningState RUNNING -> d
+    com.google.firebase.concurrent.SequentialExecutor$WorkerRunningState[] $VALUES -> e
+    com.google.firebase.concurrent.SequentialExecutor$WorkerRunningState[] values() -> values
+    com.google.firebase.concurrent.SequentialExecutor$WorkerRunningState valueOf(java.lang.String) -> valueOf
+    void <init>(java.lang.String,int) -> <init>
+    void <clinit>() -> <clinit>
+com.google.firebase.concurrent.UiExecutor -> com.google.firebase.concurrent.g:
     com.google.firebase.concurrent.UiExecutor INSTANCE -> a
     android.os.Handler HANDLER -> b
     com.google.firebase.concurrent.UiExecutor[] $VALUES -> c
@@ -30719,27 +30772,27 @@ com.google.firebase.database.util.JsonMapper -> com.google.firebase.database.f.b
     java.util.Map unwrapJsonObject(org.json.JSONObject) -> a
     java.util.List unwrapJsonArray(org.json.JSONArray) -> a
     java.lang.Object unwrapJson(java.lang.Object) -> b
-com.google.firebase.dynamicloading.ComponentLoader -> com.google.firebase.c.a:
+com.google.firebase.dynamicloading.ComponentLoader -> com.google.firebase.b.a:
 com.google.firebase.emulators.EmulatedServiceSettings -> com.google.firebase.emulators.EmulatedServiceSettings:
     java.lang.String host -> a
     int port -> b
     void <init>(java.lang.String,int) -> <init>
     java.lang.String getHost() -> a
     int getPort() -> b
-com.google.firebase.events.Event -> com.google.firebase.d.a:
+com.google.firebase.events.Event -> com.google.firebase.c.a:
     java.lang.Class type -> a
     java.lang.Object payload -> b
     void <init>(java.lang.Class,java.lang.Object) -> <init>
     java.lang.Class getType() -> a
     java.lang.Object getPayload() -> b
     java.lang.String toString() -> toString
-com.google.firebase.events.EventHandler -> com.google.firebase.d.b:
+com.google.firebase.events.EventHandler -> com.google.firebase.c.b:
     void handle(com.google.firebase.events.Event) -> a
-com.google.firebase.events.Publisher -> com.google.firebase.d.c:
+com.google.firebase.events.Publisher -> com.google.firebase.c.c:
     void publish(com.google.firebase.events.Event) -> a
-com.google.firebase.events.Subscriber -> com.google.firebase.d.d:
+com.google.firebase.events.Subscriber -> com.google.firebase.c.d:
     void subscribe(java.lang.Class,java.util.concurrent.Executor,com.google.firebase.events.EventHandler) -> a
-com.google.firebase.heartbeatinfo.AutoValue_HeartBeatResult -> com.google.firebase.e.a:
+com.google.firebase.heartbeatinfo.AutoValue_HeartBeatResult -> com.google.firebase.d.a:
     java.lang.String userAgent -> a
     java.util.List usedDates -> b
     void <init>(java.lang.String,java.util.List) -> <init>
@@ -30748,7 +30801,7 @@ com.google.firebase.heartbeatinfo.AutoValue_HeartBeatResult -> com.google.fireba
     java.lang.String toString() -> toString
     boolean equals(java.lang.Object) -> equals
     int hashCode() -> hashCode
-com.google.firebase.heartbeatinfo.DefaultHeartBeatController -> com.google.firebase.e.b:
+com.google.firebase.heartbeatinfo.DefaultHeartBeatController -> com.google.firebase.d.b:
     com.google.firebase.inject.Provider storageProvider -> a
     android.content.Context applicationContext -> b
     com.google.firebase.inject.Provider userAgentProvider -> c
@@ -30763,15 +30816,15 @@ com.google.firebase.heartbeatinfo.DefaultHeartBeatController -> com.google.fireb
     com.google.firebase.heartbeatinfo.HeartBeatInfoStorage lambda$new$2(android.content.Context,java.lang.String) -> a
     java.lang.String lambda$getHeartBeatsHeader$1() -> d
     java.lang.Void lambda$registerHeartBeat$0() -> e
-com.google.firebase.heartbeatinfo.HeartBeatConsumer -> com.google.firebase.e.c:
-com.google.firebase.heartbeatinfo.HeartBeatConsumerComponent -> com.google.firebase.e.d:
+com.google.firebase.heartbeatinfo.HeartBeatConsumer -> com.google.firebase.d.c:
+com.google.firebase.heartbeatinfo.HeartBeatConsumerComponent -> com.google.firebase.d.d:
     com.google.firebase.components.Component create() -> a
-com.google.firebase.heartbeatinfo.HeartBeatConsumerComponent$1 -> com.google.firebase.e.d$1:
+com.google.firebase.heartbeatinfo.HeartBeatConsumerComponent$1 -> com.google.firebase.d.d$1:
     void <init>() -> <init>
-com.google.firebase.heartbeatinfo.HeartBeatController -> com.google.firebase.e.e:
+com.google.firebase.heartbeatinfo.HeartBeatController -> com.google.firebase.d.e:
     com.google.android.gms.tasks.Task getHeartBeatsHeader() -> b
-com.google.firebase.heartbeatinfo.HeartBeatInfo -> com.google.firebase.e.f:
-com.google.firebase.heartbeatinfo.HeartBeatInfoStorage -> com.google.firebase.e.g:
+com.google.firebase.heartbeatinfo.HeartBeatInfo -> com.google.firebase.d.f:
+com.google.firebase.heartbeatinfo.HeartBeatInfoStorage -> com.google.firebase.d.g:
     com.google.firebase.heartbeatinfo.HeartBeatInfoStorage instance -> a
     android.content.SharedPreferences firebaseSharedPreferences -> b
     void <init>(android.content.Context,java.lang.String) -> <init>
@@ -30785,7 +30838,7 @@ com.google.firebase.heartbeatinfo.HeartBeatInfoStorage -> com.google.firebase.e.
     void cleanUpStoredHeartBeats() -> c
     void updateGlobalHeartBeat(long) -> a
     void <clinit>() -> <clinit>
-com.google.firebase.heartbeatinfo.HeartBeatResult -> com.google.firebase.e.h:
+com.google.firebase.heartbeatinfo.HeartBeatResult -> com.google.firebase.d.h:
     void <init>() -> <init>
     java.lang.String getUserAgent() -> a
     java.util.List getUsedDates() -> b
@@ -31232,11 +31285,873 @@ com.google.firebase.provider.FirebaseInitProvider -> com.google.firebase.provide
     int delete(android.net.Uri,java.lang.String,java.lang.String[]) -> delete
     int update(android.net.Uri,android.content.ContentValues,java.lang.String,java.lang.String[]) -> update
     void <clinit>() -> <clinit>
-com.google.firebase.tracing.ComponentMonitor -> com.google.firebase.f.a:
+com.google.firebase.storage.CancelException -> com.google.firebase.storage.a:
+    void <init>() -> <init>
+com.google.firebase.storage.CancellableTask -> com.google.firebase.storage.CancellableTask:
+    void <init>() -> <init>
+    boolean cancel() -> cancel
+    boolean isCanceled() -> isCanceled
+    boolean isInProgress() -> isInProgress
+    com.google.firebase.storage.CancellableTask addOnProgressListener(com.google.firebase.storage.OnProgressListener) -> addOnProgressListener
+    com.google.firebase.storage.CancellableTask addOnProgressListener(java.util.concurrent.Executor,com.google.firebase.storage.OnProgressListener) -> addOnProgressListener
+    com.google.firebase.storage.CancellableTask addOnProgressListener(android.app.Activity,com.google.firebase.storage.OnProgressListener) -> addOnProgressListener
+com.google.firebase.storage.ControllableTask -> com.google.firebase.storage.ControllableTask:
+    void <init>() -> <init>
+    boolean pause() -> pause
+    boolean resume() -> resume
+    boolean isPaused() -> isPaused
+    com.google.firebase.storage.ControllableTask addOnPausedListener(com.google.firebase.storage.OnPausedListener) -> addOnPausedListener
+    com.google.firebase.storage.ControllableTask addOnPausedListener(java.util.concurrent.Executor,com.google.firebase.storage.OnPausedListener) -> addOnPausedListener
+    com.google.firebase.storage.ControllableTask addOnPausedListener(android.app.Activity,com.google.firebase.storage.OnPausedListener) -> addOnPausedListener
+com.google.firebase.storage.DeleteStorageTask -> com.google.firebase.storage.b:
+    com.google.firebase.storage.StorageReference mStorageRef -> a
+    com.google.android.gms.tasks.TaskCompletionSource mPendingResult -> b
+    com.google.firebase.storage.internal.ExponentialBackoffSender mSender -> c
+    void <init>(com.google.firebase.storage.StorageReference,com.google.android.gms.tasks.TaskCompletionSource) -> <init>
+    void run() -> run
+com.google.firebase.storage.FileDownloadTask -> com.google.firebase.storage.FileDownloadTask:
+    android.net.Uri mDestinationFile -> a
+    long mBytesDownloaded -> b
+    com.google.firebase.storage.StorageReference mStorageRef -> c
+    com.google.firebase.storage.internal.ExponentialBackoffSender mSender -> d
+    long mTotalBytes -> e
+    java.lang.String mETagVerification -> f
+    java.lang.Exception mException -> g
+    long mResumeOffset -> h
+    int mResultCode -> i
+    void <init>(com.google.firebase.storage.StorageReference,android.net.Uri) -> <init>
+    long getTotalBytes() -> a
+    com.google.firebase.storage.StorageReference getStorage() -> getStorage
+    void schedule() -> schedule
+    com.google.firebase.storage.FileDownloadTask$TaskSnapshot snapStateImpl() -> b
+    int fillBuffer(java.io.InputStream,byte[]) -> a
+    boolean processResponse(com.google.firebase.storage.network.NetworkRequest) -> a
+    void run() -> run
+    void onCanceled() -> onCanceled
+    boolean isValidHttpResponseCode(int) -> a
+    com.google.firebase.storage.StorageTask$ProvideError snapStateImpl() -> snapStateImpl
+com.google.firebase.storage.FileDownloadTask$TaskSnapshot -> com.google.firebase.storage.FileDownloadTask$TaskSnapshot:
+    long mBytesDownloaded -> mBytesDownloaded
+    com.google.firebase.storage.FileDownloadTask this$0 -> this$0
+    void <init>(com.google.firebase.storage.FileDownloadTask,java.lang.Exception,long) -> <init>
+    long getBytesTransferred() -> getBytesTransferred
+    long getTotalByteCount() -> getTotalByteCount
+com.google.firebase.storage.FirebaseStorage -> com.google.firebase.storage.FirebaseStorage:
+    java.lang.String TAG -> TAG
+    java.lang.String STORAGE_URI_PARSE_EXCEPTION -> STORAGE_URI_PARSE_EXCEPTION
+    java.lang.String STORAGE_BUCKET_WITH_PATH_EXCEPTION -> STORAGE_BUCKET_WITH_PATH_EXCEPTION
+    com.google.firebase.FirebaseApp mApp -> mApp
+    com.google.firebase.inject.Provider mAuthProvider -> mAuthProvider
+    com.google.firebase.inject.Provider mAppCheckProvider -> mAppCheckProvider
+    java.lang.String mBucketName -> mBucketName
+    long sMaxUploadRetry -> sMaxUploadRetry
+    long sMaxChunkUploadRetry -> sMaxChunkUploadRetry
+    long sMaxDownloadRetry -> sMaxDownloadRetry
+    long sMaxQueryRetry -> sMaxQueryRetry
+    com.google.firebase.emulators.EmulatedServiceSettings emulatorSettings -> emulatorSettings
+    boolean $assertionsDisabled -> $assertionsDisabled
+    void <init>(java.lang.String,com.google.firebase.FirebaseApp,com.google.firebase.inject.Provider,com.google.firebase.inject.Provider) -> <init>
+    com.google.firebase.storage.FirebaseStorage getInstanceImpl(com.google.firebase.FirebaseApp,android.net.Uri) -> getInstanceImpl
+    com.google.firebase.storage.FirebaseStorage getInstance() -> getInstance
+    com.google.firebase.storage.FirebaseStorage getInstance(java.lang.String) -> getInstance
+    com.google.firebase.storage.FirebaseStorage getInstance(com.google.firebase.FirebaseApp) -> getInstance
+    com.google.firebase.storage.FirebaseStorage getInstance(com.google.firebase.FirebaseApp,java.lang.String) -> getInstance
+    void useEmulator(java.lang.String,int) -> useEmulator
+    long getMaxDownloadRetryTimeMillis() -> getMaxDownloadRetryTimeMillis
+    void setMaxDownloadRetryTimeMillis(long) -> setMaxDownloadRetryTimeMillis
+    long getMaxUploadRetryTimeMillis() -> getMaxUploadRetryTimeMillis
+    void setMaxUploadRetryTimeMillis(long) -> setMaxUploadRetryTimeMillis
+    long getMaxChunkUploadRetry() -> getMaxChunkUploadRetry
+    void setMaxChunkUploadRetry(long) -> setMaxChunkUploadRetry
+    long getMaxOperationRetryTimeMillis() -> getMaxOperationRetryTimeMillis
+    void setMaxOperationRetryTimeMillis(long) -> setMaxOperationRetryTimeMillis
+    java.lang.String getBucketName() -> getBucketName
+    com.google.firebase.storage.StorageReference getReference() -> getReference
+    com.google.firebase.storage.StorageReference getReferenceFromUrl(java.lang.String) -> getReferenceFromUrl
+    com.google.firebase.storage.StorageReference getReference(java.lang.String) -> getReference
+    com.google.firebase.storage.StorageReference getReference(android.net.Uri) -> getReference
+    com.google.firebase.FirebaseApp getApp() -> getApp
+    com.google.firebase.auth.internal.InternalAuthProvider getAuthProvider() -> getAuthProvider
+    com.google.firebase.appcheck.interop.InteropAppCheckTokenProvider getAppCheckProvider() -> getAppCheckProvider
+    com.google.firebase.emulators.EmulatedServiceSettings getEmulatorSettings() -> getEmulatorSettings
+    void <clinit>() -> <clinit>
+com.google.firebase.storage.FirebaseStorage$1 -> com.google.firebase.storage.FirebaseStorage$1:
+    com.google.firebase.storage.FirebaseStorage this$0 -> a
+    void <init>(com.google.firebase.storage.FirebaseStorage) -> <init>
+com.google.firebase.storage.FirebaseStorageComponent -> com.google.firebase.storage.c:
+    java.util.Map instances -> a
+    com.google.firebase.FirebaseApp app -> b
+    com.google.firebase.inject.Provider authProvider -> c
+    com.google.firebase.inject.Provider appCheckProvider -> d
+    void <init>(com.google.firebase.FirebaseApp,com.google.firebase.inject.Provider,com.google.firebase.inject.Provider,java.util.concurrent.Executor,java.util.concurrent.Executor) -> <init>
+    com.google.firebase.storage.FirebaseStorage get(java.lang.String) -> a
+com.google.firebase.storage.GetDownloadUrlTask -> com.google.firebase.storage.d:
+    com.google.firebase.storage.StorageReference storageRef -> a
+    com.google.android.gms.tasks.TaskCompletionSource pendingResult -> b
+    com.google.firebase.storage.internal.ExponentialBackoffSender sender -> c
+    void <init>(com.google.firebase.storage.StorageReference,com.google.android.gms.tasks.TaskCompletionSource) -> <init>
+    android.net.Uri extractDownloadUrl(org.json.JSONObject) -> a
+    void run() -> run
+com.google.firebase.storage.GetMetadataTask -> com.google.firebase.storage.e:
+    com.google.firebase.storage.StorageReference mStorageRef -> a
+    com.google.android.gms.tasks.TaskCompletionSource mPendingResult -> b
+    com.google.firebase.storage.StorageMetadata mResultMetadata -> c
+    com.google.firebase.storage.internal.ExponentialBackoffSender mSender -> d
+    void <init>(com.google.firebase.storage.StorageReference,com.google.android.gms.tasks.TaskCompletionSource) -> <init>
+    void run() -> run
+com.google.firebase.storage.ListResult -> com.google.firebase.storage.f:
+    java.util.List prefixes -> a
+    java.util.List items -> b
+    java.lang.String pageToken -> c
+    void <init>(java.util.List,java.util.List,java.lang.String) -> <init>
+    com.google.firebase.storage.ListResult fromJSON(com.google.firebase.storage.FirebaseStorage,org.json.JSONObject) -> a
+    java.util.List getPrefixes() -> a
+    java.util.List getItems() -> b
+    java.lang.String getPageToken() -> c
+com.google.firebase.storage.ListTask -> com.google.firebase.storage.g:
+    com.google.firebase.storage.StorageReference storageRef -> a
+    com.google.android.gms.tasks.TaskCompletionSource pendingResult -> b
+    com.google.firebase.storage.internal.ExponentialBackoffSender sender -> c
+    java.lang.String pageToken -> d
+    java.lang.Integer maxResults -> e
+    void <init>(com.google.firebase.storage.StorageReference,java.lang.Integer,java.lang.String,com.google.android.gms.tasks.TaskCompletionSource) -> <init>
+    void run() -> run
+com.google.firebase.storage.OnPausedListener -> com.google.firebase.storage.OnPausedListener:
+    void onPaused(java.lang.Object) -> onPaused
+com.google.firebase.storage.OnProgressListener -> com.google.firebase.storage.OnProgressListener:
+    void onProgress(java.lang.Object) -> onProgress
+com.google.firebase.storage.StorageException -> com.google.firebase.storage.StorageException:
+    java.lang.String TAG -> TAG
+    int ERROR_UNKNOWN -> ERROR_UNKNOWN
+    int ERROR_OBJECT_NOT_FOUND -> ERROR_OBJECT_NOT_FOUND
+    int ERROR_BUCKET_NOT_FOUND -> ERROR_BUCKET_NOT_FOUND
+    int ERROR_PROJECT_NOT_FOUND -> ERROR_PROJECT_NOT_FOUND
+    int ERROR_QUOTA_EXCEEDED -> ERROR_QUOTA_EXCEEDED
+    int ERROR_NOT_AUTHENTICATED -> ERROR_NOT_AUTHENTICATED
+    int ERROR_NOT_AUTHORIZED -> ERROR_NOT_AUTHORIZED
+    int ERROR_RETRY_LIMIT_EXCEEDED -> ERROR_RETRY_LIMIT_EXCEEDED
+    int ERROR_INVALID_CHECKSUM -> ERROR_INVALID_CHECKSUM
+    int ERROR_CANCELED -> ERROR_CANCELED
+    int NETWORK_UNAVAILABLE -> NETWORK_UNAVAILABLE
+    int errorCode -> errorCode
+    int httpResultCode -> httpResultCode
+    java.lang.Throwable cause -> cause
+    boolean $assertionsDisabled -> $assertionsDisabled
+    void <init>(int,java.lang.Throwable,int) -> <init>
+    int calculateErrorCode(com.google.android.gms.common.api.Status) -> calculateErrorCode
+    int calculateErrorCode(java.lang.Throwable,int) -> calculateErrorCode
+    com.google.firebase.storage.StorageException fromErrorStatus(com.google.android.gms.common.api.Status) -> fromErrorStatus
+    com.google.firebase.storage.StorageException fromExceptionAndHttpCode(java.lang.Throwable,int) -> fromExceptionAndHttpCode
+    com.google.firebase.storage.StorageException fromException(java.lang.Throwable) -> fromException
+    boolean isResultSuccess(int) -> isResultSuccess
+    java.lang.String getErrorMessageForCode(int) -> getErrorMessageForCode
+    java.lang.Throwable getCause() -> getCause
+    int getErrorCode() -> getErrorCode
+    int getHttpResultCode() -> getHttpResultCode
+    boolean getIsRecoverableException() -> getIsRecoverableException
+    void <clinit>() -> <clinit>
+com.google.firebase.storage.StorageMetadata -> com.google.firebase.storage.StorageMetadata:
+    java.lang.String TAG -> TAG
+    java.lang.String CONTENT_LANGUAGE -> CONTENT_LANGUAGE
+    java.lang.String CONTENT_ENCODING -> CONTENT_ENCODING
+    java.lang.String CONTENT_DISPOSITION -> CONTENT_DISPOSITION
+    java.lang.String CACHE_CONTROL -> CACHE_CONTROL
+    java.lang.String CUSTOM_METADATA_KEY -> CUSTOM_METADATA_KEY
+    java.lang.String CONTENT_TYPE_KEY -> CONTENT_TYPE_KEY
+    java.lang.String MD5_HASH_KEY -> MD5_HASH_KEY
+    java.lang.String SIZE_KEY -> SIZE_KEY
+    java.lang.String TIME_UPDATED_KEY -> TIME_UPDATED_KEY
+    java.lang.String TIME_CREATED_KEY -> TIME_CREATED_KEY
+    java.lang.String META_GENERATION_KEY -> META_GENERATION_KEY
+    java.lang.String BUCKET_KEY -> BUCKET_KEY
+    java.lang.String NAME_KEY -> NAME_KEY
+    java.lang.String GENERATION_KEY -> GENERATION_KEY
+    java.lang.String mPath -> mPath
+    com.google.firebase.storage.FirebaseStorage mStorage -> mStorage
+    com.google.firebase.storage.StorageReference mStorageRef -> mStorageRef
+    java.lang.String mBucket -> mBucket
+    java.lang.String mGeneration -> mGeneration
+    com.google.firebase.storage.StorageMetadata$MetadataValue mContentType -> mContentType
+    java.lang.String mMetadataGeneration -> mMetadataGeneration
+    java.lang.String mCreationTime -> mCreationTime
+    java.lang.String mUpdatedTime -> mUpdatedTime
+    long mSize -> mSize
+    java.lang.String mMD5Hash -> mMD5Hash
+    com.google.firebase.storage.StorageMetadata$MetadataValue mCacheControl -> mCacheControl
+    com.google.firebase.storage.StorageMetadata$MetadataValue mContentDisposition -> mContentDisposition
+    com.google.firebase.storage.StorageMetadata$MetadataValue mContentEncoding -> mContentEncoding
+    com.google.firebase.storage.StorageMetadata$MetadataValue mContentLanguage -> mContentLanguage
+    com.google.firebase.storage.StorageMetadata$MetadataValue mCustomMetadata -> mCustomMetadata
+    void <init>() -> <init>
+    void <init>(com.google.firebase.storage.StorageMetadata,boolean) -> <init>
+    java.lang.String getContentType() -> getContentType
+    java.lang.String getCustomMetadata(java.lang.String) -> getCustomMetadata
+    java.util.Set getCustomMetadataKeys() -> getCustomMetadataKeys
+    java.lang.String getPath() -> getPath
+    java.lang.String getName() -> getName
+    java.lang.String getBucket() -> getBucket
+    java.lang.String getGeneration() -> getGeneration
+    java.lang.String getMetadataGeneration() -> getMetadataGeneration
+    long getCreationTimeMillis() -> getCreationTimeMillis
+    long getUpdatedTimeMillis() -> getUpdatedTimeMillis
+    long getSizeBytes() -> getSizeBytes
+    java.lang.String getMd5Hash() -> getMd5Hash
+    java.lang.String getCacheControl() -> getCacheControl
+    java.lang.String getContentDisposition() -> getContentDisposition
+    java.lang.String getContentEncoding() -> getContentEncoding
+    java.lang.String getContentLanguage() -> getContentLanguage
+    com.google.firebase.storage.StorageReference getReference() -> getReference
+    org.json.JSONObject createJSONObject() -> createJSONObject
+    void <init>(com.google.firebase.storage.StorageMetadata,boolean,com.google.firebase.storage.StorageMetadata$1) -> <init>
+    com.google.firebase.storage.StorageReference access$102(com.google.firebase.storage.StorageMetadata,com.google.firebase.storage.StorageReference) -> access$102
+    java.lang.String access$202(com.google.firebase.storage.StorageMetadata,java.lang.String) -> access$202
+    java.lang.String access$302(com.google.firebase.storage.StorageMetadata,java.lang.String) -> access$302
+    java.lang.String access$402(com.google.firebase.storage.StorageMetadata,java.lang.String) -> access$402
+    java.lang.String access$502(com.google.firebase.storage.StorageMetadata,java.lang.String) -> access$502
+    java.lang.String access$602(com.google.firebase.storage.StorageMetadata,java.lang.String) -> access$602
+    java.lang.String access$702(com.google.firebase.storage.StorageMetadata,java.lang.String) -> access$702
+    long access$802(com.google.firebase.storage.StorageMetadata,long) -> access$802
+    java.lang.String access$902(com.google.firebase.storage.StorageMetadata,java.lang.String) -> access$902
+    com.google.firebase.storage.StorageMetadata$MetadataValue access$1002(com.google.firebase.storage.StorageMetadata,com.google.firebase.storage.StorageMetadata$MetadataValue) -> access$1002
+    com.google.firebase.storage.StorageMetadata$MetadataValue access$1000(com.google.firebase.storage.StorageMetadata) -> access$1000
+    com.google.firebase.storage.StorageMetadata$MetadataValue access$1102(com.google.firebase.storage.StorageMetadata,com.google.firebase.storage.StorageMetadata$MetadataValue) -> access$1102
+    com.google.firebase.storage.StorageMetadata$MetadataValue access$1100(com.google.firebase.storage.StorageMetadata) -> access$1100
+    com.google.firebase.storage.StorageMetadata$MetadataValue access$1202(com.google.firebase.storage.StorageMetadata,com.google.firebase.storage.StorageMetadata$MetadataValue) -> access$1202
+    com.google.firebase.storage.StorageMetadata$MetadataValue access$1200(com.google.firebase.storage.StorageMetadata) -> access$1200
+    com.google.firebase.storage.StorageMetadata$MetadataValue access$1302(com.google.firebase.storage.StorageMetadata,com.google.firebase.storage.StorageMetadata$MetadataValue) -> access$1302
+    com.google.firebase.storage.StorageMetadata$MetadataValue access$1300(com.google.firebase.storage.StorageMetadata) -> access$1300
+    com.google.firebase.storage.StorageMetadata$MetadataValue access$1400(com.google.firebase.storage.StorageMetadata) -> access$1400
+    com.google.firebase.storage.StorageMetadata$MetadataValue access$1402(com.google.firebase.storage.StorageMetadata,com.google.firebase.storage.StorageMetadata$MetadataValue) -> access$1402
+    com.google.firebase.storage.StorageMetadata$MetadataValue access$1502(com.google.firebase.storage.StorageMetadata,com.google.firebase.storage.StorageMetadata$MetadataValue) -> access$1502
+    com.google.firebase.storage.StorageMetadata$MetadataValue access$1500(com.google.firebase.storage.StorageMetadata) -> access$1500
+com.google.firebase.storage.StorageMetadata$1 -> com.google.firebase.storage.StorageMetadata$1:
+com.google.firebase.storage.StorageMetadata$Builder -> com.google.firebase.storage.StorageMetadata$Builder:
+    com.google.firebase.storage.StorageMetadata mMetadata -> mMetadata
+    boolean mFromJSON -> mFromJSON
+    void <init>() -> <init>
+    void <init>(com.google.firebase.storage.StorageMetadata) -> <init>
+    void <init>(org.json.JSONObject,com.google.firebase.storage.StorageReference) -> <init>
+    void <init>(org.json.JSONObject) -> <init>
+    java.lang.String extractString(org.json.JSONObject,java.lang.String) -> extractString
+    void parseJSON(org.json.JSONObject) -> parseJSON
+    com.google.firebase.storage.StorageMetadata build() -> build
+    com.google.firebase.storage.StorageMetadata$Builder setContentLanguage(java.lang.String) -> setContentLanguage
+    java.lang.String getContentLanguage() -> getContentLanguage
+    com.google.firebase.storage.StorageMetadata$Builder setContentEncoding(java.lang.String) -> setContentEncoding
+    java.lang.String getContentEncoding() -> getContentEncoding
+    com.google.firebase.storage.StorageMetadata$Builder setContentDisposition(java.lang.String) -> setContentDisposition
+    java.lang.String getContentDisposition() -> getContentDisposition
+    com.google.firebase.storage.StorageMetadata$Builder setCacheControl(java.lang.String) -> setCacheControl
+    java.lang.String getCacheControl() -> getCacheControl
+    com.google.firebase.storage.StorageMetadata$Builder setCustomMetadata(java.lang.String,java.lang.String) -> setCustomMetadata
+    com.google.firebase.storage.StorageMetadata$Builder setContentType(java.lang.String) -> setContentType
+    java.lang.String getContentType() -> getContentType
+com.google.firebase.storage.StorageMetadata$MetadataValue -> com.google.firebase.storage.StorageMetadata$MetadataValue:
+    boolean userProvided -> a
+    java.lang.Object value -> b
+    void <init>(java.lang.Object,boolean) -> <init>
+    com.google.firebase.storage.StorageMetadata$MetadataValue withDefaultValue(java.lang.Object) -> a
+    com.google.firebase.storage.StorageMetadata$MetadataValue withUserValue(java.lang.Object) -> b
+    boolean isUserProvided() -> a
+    java.lang.Object getValue() -> b
+com.google.firebase.storage.StorageReference -> com.google.firebase.storage.StorageReference:
+    java.lang.String TAG -> TAG
+    android.net.Uri mStorageUri -> mStorageUri
+    com.google.firebase.storage.FirebaseStorage mFirebaseStorage -> mFirebaseStorage
+    boolean $assertionsDisabled -> $assertionsDisabled
+    void <init>(android.net.Uri,com.google.firebase.storage.FirebaseStorage) -> <init>
+    com.google.firebase.storage.StorageReference child(java.lang.String) -> child
+    com.google.firebase.storage.StorageReference getParent() -> getParent
+    com.google.firebase.storage.StorageReference getRoot() -> getRoot
+    java.lang.String getName() -> getName
+    java.lang.String getPath() -> getPath
+    java.lang.String getBucket() -> getBucket
+    com.google.firebase.storage.FirebaseStorage getStorage() -> getStorage
+    com.google.firebase.FirebaseApp getApp() -> getApp
+    com.google.firebase.storage.UploadTask putBytes(byte[]) -> putBytes
+    com.google.firebase.storage.UploadTask putBytes(byte[],com.google.firebase.storage.StorageMetadata) -> putBytes
+    com.google.firebase.storage.UploadTask putFile(android.net.Uri) -> putFile
+    com.google.firebase.storage.UploadTask putFile(android.net.Uri,com.google.firebase.storage.StorageMetadata) -> putFile
+    com.google.firebase.storage.UploadTask putFile(android.net.Uri,com.google.firebase.storage.StorageMetadata,android.net.Uri) -> putFile
+    com.google.firebase.storage.UploadTask putStream(java.io.InputStream) -> putStream
+    com.google.firebase.storage.UploadTask putStream(java.io.InputStream,com.google.firebase.storage.StorageMetadata) -> putStream
+    java.util.List getActiveUploadTasks() -> getActiveUploadTasks
+    java.util.List getActiveDownloadTasks() -> getActiveDownloadTasks
+    com.google.android.gms.tasks.Task getMetadata() -> getMetadata
+    com.google.android.gms.tasks.Task getDownloadUrl() -> getDownloadUrl
+    com.google.android.gms.tasks.Task updateMetadata(com.google.firebase.storage.StorageMetadata) -> updateMetadata
+    com.google.android.gms.tasks.Task getBytes(long) -> getBytes
+    com.google.firebase.storage.FileDownloadTask getFile(android.net.Uri) -> getFile
+    com.google.firebase.storage.FileDownloadTask getFile(java.io.File) -> getFile
+    com.google.firebase.storage.StreamDownloadTask getStream() -> getStream
+    com.google.firebase.storage.StreamDownloadTask getStream(com.google.firebase.storage.StreamDownloadTask$StreamProcessor) -> getStream
+    com.google.android.gms.tasks.Task delete() -> delete
+    com.google.android.gms.tasks.Task list(int) -> list
+    com.google.android.gms.tasks.Task list(int,java.lang.String) -> list
+    com.google.android.gms.tasks.Task listAll() -> listAll
+    com.google.android.gms.tasks.Task listHelper(java.lang.Integer,java.lang.String) -> listHelper
+    android.net.Uri getStorageUri() -> getStorageUri
+    java.lang.String toString() -> toString
+    boolean equals(java.lang.Object) -> equals
+    int hashCode() -> hashCode
+    int compareTo(com.google.firebase.storage.StorageReference) -> compareTo
+    com.google.firebase.storage.internal.StorageReferenceUri getStorageReferenceUri() -> getStorageReferenceUri
+    int compareTo(java.lang.Object) -> compareTo
+    com.google.android.gms.tasks.Task access$000(com.google.firebase.storage.StorageReference,java.lang.Integer,java.lang.String) -> access$000
+    void <clinit>() -> <clinit>
+com.google.firebase.storage.StorageReference$1 -> com.google.firebase.storage.StorageReference$1:
+    boolean $assertionsDisabled -> a
+    com.google.android.gms.tasks.TaskCompletionSource val$pendingResult -> b
+    com.google.firebase.storage.StorageReference this$0 -> c
+    void <init>(com.google.firebase.storage.StorageReference,com.google.android.gms.tasks.TaskCompletionSource) -> <init>
+    void onFailure(java.lang.Exception) -> onFailure
+    void <clinit>() -> <clinit>
+com.google.firebase.storage.StorageReference$2 -> com.google.firebase.storage.StorageReference$2:
+    com.google.android.gms.tasks.TaskCompletionSource val$pendingResult -> a
+    com.google.firebase.storage.StorageReference this$0 -> b
+    void <init>(com.google.firebase.storage.StorageReference,com.google.android.gms.tasks.TaskCompletionSource) -> <init>
+    void onSuccess(com.google.firebase.storage.StreamDownloadTask$TaskSnapshot) -> a
+    void onSuccess(java.lang.Object) -> onSuccess
+com.google.firebase.storage.StorageReference$3 -> com.google.firebase.storage.StorageReference$3:
+    long val$maxDownloadSizeBytes -> a
+    com.google.android.gms.tasks.TaskCompletionSource val$pendingResult -> b
+    com.google.firebase.storage.StorageReference this$0 -> c
+    void <init>(com.google.firebase.storage.StorageReference,long,com.google.android.gms.tasks.TaskCompletionSource) -> <init>
+    void doInBackground(com.google.firebase.storage.StreamDownloadTask$TaskSnapshot,java.io.InputStream) -> doInBackground
+com.google.firebase.storage.StorageReference$4 -> com.google.firebase.storage.StorageReference$4:
+    java.util.List val$prefixes -> a
+    java.util.List val$items -> b
+    java.util.concurrent.Executor val$executor -> c
+    com.google.android.gms.tasks.TaskCompletionSource val$pendingResult -> d
+    com.google.firebase.storage.StorageReference this$0 -> e
+    void <init>(com.google.firebase.storage.StorageReference,java.util.List,java.util.List,java.util.concurrent.Executor,com.google.android.gms.tasks.TaskCompletionSource) -> <init>
+    com.google.android.gms.tasks.Task then(com.google.android.gms.tasks.Task) -> a
+    java.lang.Object then(com.google.android.gms.tasks.Task) -> then
+com.google.firebase.storage.StorageRegistrar -> com.google.firebase.storage.StorageRegistrar:
+    java.lang.String LIBRARY_NAME -> LIBRARY_NAME
+    com.google.firebase.components.Qualified blockingExecutor -> blockingExecutor
+    com.google.firebase.components.Qualified uiExecutor -> uiExecutor
+    void <init>() -> <init>
+    java.util.List getComponents() -> getComponents
+    com.google.firebase.storage.FirebaseStorageComponent lambda$getComponents$0(com.google.firebase.components.ComponentContainer) -> lambda$getComponents$0
+com.google.firebase.storage.StorageTask -> com.google.firebase.storage.StorageTask:
+    java.lang.String TAG -> TAG
+    int INTERNAL_STATE_NOT_STARTED -> INTERNAL_STATE_NOT_STARTED
+    int INTERNAL_STATE_QUEUED -> INTERNAL_STATE_QUEUED
+    int INTERNAL_STATE_IN_PROGRESS -> INTERNAL_STATE_IN_PROGRESS
+    int INTERNAL_STATE_PAUSING -> INTERNAL_STATE_PAUSING
+    int INTERNAL_STATE_PAUSED -> INTERNAL_STATE_PAUSED
+    int INTERNAL_STATE_CANCELING -> INTERNAL_STATE_CANCELING
+    int INTERNAL_STATE_FAILURE -> INTERNAL_STATE_FAILURE
+    int INTERNAL_STATE_SUCCESS -> INTERNAL_STATE_SUCCESS
+    int INTERNAL_STATE_CANCELED -> INTERNAL_STATE_CANCELED
+    int STATES_SUCCESS -> STATES_SUCCESS
+    int STATES_PAUSED -> STATES_PAUSED
+    int STATES_FAILURE -> STATES_FAILURE
+    int STATES_CANCELED -> STATES_CANCELED
+    int STATES_COMPLETE -> STATES_COMPLETE
+    int STATES_INPROGRESS -> STATES_INPROGRESS
+    java.util.HashMap ValidUserInitiatedStateChanges -> ValidUserInitiatedStateChanges
+    java.util.HashMap ValidTaskInitiatedStateChanges -> ValidTaskInitiatedStateChanges
+    java.lang.Object syncObject -> syncObject
+    com.google.firebase.storage.TaskListenerImpl successManager -> successManager
+    com.google.firebase.storage.TaskListenerImpl failureManager -> failureManager
+    com.google.firebase.storage.TaskListenerImpl completeListener -> completeListener
+    com.google.firebase.storage.TaskListenerImpl cancelManager -> cancelManager
+    com.google.firebase.storage.TaskListenerImpl progressManager -> progressManager
+    com.google.firebase.storage.TaskListenerImpl pausedManager -> pausedManager
+    int currentState -> currentState
+    com.google.firebase.storage.StorageTask$ProvideError finalResult -> finalResult
+    void <init>() -> <init>
+    boolean queue() -> queue
+    void resetState() -> resetState
+    com.google.firebase.storage.StorageReference getStorage() -> getStorage
+    void schedule() -> schedule
+    boolean resume() -> resume
+    boolean pause() -> pause
+    boolean cancel() -> cancel
+    boolean isComplete() -> isComplete
+    boolean isSuccessful() -> isSuccessful
+    boolean isCanceled() -> isCanceled
+    boolean isInProgress() -> isInProgress
+    boolean isPaused() -> isPaused
+    com.google.firebase.storage.StorageTask$ProvideError getResult() -> getResult
+    com.google.firebase.storage.StorageTask$ProvideError getResult(java.lang.Class) -> getResult
+    java.lang.Exception getException() -> getException
+    com.google.firebase.storage.StorageTask$ProvideError getSnapshot() -> getSnapshot
+    int getInternalState() -> getInternalState
+    java.lang.Object getSyncObject() -> getSyncObject
+    com.google.firebase.storage.StorageTask$ProvideError snapState() -> snapState
+    com.google.firebase.storage.StorageTask$ProvideError snapStateImpl() -> snapStateImpl
+    boolean tryChangeState(int[],boolean) -> tryChangeState
+    boolean tryChangeState(int,boolean) -> tryChangeState
+    void onQueued() -> onQueued
+    void onProgress() -> onProgress
+    void onPaused() -> onPaused
+    void onFailure() -> onFailure
+    void onSuccess() -> onSuccess
+    void onCanceled() -> onCanceled
+    com.google.firebase.storage.StorageTask$ProvideError getFinalResult() -> getFinalResult
+    com.google.firebase.storage.StorageTask addOnPausedListener(com.google.firebase.storage.OnPausedListener) -> addOnPausedListener
+    com.google.firebase.storage.StorageTask addOnPausedListener(java.util.concurrent.Executor,com.google.firebase.storage.OnPausedListener) -> addOnPausedListener
+    com.google.firebase.storage.StorageTask addOnPausedListener(android.app.Activity,com.google.firebase.storage.OnPausedListener) -> addOnPausedListener
+    com.google.firebase.storage.StorageTask removeOnPausedListener(com.google.firebase.storage.OnPausedListener) -> removeOnPausedListener
+    com.google.firebase.storage.StorageTask addOnProgressListener(com.google.firebase.storage.OnProgressListener) -> addOnProgressListener
+    com.google.firebase.storage.StorageTask addOnProgressListener(java.util.concurrent.Executor,com.google.firebase.storage.OnProgressListener) -> addOnProgressListener
+    com.google.firebase.storage.StorageTask addOnProgressListener(android.app.Activity,com.google.firebase.storage.OnProgressListener) -> addOnProgressListener
+    com.google.firebase.storage.StorageTask removeOnProgressListener(com.google.firebase.storage.OnProgressListener) -> removeOnProgressListener
+    com.google.firebase.storage.StorageTask addOnSuccessListener(com.google.android.gms.tasks.OnSuccessListener) -> addOnSuccessListener
+    com.google.firebase.storage.StorageTask addOnSuccessListener(java.util.concurrent.Executor,com.google.android.gms.tasks.OnSuccessListener) -> addOnSuccessListener
+    com.google.firebase.storage.StorageTask addOnSuccessListener(android.app.Activity,com.google.android.gms.tasks.OnSuccessListener) -> addOnSuccessListener
+    com.google.firebase.storage.StorageTask removeOnSuccessListener(com.google.android.gms.tasks.OnSuccessListener) -> removeOnSuccessListener
+    com.google.firebase.storage.StorageTask addOnFailureListener(com.google.android.gms.tasks.OnFailureListener) -> addOnFailureListener
+    com.google.firebase.storage.StorageTask addOnFailureListener(java.util.concurrent.Executor,com.google.android.gms.tasks.OnFailureListener) -> addOnFailureListener
+    com.google.firebase.storage.StorageTask addOnFailureListener(android.app.Activity,com.google.android.gms.tasks.OnFailureListener) -> addOnFailureListener
+    com.google.firebase.storage.StorageTask removeOnFailureListener(com.google.android.gms.tasks.OnFailureListener) -> removeOnFailureListener
+    com.google.firebase.storage.StorageTask addOnCompleteListener(com.google.android.gms.tasks.OnCompleteListener) -> addOnCompleteListener
+    com.google.firebase.storage.StorageTask addOnCompleteListener(java.util.concurrent.Executor,com.google.android.gms.tasks.OnCompleteListener) -> addOnCompleteListener
+    com.google.firebase.storage.StorageTask addOnCompleteListener(android.app.Activity,com.google.android.gms.tasks.OnCompleteListener) -> addOnCompleteListener
+    com.google.firebase.storage.StorageTask removeOnCompleteListener(com.google.android.gms.tasks.OnCompleteListener) -> removeOnCompleteListener
+    com.google.firebase.storage.StorageTask addOnCanceledListener(com.google.android.gms.tasks.OnCanceledListener) -> addOnCanceledListener
+    com.google.firebase.storage.StorageTask addOnCanceledListener(java.util.concurrent.Executor,com.google.android.gms.tasks.OnCanceledListener) -> addOnCanceledListener
+    com.google.firebase.storage.StorageTask addOnCanceledListener(android.app.Activity,com.google.android.gms.tasks.OnCanceledListener) -> addOnCanceledListener
+    com.google.firebase.storage.StorageTask removeOnCanceledListener(com.google.android.gms.tasks.OnCanceledListener) -> removeOnCanceledListener
+    com.google.android.gms.tasks.Task continueWith(com.google.android.gms.tasks.Continuation) -> continueWith
+    com.google.android.gms.tasks.Task continueWith(java.util.concurrent.Executor,com.google.android.gms.tasks.Continuation) -> continueWith
+    com.google.android.gms.tasks.Task continueWithImpl(java.util.concurrent.Executor,com.google.android.gms.tasks.Continuation) -> continueWithImpl
+    com.google.android.gms.tasks.Task continueWithTask(com.google.android.gms.tasks.Continuation) -> continueWithTask
+    com.google.android.gms.tasks.Task continueWithTask(java.util.concurrent.Executor,com.google.android.gms.tasks.Continuation) -> continueWithTask
+    com.google.android.gms.tasks.Task onSuccessTask(com.google.android.gms.tasks.SuccessContinuation) -> onSuccessTask
+    com.google.android.gms.tasks.Task onSuccessTask(java.util.concurrent.Executor,com.google.android.gms.tasks.SuccessContinuation) -> onSuccessTask
+    com.google.android.gms.tasks.Task continueWithTaskImpl(java.util.concurrent.Executor,com.google.android.gms.tasks.Continuation) -> continueWithTaskImpl
+    com.google.android.gms.tasks.Task successTaskImpl(java.util.concurrent.Executor,com.google.android.gms.tasks.SuccessContinuation) -> successTaskImpl
+    void run() -> run
+    java.lang.Runnable getRunnable() -> getRunnable
+    void ensureFinalState() -> ensureFinalState
+    java.lang.String getStateString(int[]) -> getStateString
+    java.lang.String getStateString(int) -> getStateString
+    com.google.firebase.storage.ControllableTask addOnPausedListener(android.app.Activity,com.google.firebase.storage.OnPausedListener) -> addOnPausedListener
+    com.google.firebase.storage.ControllableTask addOnPausedListener(java.util.concurrent.Executor,com.google.firebase.storage.OnPausedListener) -> addOnPausedListener
+    com.google.firebase.storage.ControllableTask addOnPausedListener(com.google.firebase.storage.OnPausedListener) -> addOnPausedListener
+    com.google.firebase.storage.CancellableTask addOnProgressListener(android.app.Activity,com.google.firebase.storage.OnProgressListener) -> addOnProgressListener
+    com.google.firebase.storage.CancellableTask addOnProgressListener(java.util.concurrent.Executor,com.google.firebase.storage.OnProgressListener) -> addOnProgressListener
+    com.google.firebase.storage.CancellableTask addOnProgressListener(com.google.firebase.storage.OnProgressListener) -> addOnProgressListener
+    java.lang.Object getResult(java.lang.Class) -> getResult
+    java.lang.Object getResult() -> getResult
+    com.google.android.gms.tasks.Task addOnSuccessListener(java.util.concurrent.Executor,com.google.android.gms.tasks.OnSuccessListener) -> addOnSuccessListener
+    com.google.android.gms.tasks.Task addOnSuccessListener(android.app.Activity,com.google.android.gms.tasks.OnSuccessListener) -> addOnSuccessListener
+    com.google.android.gms.tasks.Task addOnSuccessListener(com.google.android.gms.tasks.OnSuccessListener) -> addOnSuccessListener
+    com.google.android.gms.tasks.Task addOnFailureListener(java.util.concurrent.Executor,com.google.android.gms.tasks.OnFailureListener) -> addOnFailureListener
+    com.google.android.gms.tasks.Task addOnFailureListener(android.app.Activity,com.google.android.gms.tasks.OnFailureListener) -> addOnFailureListener
+    com.google.android.gms.tasks.Task addOnFailureListener(com.google.android.gms.tasks.OnFailureListener) -> addOnFailureListener
+    com.google.android.gms.tasks.Task addOnCompleteListener(java.util.concurrent.Executor,com.google.android.gms.tasks.OnCompleteListener) -> addOnCompleteListener
+    com.google.android.gms.tasks.Task addOnCompleteListener(android.app.Activity,com.google.android.gms.tasks.OnCompleteListener) -> addOnCompleteListener
+    com.google.android.gms.tasks.Task addOnCompleteListener(com.google.android.gms.tasks.OnCompleteListener) -> addOnCompleteListener
+    com.google.android.gms.tasks.Task addOnCanceledListener(java.util.concurrent.Executor,com.google.android.gms.tasks.OnCanceledListener) -> addOnCanceledListener
+    com.google.android.gms.tasks.Task addOnCanceledListener(android.app.Activity,com.google.android.gms.tasks.OnCanceledListener) -> addOnCanceledListener
+    com.google.android.gms.tasks.Task addOnCanceledListener(com.google.android.gms.tasks.OnCanceledListener) -> addOnCanceledListener
+    void lambda$getRunnable$7() -> lambda$getRunnable$7
+    void lambda$successTaskImpl$6(com.google.android.gms.tasks.SuccessContinuation,com.google.android.gms.tasks.TaskCompletionSource,com.google.android.gms.tasks.CancellationTokenSource,com.google.firebase.storage.StorageTask$ProvideError) -> lambda$successTaskImpl$6
+    void lambda$continueWithTaskImpl$5(com.google.android.gms.tasks.Continuation,com.google.android.gms.tasks.TaskCompletionSource,com.google.android.gms.tasks.CancellationTokenSource,com.google.android.gms.tasks.Task) -> lambda$continueWithTaskImpl$5
+    void lambda$continueWithImpl$4(com.google.android.gms.tasks.Continuation,com.google.android.gms.tasks.TaskCompletionSource,com.google.android.gms.tasks.Task) -> lambda$continueWithImpl$4
+    void lambda$new$3(com.google.android.gms.tasks.OnCanceledListener,com.google.firebase.storage.StorageTask$ProvideError) -> lambda$new$3
+    void lambda$new$2(com.google.android.gms.tasks.OnCompleteListener,com.google.firebase.storage.StorageTask$ProvideError) -> lambda$new$2
+    void lambda$new$1(com.google.android.gms.tasks.OnFailureListener,com.google.firebase.storage.StorageTask$ProvideError) -> lambda$new$1
+    void lambda$new$0(com.google.android.gms.tasks.OnSuccessListener,com.google.firebase.storage.StorageTask$ProvideError) -> lambda$new$0
+    void <clinit>() -> <clinit>
+com.google.firebase.storage.StorageTask$ProvideError -> com.google.firebase.storage.StorageTask$ProvideError:
+    java.lang.Exception getError() -> getError
+com.google.firebase.storage.StorageTask$SnapshotBase -> com.google.firebase.storage.StorageTask$a:
+    java.lang.Exception error -> error
+    com.google.firebase.storage.StorageTask this$0 -> this$0
+    void <init>(com.google.firebase.storage.StorageTask,java.lang.Exception) -> <init>
+    com.google.firebase.storage.StorageTask getTask() -> getTask
+    com.google.firebase.storage.StorageReference getStorage() -> getStorage
+    java.lang.Exception getError() -> getError
+com.google.firebase.storage.StorageTaskManager -> com.google.firebase.storage.h:
+    com.google.firebase.storage.StorageTaskManager _instance -> a
+    java.util.Map inProgressTasks -> b
+    java.lang.Object syncObject -> c
+    void <init>() -> <init>
+    com.google.firebase.storage.StorageTaskManager getInstance() -> a
+    java.util.List getUploadTasksUnder(com.google.firebase.storage.StorageReference) -> a
+    java.util.List getDownloadTasksUnder(com.google.firebase.storage.StorageReference) -> b
+    void ensureRegistered(com.google.firebase.storage.StorageTask) -> a
+    void unRegister(com.google.firebase.storage.StorageTask) -> b
+    void <clinit>() -> <clinit>
+com.google.firebase.storage.StorageTaskScheduler -> com.google.firebase.storage.i:
+    com.google.firebase.storage.StorageTaskScheduler sInstance -> a
+    java.util.concurrent.Executor COMMAND_POOL_EXECUTOR -> b
+    java.util.concurrent.Executor UPLOAD_QUEUE_EXECUTOR -> c
+    java.util.concurrent.Executor DOWNLOAD_QUEUE_EXECUTOR -> d
+    java.util.concurrent.Executor CALLBACK_QUEUE_EXECUTOR -> e
+    java.util.concurrent.Executor MAIN_THREAD_EXECUTOR -> f
+    void <init>() -> <init>
+    void initializeExecutors(java.util.concurrent.Executor,java.util.concurrent.Executor) -> a
+    com.google.firebase.storage.StorageTaskScheduler getInstance() -> a
+    void scheduleCommand(java.lang.Runnable) -> a
+    void scheduleUpload(java.lang.Runnable) -> b
+    java.util.concurrent.Executor getMainThreadExecutor() -> b
+    void scheduleDownload(java.lang.Runnable) -> c
+    void scheduleCallback(java.lang.Runnable) -> d
+    java.util.concurrent.Executor getCommandPoolExecutor() -> c
+    void <clinit>() -> <clinit>
+com.google.firebase.storage.StreamDownloadTask -> com.google.firebase.storage.StreamDownloadTask:
+    long PREFERRED_CHUNK_SIZE -> PREFERRED_CHUNK_SIZE
+    java.lang.String TAG -> TAG
+    com.google.firebase.storage.StorageReference storageRef -> storageRef
+    com.google.firebase.storage.internal.ExponentialBackoffSender sender -> sender
+    java.lang.Exception exception -> exception
+    int resultCode -> resultCode
+    com.google.firebase.storage.StreamDownloadTask$StreamProcessor processor -> processor
+    long totalBytes -> totalBytes
+    long bytesDownloaded -> bytesDownloaded
+    long bytesDownloadedSnapped -> bytesDownloadedSnapped
+    java.io.InputStream inputStream -> inputStream
+    com.google.firebase.storage.network.NetworkRequest request -> request
+    java.lang.String eTagVerification -> eTagVerification
+    void <init>(com.google.firebase.storage.StorageReference) -> <init>
+    com.google.firebase.storage.StreamDownloadTask setStreamProcessor(com.google.firebase.storage.StreamDownloadTask$StreamProcessor) -> setStreamProcessor
+    com.google.firebase.storage.StorageReference getStorage() -> getStorage
+    long getTotalBytes() -> getTotalBytes
+    void recordDownloadedBytes(long) -> recordDownloadedBytes
+    void schedule() -> schedule
+    java.io.InputStream createDownloadStream() -> createDownloadStream
+    void run() -> run
+    boolean resume() -> resume
+    boolean pause() -> pause
+    com.google.firebase.storage.StreamDownloadTask$TaskSnapshot snapStateImpl() -> snapStateImpl
+    void onCanceled() -> onCanceled
+    void onProgress() -> onProgress
+    boolean isValidHttpResponseCode(int) -> isValidHttpResponseCode
+    com.google.firebase.storage.StorageTask$ProvideError snapStateImpl() -> snapStateImpl
+    java.io.InputStream access$000(com.google.firebase.storage.StreamDownloadTask) -> access$000
+    com.google.firebase.storage.network.NetworkRequest access$200(com.google.firebase.storage.StreamDownloadTask) -> access$200
+    com.google.firebase.storage.network.NetworkRequest access$202(com.google.firebase.storage.StreamDownloadTask,com.google.firebase.storage.network.NetworkRequest) -> access$202
+    java.io.InputStream access$300(com.google.firebase.storage.StreamDownloadTask) -> access$300
+com.google.firebase.storage.StreamDownloadTask$1 -> com.google.firebase.storage.StreamDownloadTask$1:
+    com.google.firebase.storage.StreamDownloadTask this$0 -> a
+    void <init>(com.google.firebase.storage.StreamDownloadTask) -> <init>
+    java.io.InputStream call() -> a
+    java.lang.Object call() -> call
+com.google.firebase.storage.StreamDownloadTask$StreamProcessor -> com.google.firebase.storage.StreamDownloadTask$StreamProcessor:
+    void doInBackground(com.google.firebase.storage.StreamDownloadTask$TaskSnapshot,java.io.InputStream) -> doInBackground
+com.google.firebase.storage.StreamDownloadTask$StreamProgressWrapper -> com.google.firebase.storage.StreamDownloadTask$a:
+    com.google.firebase.storage.StreamDownloadTask mParentTask -> a
+    java.io.InputStream mWrappedStream -> b
+    java.util.concurrent.Callable mInputStreamCallable -> c
+    java.io.IOException mTemporaryException -> d
+    long mDownloadedBytes -> e
+    long mLastExceptionPosition -> f
+    boolean mStreamClosed -> g
+    void <init>(java.util.concurrent.Callable,com.google.firebase.storage.StreamDownloadTask) -> <init>
+    void checkCancel() -> a
+    void recordDownloadedBytes(long) -> a
+    boolean ensureStream() -> b
+    int read() -> read
+    int available() -> available
+    void close() -> close
+    void mark(int) -> mark
+    boolean markSupported() -> markSupported
+    int read(byte[],int,int) -> read
+    long skip(long) -> skip
+    boolean access$100(com.google.firebase.storage.StreamDownloadTask$StreamProgressWrapper) -> a
+com.google.firebase.storage.StreamDownloadTask$TaskSnapshot -> com.google.firebase.storage.StreamDownloadTask$TaskSnapshot:
+    long mBytesDownloaded -> mBytesDownloaded
+    com.google.firebase.storage.StreamDownloadTask this$0 -> this$0
+    void <init>(com.google.firebase.storage.StreamDownloadTask,java.lang.Exception,long) -> <init>
+    long getBytesTransferred() -> getBytesTransferred
+    long getTotalByteCount() -> getTotalByteCount
+    java.io.InputStream getStream() -> getStream
+com.google.firebase.storage.TaskListenerImpl -> com.google.firebase.storage.TaskListenerImpl:
+    java.util.Queue listenerQueue -> a
+    java.util.HashMap handlerMap -> b
+    com.google.firebase.storage.StorageTask task -> c
+    int targetStates -> d
+    com.google.firebase.storage.TaskListenerImpl$OnRaise onRaise -> e
+    void <init>(com.google.firebase.storage.StorageTask,int,com.google.firebase.storage.TaskListenerImpl$OnRaise) -> <init>
+    void addListener(android.app.Activity,java.util.concurrent.Executor,java.lang.Object) -> a
+    void onInternalStateChanged() -> a
+    void removeListener(java.lang.Object) -> a
+    void lambda$onInternalStateChanged$2(java.lang.Object,com.google.firebase.storage.StorageTask$ProvideError) -> a
+    void lambda$addListener$1(java.lang.Object,com.google.firebase.storage.StorageTask$ProvideError) -> b
+    void lambda$addListener$0(java.lang.Object) -> b
+com.google.firebase.storage.TaskListenerImpl$OnRaise -> com.google.firebase.storage.TaskListenerImpl$a:
+    void raise(java.lang.Object,java.lang.Object) -> raise
+com.google.firebase.storage.UpdateMetadataTask -> com.google.firebase.storage.j:
+    com.google.firebase.storage.StorageReference mStorageRef -> a
+    com.google.android.gms.tasks.TaskCompletionSource mPendingResult -> b
+    com.google.firebase.storage.StorageMetadata mNewMetadata -> c
+    com.google.firebase.storage.StorageMetadata mResultMetadata -> d
+    com.google.firebase.storage.internal.ExponentialBackoffSender mSender -> e
+    void <init>(com.google.firebase.storage.StorageReference,com.google.android.gms.tasks.TaskCompletionSource,com.google.firebase.storage.StorageMetadata) -> <init>
+    void run() -> run
+com.google.firebase.storage.UploadTask -> com.google.firebase.storage.UploadTask:
+    com.google.firebase.storage.StorageReference mStorageRef -> c
+    android.net.Uri mUri -> d
+    long mTotalByteCount -> e
+    com.google.firebase.storage.internal.AdaptiveStreamBuffer mStreamBuffer -> f
+    java.util.concurrent.atomic.AtomicLong mBytesUploaded -> g
+    com.google.firebase.auth.internal.InternalAuthProvider mAuthProvider -> h
+    com.google.firebase.appcheck.interop.InteropAppCheckTokenProvider mAppCheckProvider -> i
+    int mCurrentChunkSize -> j
+    com.google.firebase.storage.internal.ExponentialBackoffSender mSender -> k
+    boolean mIsStreamOwned -> l
+    com.google.firebase.storage.StorageMetadata mMetadata -> m
+    android.net.Uri mUploadUri -> n
+    java.lang.Exception mException -> o
+    java.lang.Exception mServerException -> p
+    int mResultCode -> q
+    java.lang.String mServerStatus -> r
+    long maxSleepTime -> s
+    java.util.Random random -> t
+    com.google.firebase.storage.internal.Sleeper sleeper -> a
+    com.google.android.gms.common.util.Clock clock -> b
+    int sleepTime -> u
+    int minimumSleepInterval -> v
+    void <init>(com.google.firebase.storage.StorageReference,com.google.firebase.storage.StorageMetadata,byte[]) -> <init>
+    void <init>(com.google.firebase.storage.StorageReference,com.google.firebase.storage.StorageMetadata,android.net.Uri,android.net.Uri) -> <init>
+    void <init>(com.google.firebase.storage.StorageReference,com.google.firebase.storage.StorageMetadata,java.io.InputStream) -> <init>
+    com.google.firebase.storage.StorageReference getStorage() -> getStorage
+    long getTotalByteCount() -> a
+    void schedule() -> schedule
+    void run() -> run
+    void resetState() -> resetState
+    void beginResumableUpload() -> c
+    boolean shouldContinue() -> d
+    boolean serverStateValid() -> e
+    boolean recoverStatus(boolean) -> a
+    boolean delaySend(com.google.firebase.storage.network.NetworkRequest) -> a
+    void uploadChunk() -> f
+    boolean isValidHttpResponseCode(int) -> a
+    boolean send(com.google.firebase.storage.network.NetworkRequest) -> b
+    boolean sendWithRetry(com.google.firebase.storage.network.NetworkRequest) -> c
+    boolean processResultValid(com.google.firebase.storage.network.NetworkRequest) -> d
+    void onCanceled() -> onCanceled
+    com.google.firebase.storage.UploadTask$TaskSnapshot snapStateImpl() -> b
+    com.google.firebase.storage.StorageTask$ProvideError snapStateImpl() -> snapStateImpl
+    com.google.firebase.auth.internal.InternalAuthProvider access$000(com.google.firebase.storage.UploadTask) -> a
+    com.google.firebase.appcheck.interop.InteropAppCheckTokenProvider access$100(com.google.firebase.storage.UploadTask) -> b
+    com.google.firebase.storage.StorageReference access$200(com.google.firebase.storage.UploadTask) -> c
+    void <clinit>() -> <clinit>
+com.google.firebase.storage.UploadTask$1 -> com.google.firebase.storage.UploadTask$1:
+    com.google.firebase.storage.network.NetworkRequest val$finalCancelRequest -> a
+    com.google.firebase.storage.UploadTask this$0 -> b
+    void <init>(com.google.firebase.storage.UploadTask,com.google.firebase.storage.network.NetworkRequest) -> <init>
+    void run() -> run
+com.google.firebase.storage.UploadTask$TaskSnapshot -> com.google.firebase.storage.UploadTask$TaskSnapshot:
+    long mBytesUploaded -> mBytesUploaded
+    android.net.Uri mUploadUri -> mUploadUri
+    com.google.firebase.storage.StorageMetadata mMetadata -> mMetadata
+    com.google.firebase.storage.UploadTask this$0 -> this$0
+    void <init>(com.google.firebase.storage.UploadTask,java.lang.Exception,long,android.net.Uri,com.google.firebase.storage.StorageMetadata) -> <init>
+    long getBytesTransferred() -> getBytesTransferred
+    long getTotalByteCount() -> getTotalByteCount
+    android.net.Uri getUploadSessionUri() -> getUploadSessionUri
+    com.google.firebase.storage.StorageMetadata getMetadata() -> getMetadata
+com.google.firebase.storage.internal.ActivityLifecycleListener -> com.google.firebase.storage.internal.a:
+    com.google.firebase.storage.internal.ActivityLifecycleListener instance -> a
+    java.util.Map cookieMap -> b
+    java.lang.Object sync -> c
+    void <init>() -> <init>
+    com.google.firebase.storage.internal.ActivityLifecycleListener getInstance() -> a
+    void runOnActivityStopped(android.app.Activity,java.lang.Object,java.lang.Runnable) -> a
+    void removeCookie(java.lang.Object) -> a
+    void <clinit>() -> <clinit>
+com.google.firebase.storage.internal.ActivityLifecycleListener$LifecycleEntry -> com.google.firebase.storage.internal.a$a:
+    android.app.Activity activity -> a
+    java.lang.Runnable runnable -> b
+    java.lang.Object cookie -> c
+    void <init>(android.app.Activity,java.lang.Runnable,java.lang.Object) -> <init>
+    int hashCode() -> hashCode
+    boolean equals(java.lang.Object) -> equals
+    android.app.Activity getActivity() -> a
+    java.lang.Runnable getRunnable() -> b
+    java.lang.Object getCookie() -> c
+com.google.firebase.storage.internal.ActivityLifecycleListener$OnStopCallback -> com.google.firebase.storage.internal.a$b:
+    java.util.List listeners -> a
+    void <init>(com.google.android.gms.common.api.internal.LifecycleFragment) -> <init>
+    com.google.firebase.storage.internal.ActivityLifecycleListener$OnStopCallback getInstance(android.app.Activity) -> a
+    void addEntry(com.google.firebase.storage.internal.ActivityLifecycleListener$LifecycleEntry) -> a
+    void removeEntry(com.google.firebase.storage.internal.ActivityLifecycleListener$LifecycleEntry) -> b
+    void onStop() -> onStop
+com.google.firebase.storage.internal.AdaptiveStreamBuffer -> com.google.firebase.storage.internal.b:
+    java.lang.Runtime runtime -> a
+    java.io.InputStream source -> b
+    byte[] buffer -> c
+    int availableBytes -> d
+    boolean reachedEnd -> e
+    boolean adaptiveMode -> f
+    void <init>(java.io.InputStream,int) -> <init>
+    int available() -> a
+    byte[] get() -> b
+    int advance(int) -> a
+    int fill(int) -> b
+    int resize(int) -> c
+    boolean isFinished() -> c
+    void close() -> d
+    void <clinit>() -> <clinit>
+com.google.firebase.storage.internal.ExponentialBackoffSender -> com.google.firebase.storage.internal.ExponentialBackoffSender:
+    java.util.Random random -> c
+    com.google.firebase.storage.internal.Sleeper sleeper -> a
+    com.google.android.gms.common.util.Clock clock -> b
+    android.content.Context context -> d
+    com.google.firebase.auth.internal.InternalAuthProvider authProvider -> e
+    com.google.firebase.appcheck.interop.InteropAppCheckTokenProvider appCheckProvider -> f
+    long retryTime -> g
+    boolean canceled -> h
+    void <init>(android.content.Context,com.google.firebase.auth.internal.InternalAuthProvider,com.google.firebase.appcheck.interop.InteropAppCheckTokenProvider,long) -> <init>
+    boolean isRetryableError(int) -> a
+    void sendWithExponentialBackoff(com.google.firebase.storage.network.NetworkRequest) -> a
+    void sendWithExponentialBackoff(com.google.firebase.storage.network.NetworkRequest,boolean) -> a
+    void cancel() -> a
+    void reset() -> b
+    void <clinit>() -> <clinit>
+com.google.firebase.storage.internal.Slashes -> com.google.firebase.storage.internal.c:
+    java.lang.String preserveSlashEncode(java.lang.String) -> a
+    java.lang.String slashize(java.lang.String) -> b
+    java.lang.String normalizeSlashes(java.lang.String) -> c
+com.google.firebase.storage.internal.Sleeper -> com.google.firebase.storage.internal.d:
+    void sleep(int) -> a
+com.google.firebase.storage.internal.SleeperImpl -> com.google.firebase.storage.internal.e:
+    void <init>() -> <init>
+    void sleep(int) -> a
+com.google.firebase.storage.internal.SmartHandler -> com.google.firebase.storage.internal.f:
+    java.util.concurrent.Executor executor -> b
+    boolean testMode -> a
+    void <init>(java.util.concurrent.Executor) -> <init>
+    void callBack(java.lang.Runnable) -> a
+    void <clinit>() -> <clinit>
+com.google.firebase.storage.internal.StorageReferenceUri -> com.google.firebase.storage.internal.StorageReferenceUri:
+    android.net.Uri httpBaseUri -> a
+    android.net.Uri httpUri -> b
+    android.net.Uri gsUri -> c
+    void <init>(android.net.Uri,com.google.firebase.emulators.EmulatedServiceSettings) -> <init>
+    android.net.Uri getHttpBaseUri() -> a
+    android.net.Uri getHttpUri() -> b
+    android.net.Uri getGsUri() -> c
+com.google.firebase.storage.internal.Util -> com.google.firebase.storage.internal.g:
+    long parseDateTime(java.lang.String) -> a
+    boolean equals(java.lang.Object,java.lang.Object) -> a
+    android.net.Uri normalize(com.google.firebase.FirebaseApp,java.lang.String) -> a
+    java.lang.String getCurrentAuthToken(com.google.firebase.auth.internal.InternalAuthProvider) -> a
+    java.lang.String getCurrentAppCheckToken(com.google.firebase.appcheck.interop.InteropAppCheckTokenProvider) -> a
+com.google.firebase.storage.network.DeleteNetworkRequest -> com.google.firebase.storage.network.a:
+    void <init>(com.google.firebase.storage.internal.StorageReferenceUri,com.google.firebase.FirebaseApp) -> <init>
+    java.lang.String getAction() -> a
+com.google.firebase.storage.network.GetMetadataNetworkRequest -> com.google.firebase.storage.network.b:
+    void <init>(com.google.firebase.storage.internal.StorageReferenceUri,com.google.firebase.FirebaseApp) -> <init>
+    java.lang.String getAction() -> a
+com.google.firebase.storage.network.GetNetworkRequest -> com.google.firebase.storage.network.c:
+    void <init>(com.google.firebase.storage.internal.StorageReferenceUri,com.google.firebase.FirebaseApp,long) -> <init>
+    java.lang.String getAction() -> a
+    java.util.Map getQueryParameters() -> b
+com.google.firebase.storage.network.ListNetworkRequest -> com.google.firebase.storage.network.d:
+    java.lang.Integer maxPageSize -> e
+    java.lang.String nextPageToken -> f
+    void <init>(com.google.firebase.storage.internal.StorageReferenceUri,com.google.firebase.FirebaseApp,java.lang.Integer,java.lang.String) -> <init>
+    java.lang.String getAction() -> a
+    android.net.Uri getURL() -> c
+    java.util.Map getQueryParameters() -> b
+com.google.firebase.storage.network.NetworkRequest -> com.google.firebase.storage.network.NetworkRequest:
+    android.net.Uri PROD_BASE_URL -> a
+    com.google.firebase.storage.network.connection.HttpURLConnectionFactory connectionFactory -> b
+    java.lang.Exception mException -> c
+    com.google.firebase.storage.internal.StorageReferenceUri storageReferenceUri -> e
+    java.lang.String gmsCoreVersion -> f
+    android.content.Context context -> g
+    java.util.Map resultHeaders -> h
+    int resultCode -> i
+    java.lang.String rawStringResponse -> j
+    int resultingContentLength -> k
+    java.io.InputStream resultInputStream -> l
+    java.net.HttpURLConnection connection -> m
+    java.util.Map requestHeaders -> n
+    boolean $assertionsDisabled -> d
+    void <init>(com.google.firebase.storage.internal.StorageReferenceUri,com.google.firebase.FirebaseApp) -> <init>
+    java.lang.String getPathWithoutBucket(android.net.Uri) -> a
+    java.lang.String getPathWithoutBucket() -> d
+    java.lang.String getAction() -> a
+    android.net.Uri getURL() -> c
+    org.json.JSONObject getOutputJSON() -> e
+    byte[] getOutputRaw() -> f
+    int getOutputRawSize() -> g
+    java.util.Map getQueryParameters() -> b
+    com.google.firebase.storage.internal.StorageReferenceUri getStorageReferenceUri() -> h
+    void reset() -> i
+    void setCustomHeader(java.lang.String,java.lang.String) -> a
+    java.io.InputStream getStream() -> j
+    org.json.JSONObject getResultBody() -> k
+    void performRequestStart(java.lang.String,java.lang.String) -> b
+    void performRequestEnd() -> l
+    void performRequest(java.lang.String,java.lang.String) -> c
+    void performRequest(java.lang.String,java.lang.String,android.content.Context) -> a
+    boolean ensureNetworkAvailable(android.content.Context) -> a
+    java.net.HttpURLConnection createConnection() -> s
+    java.lang.String getGmsCoreVersion(android.content.Context) -> b
+    void constructMessage(java.net.HttpURLConnection,java.lang.String,java.lang.String) -> a
+    void parseResponse(java.net.HttpURLConnection) -> a
+    void parseResponse(java.io.InputStream) -> c
+    void processResponseStream() -> t
+    void parseSuccessulResponse(java.io.InputStream) -> a
+    void parseErrorResponse(java.io.InputStream) -> b
+    java.lang.String getRawResult() -> m
+    java.lang.Exception getException() -> n
+    java.util.Map getResultHeadersImpl() -> o
+    int getResultCode() -> p
+    boolean isResultSuccess() -> q
+    java.lang.String getResultString(java.lang.String) -> a
+    int getResultingContentLength() -> r
+    void completeTask(com.google.android.gms.tasks.TaskCompletionSource,java.lang.Object) -> a
+    void <clinit>() -> <clinit>
+com.google.firebase.storage.network.ResumableNetworkRequest -> com.google.firebase.storage.network.e:
+    void <init>(com.google.firebase.storage.internal.StorageReferenceUri,com.google.firebase.FirebaseApp) -> <init>
+com.google.firebase.storage.network.ResumableUploadByteRequest -> com.google.firebase.storage.network.f:
+    android.net.Uri uploadURL -> e
+    byte[] chunk -> f
+    long offset -> g
+    boolean isFinal -> h
+    int bytesToWrite -> i
+    void <init>(com.google.firebase.storage.internal.StorageReferenceUri,com.google.firebase.FirebaseApp,android.net.Uri,byte[],long,int,boolean) -> <init>
+    java.lang.String getAction() -> a
+    android.net.Uri getURL() -> c
+    byte[] getOutputRaw() -> f
+    int getOutputRawSize() -> g
+com.google.firebase.storage.network.ResumableUploadCancelRequest -> com.google.firebase.storage.network.g:
+    boolean cancelCalled -> e
+    android.net.Uri uploadURL -> f
+    void <init>(com.google.firebase.storage.internal.StorageReferenceUri,com.google.firebase.FirebaseApp,android.net.Uri) -> <init>
+    java.lang.String getAction() -> a
+    android.net.Uri getURL() -> c
+    void <clinit>() -> <clinit>
+com.google.firebase.storage.network.ResumableUploadQueryRequest -> com.google.firebase.storage.network.h:
+    android.net.Uri uploadURL -> e
+    void <init>(com.google.firebase.storage.internal.StorageReferenceUri,com.google.firebase.FirebaseApp,android.net.Uri) -> <init>
+    java.lang.String getAction() -> a
+    android.net.Uri getURL() -> c
+com.google.firebase.storage.network.ResumableUploadStartRequest -> com.google.firebase.storage.network.i:
+    org.json.JSONObject metadata -> e
+    java.lang.String contentType -> f
+    void <init>(com.google.firebase.storage.internal.StorageReferenceUri,com.google.firebase.FirebaseApp,org.json.JSONObject,java.lang.String) -> <init>
+    android.net.Uri getURL() -> c
+    java.lang.String getAction() -> a
+    java.util.Map getQueryParameters() -> b
+    org.json.JSONObject getOutputJSON() -> e
+com.google.firebase.storage.network.UpdateMetadataNetworkRequest -> com.google.firebase.storage.network.j:
+    org.json.JSONObject metadata -> e
+    void <init>(com.google.firebase.storage.internal.StorageReferenceUri,com.google.firebase.FirebaseApp,org.json.JSONObject) -> <init>
+    java.lang.String getAction() -> a
+    org.json.JSONObject getOutputJSON() -> e
+com.google.firebase.storage.network.connection.HttpURLConnectionFactory -> com.google.firebase.storage.network.a.a:
+    java.net.HttpURLConnection createInstance(java.net.URL) -> a
+com.google.firebase.storage.network.connection.HttpURLConnectionFactoryImpl -> com.google.firebase.storage.network.a.b:
+    void <init>() -> <init>
+    java.net.HttpURLConnection createInstance(java.net.URL) -> a
+com.google.firebase.tracing.ComponentMonitor -> com.google.firebase.e.a:
     void <init>() -> <init>
     java.util.List processRegistrar(com.google.firebase.components.ComponentRegistrar) -> processRegistrar
     java.lang.Object lambda$processRegistrar$0(java.lang.String,com.google.firebase.components.Component,com.google.firebase.components.ComponentContainer) -> a
-com.google.firebase.tracing.FirebaseTrace -> com.google.firebase.f.b:
+com.google.firebase.tracing.FirebaseTrace -> com.google.firebase.e.b:
     void pushTrace(java.lang.String) -> a
     void popTrace() -> a
 com.unity3d.player.AudioVolumeHandler -> com.unity3d.player.AudioVolumeHandler:
