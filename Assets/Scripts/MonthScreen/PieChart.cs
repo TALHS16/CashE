@@ -65,20 +65,24 @@ public class PieChart : MonoBehaviour
             expenses[i++] = cat.Value;
         }
         float totalAmount = TotalAmount(expenses);
+        float precent;
         CategoryManager category_manager = CategoryManager.Instance;
         txt.GetComponent<TMP_Text>().text = totalAmount.ToString("F2");
         foreach (KeyValuePair<string, float> cat in valuesToSet)
         {
-            totalValues += cat.Value/totalAmount;
+            precent = cat.Value/totalAmount;
+            totalValues += precent;
             GameObject pie = Instantiate(prefab_pie,gameObject.transform);
             pie.transform.SetAsFirstSibling();
             pie.GetComponent<Image>().color = category_manager.category[cat.Key].color;
             pie.GetComponent<Image>().fillAmount = totalValues;
             GameObject icon_obj = Instantiate(prefab_month_icon,parent_icon.transform);
             icon_obj.GetComponentInChildren<Image>().sprite = Resources.Load<Sprite>("images/month_sceen/cat_icons/"+category_manager.category[cat.Key].icon);
-            icon_obj.GetComponentInChildren<TMP_Text>().text = category_manager.category[cat.Key].name;
-            icon_obj.GetComponentInChildren<TMP_Text>().color = category_manager.category[cat.Key].color;
+            icon_obj.GetComponentInChildren<Transform>().Find("cat_name").GetComponent<TMP_Text>().text = category_manager.category[cat.Key].name;
+            icon_obj.GetComponentInChildren<Transform>().Find("cat_name").GetComponent<TMP_Text>().color = category_manager.category[cat.Key].color;
             icon_obj.GetComponentInChildren<Image>().color = category_manager.category[cat.Key].color;
+            icon_obj.GetComponentInChildren<TMP_Text>().text = (precent*100.00f).ToString("F2") + " %";
+            icon_obj.GetComponentInChildren<TMP_Text>().GetComponent<TMP_Text>().color = category_manager.category[cat.Key].color;
             icon_obj.GetComponent<Button>().onClick.AddListener(delegate() {SwitchToDetails(category_manager.category[cat.Key].name);});
         }
 

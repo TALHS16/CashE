@@ -52,7 +52,7 @@ public class TransactionManager : MonoBehaviour
         bar_chart.BuildBarChart();
     }
 
-    private long ConvertDateTimeToTimestamp(DateTime time)
+    public long ConvertDateTimeToTimestamp(DateTime time)
     {
         DateTimeOffset dateTimeOffset = new DateTimeOffset(time);
         return dateTimeOffset.ToUnixTimeSeconds();
@@ -236,7 +236,7 @@ public class TransactionManager : MonoBehaviour
         {
             Destroy(child.gameObject);
         }
-        HashSet<KeyValuePair<int, int>> get_month = GetUniqueMonths(TransactionType.EXPENSE);
+        HashSet<KeyValuePair<int, int>> get_month = GetUniqueMonths(type);
         monthChooser.setValues(get_month,this,type);
         BuildPieChart(month_curr,year_curr,type);
     }
@@ -247,6 +247,11 @@ public class TransactionManager : MonoBehaviour
         curr_index = transactions.Count + 1;
         if (transactionModel != null)
         {
+            if(TargetManager.Instance.TargetDic.ContainsKey(transactionModel.category) && transactionModel.type == TransactionType.EXPENSE)
+            {
+                TargetManager.Instance.TargetDic[transactionModel.category].current_amount += transactionModel.amount;
+                FirebaseManager.Instance.SendTargetUpdateToDatabase(TargetManager.Instance.TargetDic[transactionModel.category]);
+            }
             transactions.Add(transactionModel);
             FirebaseManager.Instance.SendNewTransactionToDatabase(transactionModel,curr_index);
             foreach (Transform child in monthChooser.transform)
@@ -392,6 +397,39 @@ public class TransactionManager : MonoBehaviour
         }
         return dic;
 
+    }
+
+    public float GetAmountByTimePeriod(int time_goal,string category)
+    {
+        float sum = 0;
+        DateTime from_date;
+        switch (time_goal)
+        {
+            case 1:
+                from_date = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
+            break;
+            case 2:
+                from_date = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
+                int daysToSubtract = (int)from_date.DayOfWeek - (int)DayOfWeek.Sunday;
+                // Subtract the days to get the first day of the week
+                from_date = from_date.AddDays(-daysToSubtract);
+            break;
+            default:
+                from_date = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
+            break;
+        }
+
+        long from_timestamp = ConvertDateTimeToTimestamp(from_date);
+
+        foreach (TransactionModel item in transactions)
+        {
+            if(item.timestamp >= from_timestamp && item.category == category)
+            {
+                sum += item.amount;
+            }
+        }
+
+        return sum;
     }
 
     public Dictionary<DateTime,float> GetTransactionsAmountByMonth(List<TransactionModel> list,bool profit)

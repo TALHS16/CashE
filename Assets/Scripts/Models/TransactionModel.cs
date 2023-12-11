@@ -1,4 +1,5 @@
 using System;
+using System.Globalization;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -34,7 +35,7 @@ public class TransactionModel
     public string name;
     public string user_name;
 
-    public TransactionModel(float amount_,string category_, string description_, TransactionType type_,string currency_,TransactionType current_type)
+    public TransactionModel(float amount_,string category_, string description_, TransactionType type_,string currency_,string date,TransactionType current_type)
     {
         amount = amount_;
         category = category_;
@@ -43,7 +44,8 @@ public class TransactionModel
         name = UserManager.Instance.GetCurrentUser().name;
         user_name = UserManager.Instance.GetCurrentUser().user_name;
         type = type_;
-        timestamp = (long)(DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc)).TotalSeconds;
+        DateTime dateTime = DateTime.ParseExact(date, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+        timestamp = TransactionManager.Instance.ConvertDateTimeToTimestamp(dateTime);
         original_amount = amount;
         if(currency_!="NIS")
         {

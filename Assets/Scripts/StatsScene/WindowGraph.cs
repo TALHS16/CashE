@@ -76,6 +76,7 @@ public class WindowGraph : MonoBehaviour
     {
         GameObject gameObject = new GameObject("dotConnection", typeof(Image));
         gameObject.transform.SetParent(circleContainer.transform,false);
+        gameObject.transform.SetAsFirstSibling();
         gameObject.GetComponent<Image>().color = new Color(0.3686275f,0.3843138f,0.6745098f,0.5f);
         RectTransform rectTransform = gameObject.GetComponent<RectTransform>();
         Vector2 dir = (dotPositionB - dotPositionA).normalized;

@@ -38,8 +38,6 @@ public class FirebaseManager : MonoBehaviour
         }
     }
 
-    void Start()
-    {
         // if (db_reference == null)
         // {
         //     db_reference = FirebaseDatabase.DefaultInstance.RootReference;
@@ -48,7 +46,30 @@ public class FirebaseManager : MonoBehaviour
         // SendNewUserToDatabase(user1);
         // User user2 = new User("amxhab", "cbbvCashE23", "עמיחי חבושה");
         // SendNewUserToDatabase(user2);
+
+    public void Start() {
+        Firebase.Messaging.FirebaseMessaging.TokenReceived += OnTokenReceived;
+        Firebase.Messaging.FirebaseMessaging.MessageReceived += OnMessageReceived;
+        Firebase.Messaging.FirebaseMessaging.SubscribeAsync("all").ContinueWithOnMainThread(task => {
+            if (task.IsCompleted)
+            {
+                Debug.Log("Subscribed to all");
+            }
+            else if (task.IsFaulted)
+            {
+                Debug.LogError("Error subscribing to all: " + task.Exception);
+            }
+        });
     }
+
+    public void OnTokenReceived(object sender, Firebase.Messaging.TokenReceivedEventArgs token) {
+        UnityEngine.Debug.Log("Received Registration Token: " + token.Token);
+    }
+
+    public void OnMessageReceived(object sender, Firebase.Messaging.MessageReceivedEventArgs e) {
+        UnityEngine.Debug.Log("Received a new message from: " + e.Message.From);
+    }
+
     public void SendNewUserToDatabase(User new_user)
     {
 
@@ -61,6 +82,13 @@ public class FirebaseManager : MonoBehaviour
 
         string json_trans = JsonUtility.ToJson(new_trans);
         db_reference.Child("transactions").Child(i.ToString()).SetRawJsonValueAsync(json_trans);
+    }
+
+    public void SendNewTargetToDatabase(TargetModel new_target)
+    {
+
+        string json_trans = JsonUtility.ToJson(new_target);
+        db_reference.Child("targets").Child(new_target.category).SetRawJsonValueAsync(json_trans);
     }
 
     public void GetAllTransactions(TransactionManager manager,TransactionModel transactionModel,TransactionType type)
@@ -89,6 +117,48 @@ public class FirebaseManager : MonoBehaviour
             }
             list.transactions = list.transactions.OrderBy(t=>t.timestamp).ToList();
             manager.SetList(list,transactionModel,type);
+        });
+    }
+
+    public void SendTargetUpdateToDatabase(TargetModel target)
+    {
+
+        db_reference.Child("targets").Child(target.category).Child("current_amount").SetValueAsync(target.current_amount).ContinueWithOnMainThread(task => {
+            if (task.IsFaulted)
+            {
+                Debug.LogError("Error updating value: " + task.Exception);
+            }
+            else if (task.IsCompleted)
+            {
+                Debug.Log("Value updated successfully");
+            }
+        });
+    }
+
+    public void GetAllTargets(TargetModel targetModel)
+    {
+        TargetList list;
+        db_reference.Child("targets")
+        .GetValueAsync().ContinueWithOnMainThread(task => {
+            list = new TargetList();
+            list.targets = new List<TargetModel>();
+            // Debug.Log(task);
+            if (task.IsFaulted || task.IsCanceled)  // Check for failure or cancellation
+            {
+                // Handle the error when there's no internet connection
+                error.SetActive(true);
+                error.GetComponentInChildren<TMP_Text>().text = "No internet connection";
+                Debug.LogError("No internet connection");
+                return;
+            }
+            else{
+                DataSnapshot snapshot = task.Result;
+                foreach (DataSnapshot child in snapshot.Children){
+                    TargetModel model = JsonUtility.FromJson<TargetModel>(child.GetRawJsonValue());
+                    list.targets.Add(model);
+                }
+            }
+            TargetManager.Instance.SetList(list,targetModel);
         });
     }
 

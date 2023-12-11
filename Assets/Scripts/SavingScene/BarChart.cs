@@ -55,7 +55,7 @@ public class BarChart : MonoBehaviour
         float max_height_chart =  max_hight.rect.height;
         float negative_total = GetAllOfType(true);
         float positive_total = GetAllOfType(false);
-        float max_value = negative_total > positive_total ? negative_total : positive_total;
+        float max_value = negative_total + positive_total;
         total_save.text = " ח\"ש " + (positive_total - negative_total).ToString("F2");
         if(max_value == 0)
         {

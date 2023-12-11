@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Globalization;
+using System;
 
 public class PopUpWindow : MonoBehaviour
 {
@@ -12,6 +14,9 @@ public class PopUpWindow : MonoBehaviour
     public TMP_Text title;
 
     public GameObject container_expanse;
+    public GameObject container_calender;
+
+    public SingleCalender calender;
     public GameObject container_category;
     public GameObject container_currency;
     public GameObject prefab_month_icon;
@@ -25,6 +30,7 @@ public class PopUpWindow : MonoBehaviour
     public Image currency_image;
     public TMP_InputField amount_txt;
     public float amount;
+    public TMP_InputField date;
 
     public Dictionary<string, string> first_words;
 
@@ -52,6 +58,7 @@ public class PopUpWindow : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        date.text = DateTime.Now.ToString("dd/MM/yyyy");
         dict_cat_btn = new Dictionary<string, CategoryBtn>();
         first_words = TransactionManager.Instance.GetFirstWordDict();
         CategoryManager category_manager = CategoryManager.Instance;
@@ -93,21 +100,43 @@ public class PopUpWindow : MonoBehaviour
 
     public void SelectCategory()
     {
-        selected_category = current_category;
-        cat_name = selected_category.category_name;
-        //category_input.text = selected_category.category_name;
-        category_image.sprite = selected_category.category_icon.sprite;
+        if(current_category)
+        {
+            selected_category = current_category;
+            cat_name = selected_category.category_name;
+            //category_input.text = selected_category.category_name;
+            category_image.sprite = selected_category.category_icon.sprite;
+        }
     }
 
     public void SelectCurrency()
     {
-        selected_currency = current_currency;
-        currency_name = selected_currency.currency_name;
-        currency_image.sprite = selected_currency.currency_icon.sprite;
+        if(current_currency)
+        {
+            selected_currency = current_currency;
+            currency_name = selected_currency.currency_name;
+            currency_image.sprite = selected_currency.currency_icon.sprite;
+        }
+    }
+
+    public void SelectDate()
+    {
+        date.text = calender.selected_date.ToString("dd/MM/yyyy");
+    }
+
+    public void PickImage(bool fromCamera)
+    {
+        ImagePicker picker = new ImagePicker();
+        Sprite sprite = null;
+        if (fromCamera)
+            sprite = picker.TakePicture(512);
+        else
+            sprite = picker.PickImage(512);
     }
 
     public void CreateTransaction()
     {
+        DateTime result;
         if(amount_txt.text == "" || float.Parse(amount_txt.text) == 0)
         {
             error_MSG.SetActive(true);
@@ -124,17 +153,27 @@ public class PopUpWindow : MonoBehaviour
             error_MSG.SetActive(true);
             error_contant.text = "נא מלא/י את תיאור ההוצאה";
         }
+        else if (Application.internetReachability == NetworkReachability.NotReachable)
+        {
+            error_MSG.SetActive(true);
+            error_contant.text = "חיבור אינטרנט אינו זמין כעת";
+        }
+        else if(!DateTime.TryParseExact(date.text, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out result))
+        {
+            error_MSG.SetActive(true);
+            error_contant.text = "התאריך צריך להיות מפורמט: yyyy/MM/dd";
+        }
         else
         {
             amount = float.Parse(amount_txt.text);
             TransactionModel trans;
             if (expanseFlag)
             {
-                trans = new TransactionModel(amount,cat_name,category_input.text,TransactionType.EXPENSE,currency_name,TransactionType.EXPENSE);
+                trans = new TransactionModel(amount,cat_name,category_input.text,TransactionType.EXPENSE,currency_name,date.text,TransactionType.EXPENSE);
             }
             else
             {
-                trans = new TransactionModel(amount,cat_name,category_input.text,TransactionType.INCOME,currency_name,TransactionType.EXPENSE);
+                trans = new TransactionModel(amount,cat_name,category_input.text,TransactionType.INCOME,currency_name,date.text,TransactionType.EXPENSE);
             }
             if(currency_name == "NIS")
             {
@@ -204,5 +243,11 @@ public class PopUpWindow : MonoBehaviour
     {
         container_expanse.SetActive(!currency);
         container_currency.SetActive(currency);
+    }
+
+    public void SwitchToCalender(bool calender)
+    {
+        container_expanse.SetActive(!calender);
+        container_calender.SetActive(calender);
     }
 }
