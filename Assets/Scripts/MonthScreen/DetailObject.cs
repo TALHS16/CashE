@@ -34,6 +34,7 @@ public class DetailObject : MonoBehaviour
         desc.text = item.description;
         amount.text = (item.amount).ToString("F2");
         DateTime date_time = DateTimeOffset.FromUnixTimeSeconds(item.timestamp).DateTime;
+        date_time = TimeZoneInfo.ConvertTime(date_time, TimeZoneInfo.Utc, TimeZoneInfo.Local);
         date.text = date_time.ToString("dd/MM/yyyy");
         user_name.text = "הוסף על ידי: "+item.name;
         if(item.currency != "NIS" && item.currency != "")

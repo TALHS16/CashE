@@ -227,6 +227,7 @@ public class PopUpWindow : MonoBehaviour
         CloseError();
         SwitchToCategories(false);
         SwitchToCurrency(false);
+        SwitchToCalender(false);
         iTween.ColorTo(white_screen, iTween.Hash ("a", 0, "time", 0.7f, "easetype", "easeOutCubic"));
         iTween.ScaleTo(gameObject, iTween.Hash ("scale", new Vector3 (0, 0, 0), "time", 0.7f, "easetype", "easeOutCubic"));
         iTween.MoveTo(gameObject, iTween.Hash("position", place.transform.position , "time", 0.7f, "easetype", "easeOutCubic","oncomplete", "SetActiveScreen",

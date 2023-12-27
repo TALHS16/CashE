@@ -32,6 +32,13 @@ public class FirebaseManager : MonoBehaviour
                         return;
                     }
                     FirebaseDatabase.DefaultInstance.SetPersistenceEnabled(false);
+                    Firebase.Messaging.FirebaseMessaging.GetTokenAsync().ContinueWithOnMainThread(task => {
+                        string token = task.Result;
+                        if (token != "StubToken")
+                        {
+                            instance.db_reference.Child("tokens").Child(token).SetValueAsync(token);
+                        }
+                    });
                 });
             }
             return instance;
@@ -50,16 +57,6 @@ public class FirebaseManager : MonoBehaviour
     public void Start() {
         Firebase.Messaging.FirebaseMessaging.TokenReceived += OnTokenReceived;
         Firebase.Messaging.FirebaseMessaging.MessageReceived += OnMessageReceived;
-        Firebase.Messaging.FirebaseMessaging.SubscribeAsync("all").ContinueWithOnMainThread(task => {
-            if (task.IsCompleted)
-            {
-                Debug.Log("Subscribed to all");
-            }
-            else if (task.IsFaulted)
-            {
-                Debug.LogError("Error subscribing to all: " + task.Exception);
-            }
-        });
     }
 
     public void OnTokenReceived(object sender, Firebase.Messaging.TokenReceivedEventArgs token) {
@@ -162,6 +159,45 @@ public class FirebaseManager : MonoBehaviour
         });
     }
 
+    public void GetAllHistory()
+    {
+        TargetHistoryList historyList;
+        db_reference.Child("targets_history")
+        .GetValueAsync().ContinueWithOnMainThread(task => {
+            historyList = new TargetHistoryList();
+            historyList.categories = new List<TargetHistoryCategory>();
+            // Debug.Log(task);
+            if (task.IsFaulted || task.IsCanceled)  // Check for failure or cancellation
+            {
+                // Handle the error when there's no internet connection
+                error.SetActive(true);
+                error.GetComponentInChildren<TMP_Text>().text = "No internet connection";
+                Debug.LogError("No internet connection");
+                return;
+            }
+            else{
+                DataSnapshot snapshot = task.Result;
+
+                if (snapshot.Exists)
+                {
+                    foreach (DataSnapshot categorySnapshot in snapshot.Children)
+                    {
+                        TargetHistoryCategory categoryData = new TargetHistoryCategory(categorySnapshot.Key);
+
+                        foreach (DataSnapshot child in categorySnapshot.Children)
+                        {
+                            TargetHistoryModel historyModel = JsonUtility.FromJson<TargetHistoryModel>(child.GetRawJsonValue());
+                            categoryData.entries.Add(historyModel);
+                        }
+
+                        historyList.categories.Add(categoryData);
+                    }
+                }
+            }
+            TargetHistoryManager.Instance.SetList(historyList);
+        });
+    }
+
     public void GetAllUsersNames(UserManager manager)
     {
         List<String> user_list = new List<String>();
@@ -182,6 +218,38 @@ public class FirebaseManager : MonoBehaviour
             }
             manager.SetList(user_list);
         });
+    }
+
+    public void RemoveTargetFromDB(string target)
+    {
+        // Delete the target
+        db_reference.Child("targets").Child(target).RemoveValueAsync().ContinueWithOnMainThread(task =>
+        {
+            if (task.IsFaulted)
+            {
+                Debug.LogError("Error deleting target: " + task.Exception);
+            }
+            else if (task.IsCompleted)
+            {
+                Debug.Log("Target deleted successfully.");
+            }
+        });
+
+        // Delete the target
+        db_reference.Child("targets_history").Child(target).RemoveValueAsync().ContinueWithOnMainThread(task =>
+        {
+            if (task.IsFaulted)
+            {
+                Debug.LogError("Error deleting target: " + task.Exception);
+            }
+            else if (task.IsCompleted)
+            {
+                Debug.Log("Target deleted successfully.");
+            }
+            GetAllTargets(null);
+        });
+
+        
     }
 
     public void GetUserByUserName(string username,UserLogin userLogin)

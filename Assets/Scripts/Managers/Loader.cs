@@ -11,6 +11,7 @@ public class Loader : MonoBehaviour
     public GameObject firebase_manager;
     public GameObject transaction_manager;
     public GameObject target_manager;
+    public GameObject target_history_manager;
 
     public GameObject category_manager;
     public Image loading;
@@ -40,6 +41,7 @@ public class Loader : MonoBehaviour
                 
                 Instantiate(transaction_manager,gameObject.transform);
                 Instantiate(target_manager,gameObject.transform);
+                Instantiate(target_history_manager,gameObject.transform);
             }
         }
 

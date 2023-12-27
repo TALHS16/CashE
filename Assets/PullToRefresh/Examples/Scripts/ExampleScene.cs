@@ -16,5 +16,7 @@ public class ExampleScene : MonoBehaviour
     {
         // Debug.Log("HERE2");
         TransactionManager.Instance.AddTransaction(null,TransactionType.EXPENSE);
+        TargetManager.Instance.AddTarget(null);
+        TargetHistoryManager.Instance.PullAllHistory();
     }
 }

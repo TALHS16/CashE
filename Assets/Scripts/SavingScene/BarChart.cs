@@ -78,8 +78,10 @@ public class BarChart : MonoBehaviour
         negative_amount.GetComponent<RectTransform>().anchoredPosition = negative_position;
         positive_amount.GetComponent<RectTransform>().anchoredPosition = positive_position;
         DateTime date_time = DateTimeOffset.FromUnixTimeSeconds(earliest_timestamp).DateTime;
+        date_time = TimeZoneInfo.ConvertTime(date_time, TimeZoneInfo.Utc, TimeZoneInfo.Local);
         from_date.text = date_time.ToString("dd/MM/yyyy");
         date_time = DateTimeOffset.FromUnixTimeSeconds(latest_timestamp).DateTime;
+        date_time = TimeZoneInfo.ConvertTime(date_time, TimeZoneInfo.Utc, TimeZoneInfo.Local);
         to_date.text = date_time.ToString("dd/MM/yyyy");
     }
 

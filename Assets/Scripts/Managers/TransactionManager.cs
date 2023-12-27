@@ -98,9 +98,10 @@ public class TransactionManager : MonoBehaviour
         FirebaseManager.Instance.GetAllTransactions(this,null,TransactionType.EXPENSE);
     }
 
-    DateTime ConvertTimeStampToDataTime(long timestamp)
+    public DateTime ConvertTimeStampToDataTime(long timestamp)
     {
-        return DateTimeOffset.FromUnixTimeSeconds(timestamp).UtcDateTime;
+        DateTime date_time = DateTimeOffset.FromUnixTimeSeconds(timestamp).UtcDateTime;
+        return TimeZoneInfo.ConvertTime(date_time, TimeZoneInfo.Utc, TimeZoneInfo.Local);
     }
 
     HashSet<KeyValuePair<int, int>> GetUniqueMonths(TransactionType type)

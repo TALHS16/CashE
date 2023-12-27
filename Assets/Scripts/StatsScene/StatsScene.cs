@@ -61,13 +61,13 @@ public class StatsScene : MonoBehaviour
             cat_avg.GetComponent<CatAvgObject>().SetInfo(category,item.Value/count_month);
             sum += item.Value;
         }
-        avg_outcome.text = (sum/count_month).ToString("F2");
+        avg_outcome.text = ((int)(sum/count_month)).ToString();
         sum = sum*-1;
         foreach (KeyValuePair<string, float> item in dic_income)
         {
             sum += item.Value;
         }
-        avg_profit.text = (sum/count_month).ToString("F2");
+        avg_profit.text = ((int)(sum/count_month)).ToString();
     }
 
     public void GetInfoGraph()

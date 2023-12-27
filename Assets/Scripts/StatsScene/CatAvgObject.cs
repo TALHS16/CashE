@@ -13,7 +13,7 @@ public class CatAvgObject : MonoBehaviour
     {
         cat_name.text = cat.name;
         cat_name.color = cat.color;
-        cat_sum.text = " ח\"ש " + avg.ToString("F2");
+        cat_sum.text = " ח\"ש " + ((int)avg).ToString();
         cat_sum.color = cat.color;
         icon.sprite = Resources.Load<Sprite>("images/month_sceen/cat_icons/"+cat.icon);
         icon.color = cat.color;

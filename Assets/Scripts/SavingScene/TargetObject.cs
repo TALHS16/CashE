@@ -31,9 +31,9 @@ public class TargetObject : MonoBehaviour
         cat_name.text = cat;
         goal_amount.text = "ח\"ש " + goal.ToString("F2");
         left_amount.text = "ח\"ש " + left.ToString("F2");
-        if(bar_width > 1)
+        if(left < 0)
         {
-            bar_width = 1f;
+            bar_width = 0f;
             left_amount.color = new Color(0.93f,0.11f,0.14f);
         }
         bar.fillAmount = 1 - bar_width;

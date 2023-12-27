@@ -62,7 +62,7 @@ MonoBehaviour:
     color: {r: 0.7058824, g: 0.54509807, b: 0.60784316, a: 1}
   - name: "\u05EA\u05E8\u05D1\u05D5\u05EA \u05D5\u05D1\u05D9\u05DC\u05D5\u05D9\u05D9\u05DD"
     icon: icons8-museum-64
-    color: {r: 0.7921569, g: 0.7764706, b: 0.73333335, a: 1}
+    color: {r: 0.8156863, g: 0.50980395, b: 0.8117647, a: 1}
   - name: "\u05D4\u05D8\u05D1\u05D5\u05EA"
     icon: icons8-ticket-50
     color: {r: 0.85882354, g: 0.67058825, b: 0.38039216, a: 1}
@@ -89,7 +89,7 @@ MonoBehaviour:
     color: {r: 0.30980393, g: 0.6862745, b: 0.26666668, a: 1}
   - name: "\u05DB\u05E1\u05E4\u05D5\u05DE\u05D8"
     icon: icons8-atm-64
-    color: {r: 0.7882353, g: 0.65882355, b: 0.5529412, a: 1}
+    color: {r: 0.3207547, g: 0.31288713, b: 0.32065386, a: 1}
   - name: "\u05EA\u05E1\u05E4\u05D5\u05E8\u05EA"
     icon: icons8-barber-scissors-50
     color: {r: 0.6509804, g: 0.23758811, b: 0.10090195, a: 1}

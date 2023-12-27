@@ -59,9 +59,13 @@ public class TargetManager : MonoBehaviour
         targets = list.targets;
         if (target_model != null)
         {
-            targets.Add(target_model);
-            FirebaseManager.Instance.SendNewTargetToDatabase(target_model);
+            if(!dic.ContainsKey(target_model.category))
+            {
+                targets.Add(target_model);
+                FirebaseManager.Instance.SendNewTargetToDatabase(target_model);
+            }
         }
+        dic = null;
         targetScroll.setTargets(targets);
     }
 

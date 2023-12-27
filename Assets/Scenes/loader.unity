@@ -354,6 +354,7 @@ MonoBehaviour:
   firebase_manager: {fileID: 7484040611722320914, guid: 36857f5c3c1b9f54fbe509841bd8599a, type: 3}
   transaction_manager: {fileID: 1584036625598444290, guid: 0a607f3c0cf766446b89adb172a37ef6, type: 3}
   target_manager: {fileID: 4186059967682955917, guid: f767907bc6de102469b0265b3fa0eda0, type: 3}
+  target_history_manager: {fileID: 2810853424648137659, guid: 144552faefc784f4fb0d5884e87a8d96, type: 3}
   category_manager: {fileID: 5756747333666308274, guid: 839225d5662980347bef9cf9c01e6161, type: 3}
   loading: {fileID: 1881519273}
   warning_txt: {fileID: 1613235169}
