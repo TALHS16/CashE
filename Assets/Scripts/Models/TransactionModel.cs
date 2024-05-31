@@ -24,6 +24,7 @@ public class CurrencyContainer
 [Serializable]
 public class TransactionModel
 {
+    public int id;
     public float amount;
     public float original_amount;
     public string category;
@@ -32,11 +33,23 @@ public class TransactionModel
     public long timestamp; 
     public string currency;
 
+    public bool has_image;
+
     public string name;
     public string user_name;
 
-    public TransactionModel(float amount_,string category_, string description_, TransactionType type_,string currency_,string date,TransactionType current_type)
+    public bool edit;
+
+    public TransactionModel old_model;
+
+    private PopUpWindow popUp;
+
+    public TransactionModel(float amount_,string category_, string description_, TransactionType type_,string currency_,string date,TransactionType current_type, PopUpWindow window,int curr_id = -1, bool is_edit = false,TransactionModel old_trans = null)
     {
+        popUp = window;
+        id = curr_id;
+        old_model = old_trans;
+        edit = is_edit;
         amount = amount_;
         category = category_;
         description = description_;
@@ -57,7 +70,10 @@ public class TransactionModel
     {
         CurrencyContainer currencyContainer = JsonUtility.FromJson<CurrencyContainer>(result);
         amount = original_amount*currencyContainer.data.ILS;
-        TransactionManager.Instance.AddTransaction(this,type);
+        if (edit)
+            TransactionManager.Instance.editTransaction(this,old_model);
+        else
+            TransactionManager.Instance.AddTransaction(this, type, popUp);
     }
 }
 

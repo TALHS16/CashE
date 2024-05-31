@@ -36,7 +36,7 @@ public class WindowGraph : MonoBehaviour
         float yMin = TransactionManager.Instance.GetMinAmount(dic);
         yMaximum = yMaximum + ((yMaximum - yMin) * 0.2f);
         yMin = yMin - ((yMaximum - yMin) * 0.2f);
-        float xSize = 100f;
+        float xSize = 50;
         float xPosition;
         float yPosition;
         DateTime start_project_data = new DateTime(2023,8,1);
@@ -56,6 +56,7 @@ public class WindowGraph : MonoBehaviour
             }
             lastCircleGameObject = circleGameObject;
             GameObject x = Instantiate(x_label, circleContainer.transform);
+            AddToWidth(x.GetComponent<RectTransform>());
             x.GetComponent<RectTransform>().anchoredPosition = new Vector2(xPosition,x.GetComponent<RectTransform>().anchoredPosition.y);
             x.GetComponent<TMP_Text>().text = (item.Key).ToString("MM/yy"); 
         }
@@ -86,6 +87,14 @@ public class WindowGraph : MonoBehaviour
         rectTransform.sizeDelta = new Vector2(distance,5);
         rectTransform.anchoredPosition = dotPositionA + dir *distance * 0.5f;
         rectTransform.localEulerAngles = new Vector3(0,0,UtilsClass.GetAngleFromVectorFloat(dir));
+    }
 
+    private void AddToWidth(RectTransform rectTransformWithWidth)
+    {
+        RectTransform rectTransformToAddWidthTo = circleContainer.GetComponent<RectTransform>();
+
+        float widthToAdd = rectTransformWithWidth.rect.width;
+
+        rectTransformToAddWidthTo.sizeDelta += new Vector2(widthToAdd, 0f);
     }
 }

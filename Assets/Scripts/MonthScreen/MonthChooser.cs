@@ -24,10 +24,11 @@ public class MonthChooser : MonoBehaviour
     {
         foreach (KeyValuePair<int, int> item in valuesToSet)
         {
-            GameObject month = Instantiate(prefab_month,gameObject.transform);
-            month.transform.SetAsFirstSibling();
-            current = month.GetComponent<MonthBTN>();
+            GameObject month_obj = Instantiate(prefab_month,gameObject.transform);
+            month_obj.transform.SetAsFirstSibling();
+            current = month_obj.GetComponent<MonthBTN>();
             current.setBTN(item.Key,item.Value,trans,this,type);
+            
         }
         current.SetAlpha(1.0f);
     }

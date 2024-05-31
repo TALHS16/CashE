@@ -23,7 +23,17 @@ public class TargetHistoryModel
     public TargetTimeType type_time;
 
     public float amount_used;
-    public bool success;
+    public float goal_used;
+
+    public TargetHistoryModel(int type_time_,float amount_used_)
+    {
+        timestamp_from = TransactionManager.Instance.ConvertDateTimeToTimestamp(DateTime.Now);
+        timestamp_to = timestamp_from;
+        type = TargetHistoryType.EDIT;
+        type_time = type_time_ == 1?TargetTimeType.MONTH:TargetTimeType.WEEK;
+        amount_used = amount_used_;
+        goal_used = amount_used_;
+    }
 }
 
 [Serializable]

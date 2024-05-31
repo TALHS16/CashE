@@ -36,6 +36,7 @@ public class PopUpWindow : MonoBehaviour
 
     public CategoryBtn selected_category;
     public CategoryBtn current_category;
+    public GameObject initial_cat_icon;
 
     public Dictionary<string,CategoryBtn> dict_cat_btn;
 
@@ -52,8 +53,12 @@ public class PopUpWindow : MonoBehaviour
 
     private bool expanseFlag;
 
+    public Sprite sprite1;
+
     private string[] arr_currency = {"NIS","USD", "EUR","GBP","JPY","ZAR","THB","SGD","NZD","MYR","MXN","PHP","KRW","INR","IDR","CAD","BRL","AUD","RUB","HRK","CHF","PLN","DKK","ISK","NOK","SEK","HUF","BGN","CZK","CNY","HKD"}; 
     public  AddBTN animationBTN;
+
+    public TransactionModel model;
 
     // Start is called before the first frame update
     void Start()
@@ -104,7 +109,10 @@ public class PopUpWindow : MonoBehaviour
         {
             selected_category = current_category;
             cat_name = selected_category.category_name;
-            //category_input.text = selected_category.category_name;
+            initial_cat_icon.SetActive(false);
+            Color newColor = category_image.color;
+            newColor.a = 1; 
+            category_image.color = newColor;
             category_image.sprite = selected_category.category_icon.sprite;
         }
     }
@@ -127,58 +135,91 @@ public class PopUpWindow : MonoBehaviour
     public void PickImage(bool fromCamera)
     {
         ImagePicker picker = new ImagePicker();
-        Sprite sprite = null;
         if (fromCamera)
-            sprite = picker.TakePicture(512);
+            sprite1 = picker.TakePicture(512);
         else
-            sprite = picker.PickImage(512);
+            sprite1 = picker.PickImage(512);
     }
 
-    public void CreateTransaction()
+    public bool CheckFields()
     {
+        bool flag = true;
         DateTime result;
         if(amount_txt.text == "" || float.Parse(amount_txt.text) == 0)
         {
+            flag = false;
             error_MSG.SetActive(true);
             error_contant.text = "ערך 0 בסכום אינו חוקי";
 
         }
         else if(cat_name == "")
         {
+            flag = false;
             error_MSG.SetActive(true);
             error_contant.text = "שכחת לבחור קטגוריה";
         }
         else if(category_input.text == "")
         {
+            flag = false;
             error_MSG.SetActive(true);
             error_contant.text = "נא מלא/י את תיאור ההוצאה";
         }
         else if (Application.internetReachability == NetworkReachability.NotReachable)
         {
+            flag = false;
             error_MSG.SetActive(true);
             error_contant.text = "חיבור אינטרנט אינו זמין כעת";
         }
         else if(!DateTime.TryParseExact(date.text, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out result))
         {
+            flag = false;
             error_MSG.SetActive(true);
             error_contant.text = "התאריך צריך להיות מפורמט: yyyy/MM/dd";
         }
-        else
+        return flag;
+    }
+
+    public void CreateTransaction()
+    {
+        if(CheckFields())
         {
             amount = float.Parse(amount_txt.text);
             TransactionModel trans;
             if (expanseFlag)
             {
-                trans = new TransactionModel(amount,cat_name,category_input.text,TransactionType.EXPENSE,currency_name,date.text,TransactionType.EXPENSE);
+                trans = new TransactionModel(amount,cat_name,category_input.text,TransactionType.EXPENSE,currency_name,date.text,TransactionType.EXPENSE,this);
             }
             else
             {
-                trans = new TransactionModel(amount,cat_name,category_input.text,TransactionType.INCOME,currency_name,date.text,TransactionType.EXPENSE);
+                trans = new TransactionModel(amount,cat_name,category_input.text,TransactionType.INCOME,currency_name,date.text,TransactionType.EXPENSE,this);
             }
             if(currency_name == "NIS")
             {
-                TransactionManager.Instance.AddTransaction(trans,TransactionType.EXPENSE);
-            } 
+                TransactionManager.Instance.AddTransaction(trans,TransactionType.EXPENSE,this);
+            }
+            CloseWindow();
+        }
+        
+    }
+
+    public void editTransaction()
+    {
+        if(CheckFields())
+        {
+            amount = float.Parse(amount_txt.text);
+            TransactionModel trans;
+            if (expanseFlag)
+            {
+                trans = new TransactionModel(amount,cat_name,category_input.text,TransactionType.EXPENSE,currency_name,date.text,TransactionType.EXPENSE, this, model.id, true, model);
+            }
+            else
+            {
+                trans = new TransactionModel(amount,cat_name,category_input.text,TransactionType.INCOME,currency_name,date.text,TransactionType.EXPENSE, this, model.id, true, model);
+            }
+            if(currency_name == "NIS")
+            {
+                TransactionManager.Instance.editTransaction(trans,model);
+            }
             CloseWindow();
         }
         
@@ -199,14 +240,40 @@ public class PopUpWindow : MonoBehaviour
         white_screen.SetActive(open);
     }
 
+    public void OpenEditWindow(string amount, string category,string description, string d, string currency, TransactionModel trans, bool expanse)
+    {
+        open = true;
+        SetActiveScreen();
+        expanseFlag = expanse;
+        category_input.text = description;
+        amount_txt.text = amount;
+        cat_name = category;
+        category_image.sprite = Resources.Load<Sprite>("images/month_sceen/cat_icons/"+CategoryManager.Instance.category[category].icon);
+        date.text = d;
+        model = trans;
+        currency_name = currency;
+        currency_image.sprite = Resources.Load<Sprite>("images/month_sceen/" + currency_name);
+        iTween.ScaleTo(gameObject, iTween.Hash ("scale", new Vector3 (1, 1, 1), "time", 0.7f, "easetype", "easeOutCubic"));
+        iTween.MoveTo(gameObject, iTween.Hash("position", white_screen.transform.position , "time", 0.7f, "easetype", "easeOutCubic"));
+        iTween.ColorTo(white_screen, iTween.Hash ("a", 0.8, "time", 0.7f, "easetype", "easeOutCubic"));
+
+    }
+
     public void OpenWindow(bool expanse)
     {
         open = true;
         SetActiveScreen();
         animationBTN.SwitchState(true);
+        if (expanse != expanseFlag)
+        {
+            category_input.text = "";
+            amount_txt.text = "";
+            initial_cat_icon.SetActive(true);
+            Color newColor = category_image.color;
+            newColor.a = 0; 
+            category_image.color = newColor;
+        }
         expanseFlag = expanse;
-        category_input.text = "";
-        amount_txt.text = "";
         if(expanseFlag)
         {
             title.text = "הוסף הוצאה:";
@@ -238,6 +305,15 @@ public class PopUpWindow : MonoBehaviour
     {
         container_expanse.SetActive(!category);
         container_category.SetActive(category);
+        if (category)
+        {
+            foreach (Transform item in parent_icon.transform)
+            {
+                item.gameObject.GetComponent<CategoryBtn>().SetAlpha(0);
+            }
+            if(current_category)
+                current_category.SetAlpha(1);
+        }
     }
 
     public void SwitchToCurrency(bool currency)

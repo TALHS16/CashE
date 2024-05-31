@@ -78,11 +78,11 @@ public class Calender : MonoBehaviour
     {
         if(start_project_data.Year < int.Parse(year_instance.GetComponentInChildren<TMP_Text>().text) )
         {
-            SwitchMonth((curr_Date.Year - int.Parse(year_instance.GetComponentInChildren<TMP_Text>().text)) * 12 - curr_Date.Month + 1);
+            SwitchMonth((int.Parse(year_instance.GetComponentInChildren<TMP_Text>().text) - curr_Date.Year) * 12 - curr_Date.Month + 1);
         }
         else
         {
-            SwitchMonth((curr_Date.Year - int.Parse(year_instance.GetComponentInChildren<TMP_Text>().text)) * 12 - curr_Date.Month + 9);
+            SwitchMonth(( int.Parse(year_instance.GetComponentInChildren<TMP_Text>().text) - curr_Date.Year) * 12 - curr_Date.Month + 9);
         }
 
     }
@@ -135,6 +135,15 @@ public class Calender : MonoBehaviour
                     month_tran.GetChild(i).gameObject.GetComponent<Button>().enabled = false;
                     new_day.UpdateColor(new Color(0,0,0,0.3f));
                 }
+                else if(new_day.day_color.a == 1)
+                {
+                    month_tran.GetChild(i).gameObject.GetComponent<Button>().enabled = true;
+                }
+                else
+                {
+                    month_tran.GetChild(i).gameObject.GetComponent<Button>().enabled = false;
+                }
+
                 days.Add(new_day);
             }
         }
@@ -155,6 +164,14 @@ public class Calender : MonoBehaviour
                     days[i].UpdateDay(i-start_date);
                     month_tran.GetChild(i).gameObject.GetComponent<Button>().enabled = false;
                     days[i].UpdateColor(new Color(0,0,0,0.3f));
+                }
+                else if(days[i].day_color.a == 1)
+                {
+                    month_tran.GetChild(i).gameObject.GetComponent<Button>().enabled = true;
+                }
+                else
+                {
+                    month_tran.GetChild(i).gameObject.GetComponent<Button>().enabled = false;
                 }
                 if(i >= start_date && i - start_date < end_date)
                 {
@@ -319,7 +336,8 @@ public class Calender : MonoBehaviour
             }
             else
             {
-                DateTime temp = new DateTime(curr_Date.Year,curr_Date.Month - 1,1);
+                DateTime temp = new DateTime(curr_Date.Year,curr_Date.Month ,1);
+                temp = temp.AddMonths(-1);
                 int day = (int)temp.DayOfWeek;
                 start_select = new DateTime(temp.Year,temp.Month,index - day + 1);
                 SwitchMonth(0);
@@ -351,9 +369,11 @@ public class Calender : MonoBehaviour
             }
             else
             {
-                DateTime temp = new DateTime(curr_Date.Year,curr_Date.Month - 1, 1);
+                DateTime temp = new DateTime(curr_Date.Year,curr_Date.Month, 1);
+                temp = temp.AddMonths(-1);
                 int day = (int)temp.DayOfWeek;
-                temp = new DateTime(curr_Date.Year, curr_Date.Month - 1,index - day + 1,23,59,59);
+                temp = new DateTime(curr_Date.Year, curr_Date.Month,index - day + 1,23,59,59);
+                temp = temp.AddMonths(-1);
                 if(start_select >= temp)
                 {
                     start_select = null;

@@ -12,6 +12,8 @@ public class MonthBTN : MonoBehaviour
     public Button button;
     private TransactionManager trans_manager;
     private MonthChooser chooser;
+
+    public int month;
     private static string[] month_array = new string[]{
     "ינואר",
     "פברואר",
@@ -38,8 +40,9 @@ public class MonthBTN : MonoBehaviour
         
     }
 
-    public void setBTN(int month,int year, TransactionManager trans,MonthChooser month_chooser, TransactionType type)
+    public void setBTN(int month_,int year, TransactionManager trans,MonthChooser month_chooser, TransactionType type)
     {
+        month = month_;
         month_txt.text = month_array[month - 1];
         year_txt.text = year.ToString();
         trans_manager = trans;

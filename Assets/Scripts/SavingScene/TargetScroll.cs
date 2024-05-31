@@ -21,7 +21,6 @@ public class TargetScroll : MonoBehaviour
     public GameObject error_MSG; 
     public TMP_Text error_contant;
 
-    public Toggle week;
     public Toggle month;
     public TMP_InputField target_amount;
     public TMP_Text target_cat;

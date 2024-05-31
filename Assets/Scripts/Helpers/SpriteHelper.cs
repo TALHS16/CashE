@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using System.IO;
 
 public class SpriteHelper
 {
@@ -10,8 +11,10 @@ public class SpriteHelper
         // Get the texture from the sprite
         Texture2D texture = sprite.texture;
 
+        Debug.Log("here 5: " + texture == null);
         // Encode the texture to a PNG byte array
-        byte[] bytes = texture.EncodeToPNG();
+        byte[] bytes = texture.GetRawTextureData();
+        Debug.Log("here 6: " + bytes);
 
         return bytes;
     }

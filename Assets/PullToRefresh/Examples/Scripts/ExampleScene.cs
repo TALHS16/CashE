@@ -15,8 +15,8 @@ public class ExampleScene : MonoBehaviour
     public void OnRefreshCallback()
     {
         // Debug.Log("HERE2");
-        TransactionManager.Instance.AddTransaction(null,TransactionType.EXPENSE);
+        TransactionManager.Instance.AddTransaction(null,TransactionType.EXPENSE, null);
         TargetManager.Instance.AddTarget(null);
-        TargetHistoryManager.Instance.PullAllHistory();
+        TargetHistoryManager.Instance.PullAllHistory(null,null,"");
     }
 }

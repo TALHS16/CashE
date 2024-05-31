@@ -36,14 +36,21 @@ public class TargetObject : MonoBehaviour
             bar_width = 0f;
             left_amount.color = new Color(0.93f,0.11f,0.14f);
         }
+        else
+        {
+            left_amount.color = new Color(0.5849056f,0.5849056f,0.5849056f);
+        }
         bar.fillAmount = 1 - bar_width;
         bar.color = color;
     }
 
     public void OnClickTarget()
     {
-        history_container.transform.position = new Vector3(gameObject.transform.position.x,gameObject.transform.position.y + 100, gameObject.transform.position.z);
-        history_container.GetComponent<PopupTargetHistory>().target_object.SetInfo(icon_name, cat_name.text, goal, left, bar_width,icon_bg.color, history_container);
-        history_container.GetComponent<PopupTargetHistory>().PlayAnimationOpen();
+        if(history_container != null)
+        {
+            history_container.transform.position = new Vector3(gameObject.transform.position.x,gameObject.transform.position.y + 100, gameObject.transform.position.z);
+            history_container.GetComponent<PopupTargetHistory>().target_object.SetInfo(icon_name, cat_name.text, goal, left, bar_width,icon_bg.color, history_container);
+            history_container.GetComponent<PopupTargetHistory>().PlayAnimationOpen();
+        }
     }
 }
