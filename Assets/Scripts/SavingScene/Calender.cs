@@ -22,7 +22,7 @@ public class Calender : MonoBehaviour
     public DateTime? start_select = null;
     public DateTime? end_select = null;
 
-    private DateTime start_project_data = new DateTime(2023,8,1);
+    private DateTime start_project_data = new DateTime(2023, 8, 1);
 
     public HashSet<string> cat;
     public HashSet<string> people;
@@ -47,28 +47,28 @@ public class Calender : MonoBehaviour
         cat = new HashSet<string>();
         people = new HashSet<string>();
         CategoryManager category_manager = CategoryManager.Instance;
-        foreach (KeyValuePair<string, CategoryModel> item in category_manager.category)
+        foreach (KeyValuePair<string, CategoryModel> item in category_manager.CategoryDic)
         {
             cat.Add(item.Value.name);
-            GameObject cat_instance = Instantiate(prefab_cat,parent_cat.transform);
+            GameObject cat_instance = Instantiate(prefab_cat, parent_cat.transform);
             cat_instance.transform.SetAsFirstSibling();
             cat_instance.GetComponentInChildren<TMP_Text>().text = item.Value.name;
-            cat_instance.GetComponent<Toggle>().onValueChanged.AddListener(delegate{ClickCheckBoxCat(cat_instance);});
+            cat_instance.GetComponent<Toggle>().onValueChanged.AddListener(delegate { ClickCheckBoxCat(cat_instance); });
         }
         foreach (String item in UserManager.Instance.user_list)
         {
             people.Add(item);
-            GameObject people_instance = Instantiate(prefab_people,parent_people.transform);
+            GameObject people_instance = Instantiate(prefab_people, parent_people.transform);
             people_instance.transform.SetAsFirstSibling();
             people_instance.GetComponentInChildren<TMP_Text>().text = item;
-            people_instance.GetComponent<Toggle>().onValueChanged.AddListener(delegate{ClickCheckBoxPeople(people_instance);});
+            people_instance.GetComponent<Toggle>().onValueChanged.AddListener(delegate { ClickCheckBoxPeople(people_instance); });
         }
         foreach (String item in TransactionManager.Instance.GetUniqueYears())
         {
-            GameObject year_instance = Instantiate(prefab_year,parent_year.transform);
+            GameObject year_instance = Instantiate(prefab_year, parent_year.transform);
             year_instance.transform.SetAsFirstSibling();
             year_instance.GetComponentInChildren<TMP_Text>().text = item;
-            year_instance.GetComponent<Button>().onClick.AddListener(delegate{ClickYear(year_instance);});
+            year_instance.GetComponent<Button>().onClick.AddListener(delegate { ClickYear(year_instance); });
         }
         curr_Date = DateTime.Now;
         SwitchMonth(0);
@@ -76,13 +76,13 @@ public class Calender : MonoBehaviour
 
     public void ClickYear(GameObject year_instance)
     {
-        if(start_project_data.Year < int.Parse(year_instance.GetComponentInChildren<TMP_Text>().text) )
+        if (start_project_data.Year < int.Parse(year_instance.GetComponentInChildren<TMP_Text>().text))
         {
             SwitchMonth((int.Parse(year_instance.GetComponentInChildren<TMP_Text>().text) - curr_Date.Year) * 12 - curr_Date.Month + 1);
         }
         else
         {
-            SwitchMonth(( int.Parse(year_instance.GetComponentInChildren<TMP_Text>().text) - curr_Date.Year) * 12 - curr_Date.Month + 9);
+            SwitchMonth((int.Parse(year_instance.GetComponentInChildren<TMP_Text>().text) - curr_Date.Year) * 12 - curr_Date.Month + 9);
         }
 
     }
@@ -90,13 +90,13 @@ public class Calender : MonoBehaviour
     public void SwitchMonth(int i)
     {
         DateTime temp2 = curr_Date.AddMonths(i);
-        DateTime temp1 = curr_Date.AddMonths(i-1);
-        if((temp2.Month > DateTime.Now.Month && temp2.Year >= DateTime.Now.Year) || temp2.Year > DateTime.Now.Year)
+        DateTime temp1 = curr_Date.AddMonths(i - 1);
+        if ((temp2.Month > DateTime.Now.Month && temp2.Year >= DateTime.Now.Year) || temp2.Year > DateTime.Now.Year)
         {
             error.SetActive(true);
             error_txt.text = "הגעת לעתיד אנא התרכז בהווה/עבר";
         }
-        else if((temp1.Month < start_project_data.Month && temp1.Year <= start_project_data.Year) || temp1.Year < start_project_data.Year)
+        else if ((temp1.Month < start_project_data.Month && temp1.Year <= start_project_data.Year) || temp1.Year < start_project_data.Year)
         {
             error.SetActive(true);
             error_txt.text = "אין לנו מידע על זמן זה אנא בחר תקופה יותר עדכנית";
@@ -104,38 +104,38 @@ public class Calender : MonoBehaviour
         else
         {
             curr_Date = temp2;
-            UpdateCalender(curr_Date.Year,curr_Date.Month,month_tran_2,days_2,month_title_2);
-            UpdateCalender(temp1.Year,temp1.Month,month_tran_1,days_1,month_title_1);
+            UpdateCalender(curr_Date.Year, curr_Date.Month, month_tran_2, days_2, month_title_2);
+            UpdateCalender(temp1.Year, temp1.Month, month_tran_1, days_1, month_title_1);
         }
     }
 
-    void UpdateCalender(int year,int month,Transform month_tran, List<Day> days, TMP_Text month_title)
+    void UpdateCalender(int year, int month, Transform month_tran, List<Day> days, TMP_Text month_title)
     {
-        DateTime temp = new DateTime(year,month,1);
-        month_title.text = temp.ToString("MMM")+" "+temp.Year.ToString();
+        DateTime temp = new DateTime(year, month, 1);
+        month_title.text = temp.ToString("MMM") + " " + temp.Year.ToString();
         int start_date = (int)temp.DayOfWeek;
-        int end_date = DateTime.DaysInMonth(year,month);
+        int end_date = DateTime.DaysInMonth(year, month);
 
-        if(days.Count == 0)
+        if (days.Count == 0)
         {
             for (int i = 0; i < 42; i++)
             {
                 Day new_day;
-                if(i < start_date || i - start_date >= end_date)
+                if (i < start_date || i - start_date >= end_date)
                 {
-                    new_day = new Day(i-start_date,new Color(0,0,0,0),month_tran.GetChild(i).gameObject);
+                    new_day = new Day(i - start_date, new Color(0, 0, 0, 0), month_tran.GetChild(i).gameObject);
                 }
                 else
                 {
-                    new_day = new Day(i-start_date,new Color(0,0,0,1),month_tran.GetChild(i).gameObject);
+                    new_day = new Day(i - start_date, new Color(0, 0, 0, 1), month_tran.GetChild(i).gameObject);
                 }
 
-                if(i - start_date < end_date && i-start_date + 1 > DateTime.Now.Day && DateTime.Now.Month == month && DateTime.Now.Year == year)
+                if (i - start_date < end_date && i - start_date + 1 > DateTime.Now.Day && DateTime.Now.Month == month && DateTime.Now.Year == year)
                 {
                     month_tran.GetChild(i).gameObject.GetComponent<Button>().enabled = false;
-                    new_day.UpdateColor(new Color(0,0,0,0.3f));
+                    new_day.UpdateColor(new Color(0, 0, 0, 0.3f));
                 }
-                else if(new_day.day_color.a == 1)
+                else if (new_day.day_color.a == 1)
                 {
                     month_tran.GetChild(i).gameObject.GetComponent<Button>().enabled = true;
                 }
@@ -151,21 +151,21 @@ public class Calender : MonoBehaviour
         {
             for (int i = 0; i < 42; i++)
             {
-                if(i < start_date || i - start_date >= end_date)
+                if (i < start_date || i - start_date >= end_date)
                 {
-                    days[i].UpdateColor(new Color(0,0,0,0));
+                    days[i].UpdateColor(new Color(0, 0, 0, 0));
                 }
                 else
                 {
-                    days[i].UpdateColor(new Color(0,0,0,1));
+                    days[i].UpdateColor(new Color(0, 0, 0, 1));
                 }
-                if(i - start_date < end_date && i-start_date + 1 > DateTime.Now.Day && DateTime.Now.Month == month && DateTime.Now.Year == year)
+                if (i - start_date < end_date && i - start_date + 1 > DateTime.Now.Day && DateTime.Now.Month == month && DateTime.Now.Year == year)
                 {
-                    days[i].UpdateDay(i-start_date);
+                    days[i].UpdateDay(i - start_date);
                     month_tran.GetChild(i).gameObject.GetComponent<Button>().enabled = false;
-                    days[i].UpdateColor(new Color(0,0,0,0.3f));
+                    days[i].UpdateColor(new Color(0, 0, 0, 0.3f));
                 }
-                else if(days[i].day_color.a == 1)
+                else if (days[i].day_color.a == 1)
                 {
                     month_tran.GetChild(i).gameObject.GetComponent<Button>().enabled = true;
                 }
@@ -173,20 +173,20 @@ public class Calender : MonoBehaviour
                 {
                     month_tran.GetChild(i).gameObject.GetComponent<Button>().enabled = false;
                 }
-                if(i >= start_date && i - start_date < end_date)
+                if (i >= start_date && i - start_date < end_date)
                 {
-                    if(start_select != null && start_select.Value.Day - 1 == i - start_date && start_select.Value.Month == month && start_select.Value.Year == year)
+                    if (start_select != null && start_select.Value.Day - 1 == i - start_date && start_select.Value.Month == month && start_select.Value.Year == year)
                     {
                         days[i].SelectDay(1);
                     }
-                    else if(end_select != null && end_select.Value.Day - 1 == i - start_date && end_select.Value.Month == month && end_select.Value.Year == year)
+                    else if (end_select != null && end_select.Value.Day - 1 == i - start_date && end_select.Value.Month == month && end_select.Value.Year == year)
                     {
                         days[i].SelectDay(2);
                     }
-                    else if(end_select != null)
+                    else if (end_select != null)
                     {
                         DateTime curr = new DateTime(year, month, i - start_date + 1);
-                        if(curr < end_select && curr > start_select)
+                        if (curr < end_select && curr > start_select)
                         {
                             days[i].SelectDay(3);
                         }
@@ -204,14 +204,14 @@ public class Calender : MonoBehaviour
                 {
                     days[i].SelectDay(4);
                 }
-                days[i].UpdateDay(i-start_date);
+                days[i].UpdateDay(i - start_date);
             }
         }
     }
 
     public void ClickCheckBoxCat(GameObject toggle)
     {
-        if(toggle.GetComponent<Toggle>().isOn == true)
+        if (toggle.GetComponent<Toggle>().isOn == true)
         {
             cat.Add(toggle.GetComponentInChildren<TMP_Text>().text);
         }
@@ -223,7 +223,7 @@ public class Calender : MonoBehaviour
 
     public void ClickCheckBoxPeople(GameObject toggle)
     {
-        if(toggle.GetComponent<Toggle>().isOn == true)
+        if (toggle.GetComponent<Toggle>().isOn == true)
         {
             people.Add(toggle.GetComponentInChildren<TMP_Text>().text);
         }
@@ -231,7 +231,7 @@ public class Calender : MonoBehaviour
         {
             people.Remove(toggle.GetComponentInChildren<TMP_Text>().text);
         }
-    } 
+    }
 
     public void SelectAllPeople(bool select)
     {
@@ -262,29 +262,29 @@ public class Calender : MonoBehaviour
 
     public void SendFilter()
     {
-        if(start_select == null)
+        if (start_select == null)
         {
             error.SetActive(true);
             error_txt.text = "לא בחרת תאריך התחלה";
         }
-        else if(end_select == null)
+        else if (end_select == null)
         {
             error.SetActive(true);
             error_txt.text = "לא בחרת תאריך סיום";
         }
-        else if(cat.Count == 0)
+        else if (cat.Count == 0)
         {
             error.SetActive(true);
             error_txt.text = "אנא בחר קטגוריות";
         }
-        else if(people.Count == 0)
+        else if (people.Count == 0)
         {
             error.SetActive(true);
             error_txt.text = "אנא בחר אנשים";
         }
         else
         {
-            TransactionManager.Instance.Filter(cat,people,start_select,end_select,bar_chart);
+            TransactionManager.Instance.Filter(cat, people, start_select, end_select, bar_chart);
             CloseWindow();
         }
     }
@@ -293,10 +293,10 @@ public class Calender : MonoBehaviour
     {
         open = true;
         SetActiveScreen();
-        iTween.ScaleTo(popup_window, iTween.Hash ("scale", new Vector3 (1, 1, 1), "time", 0.7f, "easetype", "easeOutCubic"));
-        iTween.MoveTo(popup_window, iTween.Hash("position", white_window.transform.position , "time", 0.7f, "easetype", "easeOutCubic", "oncomplete", "OpenCatScroll",
+        iTween.ScaleTo(popup_window, iTween.Hash("scale", new Vector3(1, 1, 1), "time", 0.7f, "easetype", "easeOutCubic"));
+        iTween.MoveTo(popup_window, iTween.Hash("position", white_window.transform.position, "time", 0.7f, "easetype", "easeOutCubic", "oncomplete", "OpenCatScroll",
     "oncompletetarget", gameObject));
-        iTween.ColorTo(white_window, iTween.Hash ("a", 0.8, "time", 0.7f, "easetype", "easeOutCubic"));
+        iTween.ColorTo(white_window, iTween.Hash("a", 0.8, "time", 0.7f, "easetype", "easeOutCubic"));
     }
 
 
@@ -304,10 +304,10 @@ public class Calender : MonoBehaviour
     {
         open = false;
         error.SetActive(false);
-        iTween.ColorTo(white_window, iTween.Hash ("a", 0, "time", 0.7f, "easetype", "easeOutCubic"));
-        iTween.ScaleTo(popup_window, iTween.Hash ("scale", new Vector3 (0, 0, 0), "time", 0.7f, "easetype", "easeOutCubic"));
-        iTween.MoveTo(popup_window, iTween.Hash("position", place.transform.position,"time", 0.7f,"easetype", "easeOutCubic","oncomplete", "SetActiveScreen",
-    "oncompletetarget", gameObject));   
+        iTween.ColorTo(white_window, iTween.Hash("a", 0, "time", 0.7f, "easetype", "easeOutCubic"));
+        iTween.ScaleTo(popup_window, iTween.Hash("scale", new Vector3(0, 0, 0), "time", 0.7f, "easetype", "easeOutCubic"));
+        iTween.MoveTo(popup_window, iTween.Hash("position", place.transform.position, "time", 0.7f, "easetype", "easeOutCubic", "oncomplete", "SetActiveScreen",
+    "oncompletetarget", gameObject));
     }
 
     private void SetActiveScreen()
@@ -323,43 +323,43 @@ public class Calender : MonoBehaviour
 
     public void Select_Date(int index)
     {
-        int calender = index%10;
-        index = index/10;
-        if(start_select == null)
+        int calender = index % 10;
+        index = index / 10;
+        if (start_select == null)
         {
-            if(calender == 2)
+            if (calender == 2)
             {
-                DateTime temp = new DateTime(curr_Date.Year,curr_Date.Month,1);
+                DateTime temp = new DateTime(curr_Date.Year, curr_Date.Month, 1);
                 int day = (int)temp.DayOfWeek;
-                start_select = new DateTime(curr_Date.Year,curr_Date.Month,index - day + 1);
+                start_select = new DateTime(curr_Date.Year, curr_Date.Month, index - day + 1);
                 SwitchMonth(0);
             }
             else
             {
-                DateTime temp = new DateTime(curr_Date.Year,curr_Date.Month ,1);
+                DateTime temp = new DateTime(curr_Date.Year, curr_Date.Month, 1);
                 temp = temp.AddMonths(-1);
                 int day = (int)temp.DayOfWeek;
-                start_select = new DateTime(temp.Year,temp.Month,index - day + 1);
+                start_select = new DateTime(temp.Year, temp.Month, index - day + 1);
                 SwitchMonth(0);
             }
         }
         else
         {
-            if(end_select != null)
+            if (end_select != null)
             {
                 start_select = null;
                 end_select = null;
-                Select_Date(index*10+calender);
+                Select_Date(index * 10 + calender);
             }
-            else if(calender == 2)
+            else if (calender == 2)
             {
-                DateTime temp = new DateTime(curr_Date.Year,curr_Date.Month,1);
+                DateTime temp = new DateTime(curr_Date.Year, curr_Date.Month, 1);
                 int day = (int)temp.DayOfWeek;
-                temp = new DateTime(curr_Date.Year,curr_Date.Month, index - day + 1,23,59,59);
-                if(start_select >= temp)
+                temp = new DateTime(curr_Date.Year, curr_Date.Month, index - day + 1, 23, 59, 59);
+                if (start_select >= temp)
                 {
                     start_select = null;
-                    Select_Date(index*10+calender);
+                    Select_Date(index * 10 + calender);
                 }
                 else
                 {
@@ -369,15 +369,15 @@ public class Calender : MonoBehaviour
             }
             else
             {
-                DateTime temp = new DateTime(curr_Date.Year,curr_Date.Month, 1);
+                DateTime temp = new DateTime(curr_Date.Year, curr_Date.Month, 1);
                 temp = temp.AddMonths(-1);
                 int day = (int)temp.DayOfWeek;
-                temp = new DateTime(curr_Date.Year, curr_Date.Month,index - day + 1,23,59,59);
+                temp = new DateTime(curr_Date.Year, curr_Date.Month, index - day + 1, 23, 59, 59);
                 temp = temp.AddMonths(-1);
-                if(start_select >= temp)
+                if (start_select >= temp)
                 {
                     start_select = null;
-                    Select_Date(index*10+calender);
+                    Select_Date(index * 10 + calender);
                 }
                 else
                 {

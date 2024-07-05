@@ -7,8 +7,7 @@ public class SwipeUI : MonoBehaviour
     public Scrollbar scrollBar; // Check the current page based on the
     [SerializeField]
     private float swipeTime = 0.2f; // Time when the page is swiped
-    [SerializeField]
-    private float swipeDistance; // Minimum distance the page must move to be swipeable
+    public float swipeDistance; // Minimum distance the page must move to be swipeable
 
     private float startTouchX; // touch start position
     private float endTouchX; // touch end position

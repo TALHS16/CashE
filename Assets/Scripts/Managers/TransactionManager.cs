@@ -18,6 +18,9 @@ public class TransactionManager : MonoBehaviour
 
     int curr_index;
 
+    public ImageManager imageManager;
+    public ImageStorage imageStorage;
+
     private static TransactionManager instance;
     // Start is called before the first frame update
 
@@ -28,6 +31,8 @@ public class TransactionManager : MonoBehaviour
             if (instance == null)
             {
                 instance = FindObjectOfType<TransactionManager>();
+                instance.imageManager = new ImageManager("usageQueueImages.txt", "images");
+                instance.imageStorage = new ImageStorage("images");
             }
             return instance;
         }
@@ -98,7 +103,8 @@ public class TransactionManager : MonoBehaviour
 
     void Awake()
     {
-        FirebaseManager.Instance.GetAllTransactions(this, null, TransactionType.EXPENSE, null);
+        FirebaseManager.Instance.GetAllTransactions(TransactionManager.Instance, null, TransactionType.EXPENSE, null);
+
     }
 
     public DateTime ConvertTimeStampToDataTime(long timestamp)
@@ -209,7 +215,7 @@ public class TransactionManager : MonoBehaviour
         List<TransactionModel> month_list = GetExpansesByMonth(month_curr, year_curr, type);
         List<TransactionModel> category_list = GetAllExpanseByCatagory(month_list, catagory, type);
         detailList.clear();
-        detailList.setValues(category_list, CategoryManager.Instance.category[catagory]);
+        detailList.setValues(category_list, CategoryManager.Instance.CategoryDic[catagory]);
 
     }
 
@@ -224,7 +230,7 @@ public class TransactionManager : MonoBehaviour
 
     }
 
-    public void RebuildPieChart(TransactionType type)
+    public void RebuildPieChart(TransactionType type = TransactionType.EXPENSE)
     {
         BuildPieChart(month_curr, year_curr, type);
     }
@@ -234,10 +240,21 @@ public class TransactionManager : MonoBehaviour
         FirebaseManager.Instance.GetAllTransactions(this, transactionModel, type, popUp);
     }
 
-    public void editTransaction(TransactionModel transactionModel, TransactionModel old_model)
+    public void editTransaction(TransactionModel transactionModel, TransactionModel old_model, PopUpWindow popUp)
     {
         TargetManager.Instance.EditCategory(transactionModel, old_model);
-        FirebaseManager.Instance.SendTransactionUpdateToDatabase(transactionModel, old_model.id.ToString());
+        byte[] byte_jpg = null;
+        if (popUp.sprite != null)
+        {
+            transactionModel.has_image = true;
+            byte_jpg = Resize(popUp.sprite.texture, 465, 620);
+
+        }
+        else
+        {
+            transactionModel.has_image = false;
+        }
+        FirebaseManager.Instance.SendTransactionUpdateToDatabase(transactionModel, old_model.id.ToString(), byte_jpg, popUp.gameObject);
     }
 
     public void SwitchIncomeOutcome(TransactionType type)
@@ -251,14 +268,51 @@ public class TransactionManager : MonoBehaviour
         BuildPieChart(month_curr, year_curr, type);
     }
 
+    Texture2D duplicateTexture(Texture2D source)
+    {
+        RenderTexture renderTex = RenderTexture.GetTemporary(
+                    source.width,
+                    source.height,
+                    0,
+                    RenderTextureFormat.Default,
+                    RenderTextureReadWrite.Linear);
+
+        Graphics.Blit(source, renderTex);
+        RenderTexture previous = RenderTexture.active;
+        RenderTexture.active = renderTex;
+        Texture2D readableText = new Texture2D(source.width, source.height);
+        readableText.ReadPixels(new Rect(0, 0, renderTex.width, renderTex.height), 0, 0);
+        readableText.Apply();
+        RenderTexture.active = previous;
+        RenderTexture.ReleaseTemporary(renderTex);
+        return readableText;
+    }
+
     private byte[] Resize(Texture2D texture, int newWidth, int newHeight)
     {
-        texture.Resize(newWidth, newHeight, TextureFormat.RGB24, false);
-        texture.Apply();
+        Texture2D readableTexture = duplicateTexture(texture);
 
-        byte[] jpgBytes = texture.EncodeToJPG();
+        for (int w = 0; w < readableTexture.width; w++)
+        {
+            for (int h = 0; h < readableTexture.height; h++)
+            {
+                Color pixel = readableTexture.GetPixel(w, h);
+                float grey = pixel.grayscale;
+                readableTexture.SetPixel(w, h, new Color(grey, grey, grey));
+            }
+        }
+        readableTexture.Apply();
 
-        System.IO.File.WriteAllBytes(Application.persistentDataPath + "/debugImage.jpg", jpgBytes);
+        RenderTexture rt = new RenderTexture(newWidth, newHeight, 24);
+        RenderTexture.active = rt;
+        Graphics.Blit(readableTexture, rt);
+        Texture2D result = new Texture2D(newWidth, newHeight);
+        result.ReadPixels(new Rect(0, 0, newWidth, newHeight), 0, 0);
+        result.Apply();
+        // readableTexture.Reinitialize(newWidth, newHeight, TextureFormat.RGB24, false);
+        // readableTexture.Apply();
+
+        byte[] jpgBytes = result.EncodeToJPG();
 
         return jpgBytes;
     }
@@ -313,16 +367,16 @@ public class TransactionManager : MonoBehaviour
                     TargetHistoryManager.Instance.AddToFormerTarget(target, transactionModel);
                 }
             }
-            if (popUp.sprite1 != null)
+            if (popUp.sprite != null)
             {
                 transactionModel.has_image = true;
             }
             transactions.Add(transactionModel);
             transactions = transactions.OrderBy(t => t.timestamp).ToList();
-            if (popUp.sprite1 != null)
+            if (popUp.sprite != null)
             {
-                byte[] byte_jpg = Resize(popUp.sprite1.texture, 500, 500);
-                FirebaseManager.Instance.UploadSprite(byte_jpg, curr_index.ToString(), popUp);
+                byte[] byte_jpg = Resize(popUp.sprite.texture, 465, 620);
+                FirebaseManager.Instance.UploadSprite(byte_jpg, curr_index.ToString(), "images/", ".jpg", popUp.gameObject, imageManager, imageStorage);
 
             }
             FirebaseManager.Instance.SendNewTransactionToDatabase(transactionModel, curr_index);

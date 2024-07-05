@@ -19,15 +19,19 @@ public class DetailObject : MonoBehaviour
     private GameObject white_screen;
     private GameObject delete_msg;
     private Button btn_delete;
+    public GameObject btn_show_image;
 
     private GameObject white_screen_image;
     private GameObject image;
+    private GameObject image_child;
 
     private GameObject popup_window_edit;
 
     private int id;
 
     private TransactionModel model;
+
+    public SwipeUI swipeUI;
 
     // Start is called before the first frame update
     void Start()
@@ -53,7 +57,7 @@ public class DetailObject : MonoBehaviour
     {
         white_screen_image.SetActive(true);
         image.SetActive(true);
-        FirebaseManager.Instance.DownloadImage(model.id.ToString(), image.GetComponent<Image>());
+        FirebaseManager.Instance.DownloadImage(model.id.ToString(), image.GetComponent<Image>(), "images/", ".jpg", TransactionManager.Instance.imageManager, TransactionManager.Instance.imageStorage, image_child);
     }
 
     public void openEdit()
@@ -61,10 +65,11 @@ public class DetailObject : MonoBehaviour
         popup_window_edit.GetComponent<PopUpWindow>().OpenEditWindow(model.original_amount.ToString(), model.category, model.description, date.text, model.currency, model, model.type == TransactionType.EXPENSE);
     }
 
-    public void SetInfo(TransactionModel item, CategoryModel category, GameObject screen, GameObject msg, Button btn, GameObject popup_window, GameObject img, GameObject screen_image)
+    public void SetInfo(TransactionModel item, CategoryModel category, GameObject screen, GameObject msg, Button btn, GameObject popup_window, GameObject img, GameObject screen_image, GameObject img_child)
     {
         white_screen_image = screen_image;
         image = img;
+        image_child = img_child;
         model = item;
         white_screen = screen;
         delete_msg = msg;
@@ -84,5 +89,10 @@ public class DetailObject : MonoBehaviour
             currency_origin_symbol.sprite = Resources.Load<Sprite>("images/month_sceen/" + item.currency);
         }
         color.color = category.color;
+        if (!model.has_image)
+        {
+            btn_show_image.SetActive(false);
+            swipeUI.swipeDistance -= btn_show_image.GetComponent<RectTransform>().rect.width;
+        }
     }
 }

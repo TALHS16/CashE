@@ -11,6 +11,7 @@ public class DetailList : MonoBehaviour
     public Button delete_btn;
 
     public GameObject image;
+    public GameObject image_child;
     public GameObject white_screen_image;
 
     public GameObject edit_popup_window;
@@ -29,19 +30,24 @@ public class DetailList : MonoBehaviour
         }
     }
 
+    public void setImageChilsColor()
+    {
+        image_child.GetComponent<Image>().color = new Color(94, 98, 172);
+    }
+
     public void setValues(List<TransactionModel> valuesToSet, CategoryModel category)
     {
         float totalAmount = 0;
         cat_name.text = category.name;
-        foreach(TransactionModel item in valuesToSet)
+        foreach (TransactionModel item in valuesToSet)
         {
             totalAmount += item.amount;
         }
         total_amount_txt.text = " ח\"ש " + totalAmount.ToString("F2");
         foreach (TransactionModel item in valuesToSet)
         {
-            GameObject detail = Instantiate(prefab_detail,parent_prefab.transform);
-            detail.GetComponent<DetailObject>().SetInfo(item,category, white_screen, delete_msg, delete_btn, edit_popup_window,image,white_screen_image);
+            GameObject detail = Instantiate(prefab_detail, parent_prefab.transform);
+            detail.GetComponent<DetailObject>().SetInfo(item, category, white_screen, delete_msg, delete_btn, edit_popup_window, image, white_screen_image, image_child);
         }
 
     }
@@ -50,12 +56,12 @@ public class DetailList : MonoBehaviour
     {
         TransactionManager.Instance.Details = this;
         gameObject.SetActive(false);
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }

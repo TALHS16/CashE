@@ -32,12 +32,12 @@ public class PieChart : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void SelectBTN(bool expanse_flag)
     {
-        if(expanse_flag)
+        if (expanse_flag)
         {
             outcome_btn.color = new Color(outcome_btn.color.r, outcome_btn.color.g, outcome_btn.color.b, 1f);
             income_btn.color = new Color(income_btn.color.r, income_btn.color.g, income_btn.color.b, 0f);
@@ -60,7 +60,7 @@ public class PieChart : MonoBehaviour
         float totalValues = 0;
         float[] expenses = new float[valuesToSet.Count];
         int i = 0;
-        foreach(KeyValuePair<string, float> cat in valuesToSet)
+        foreach (KeyValuePair<string, float> cat in valuesToSet)
         {
             expenses[i++] = cat.Value;
         }
@@ -70,20 +70,20 @@ public class PieChart : MonoBehaviour
         txt.GetComponent<TMP_Text>().text = totalAmount.ToString("F2");
         foreach (KeyValuePair<string, float> cat in valuesToSet)
         {
-            precent = cat.Value/totalAmount;
+            precent = cat.Value / totalAmount;
             totalValues += precent;
-            GameObject pie = Instantiate(prefab_pie,gameObject.transform);
+            GameObject pie = Instantiate(prefab_pie, gameObject.transform);
             pie.transform.SetAsFirstSibling();
-            pie.GetComponent<Image>().color = category_manager.category[cat.Key].color;
+            pie.GetComponent<Image>().color = category_manager.CategoryDic[cat.Key].color;
             pie.GetComponent<Image>().fillAmount = totalValues;
-            GameObject icon_obj = Instantiate(prefab_month_icon,parent_icon.transform);
-            icon_obj.GetComponentInChildren<Image>().sprite = Resources.Load<Sprite>("images/month_sceen/cat_icons/"+category_manager.category[cat.Key].icon);
-            icon_obj.GetComponentInChildren<Transform>().Find("cat_name").GetComponent<TMP_Text>().text = category_manager.category[cat.Key].name;
-            icon_obj.GetComponentInChildren<Transform>().Find("cat_name").GetComponent<TMP_Text>().color = category_manager.category[cat.Key].color;
-            icon_obj.GetComponentInChildren<Image>().color = category_manager.category[cat.Key].color;
-            icon_obj.GetComponentInChildren<TMP_Text>().text = (precent*100.00f).ToString("F2") + " %";
-            icon_obj.GetComponentInChildren<TMP_Text>().GetComponent<TMP_Text>().color = category_manager.category[cat.Key].color;
-            icon_obj.GetComponent<Button>().onClick.AddListener(delegate() {SwitchToDetails(category_manager.category[cat.Key].name);});
+            GameObject icon_obj = Instantiate(prefab_month_icon, parent_icon.transform);
+            FirebaseManager.Instance.DownloadImage(category_manager.CategoryDic[cat.Key].icon, icon_obj.GetComponentInChildren<Image>(), "categories/", ".png", category_manager.imageManager, category_manager.imageStorage);
+            icon_obj.GetComponentInChildren<Transform>().Find("cat_name").GetComponent<TMP_Text>().text = category_manager.CategoryDic[cat.Key].name;
+            icon_obj.GetComponentInChildren<Transform>().Find("cat_name").GetComponent<TMP_Text>().color = category_manager.CategoryDic[cat.Key].color;
+            icon_obj.GetComponentInChildren<Image>().color = category_manager.CategoryDic[cat.Key].color;
+            icon_obj.GetComponentInChildren<TMP_Text>().text = (precent * 100.00f).ToString("F2") + " %";
+            icon_obj.GetComponentInChildren<TMP_Text>().GetComponent<TMP_Text>().color = category_manager.CategoryDic[cat.Key].color;
+            icon_obj.GetComponent<Button>().onClick.AddListener(delegate () { SwitchToDetails(category_manager.CategoryDic[cat.Key].name); });
         }
 
     }
@@ -92,7 +92,7 @@ public class PieChart : MonoBehaviour
     {
         container_pie.SetActive(false);
         container_details.SetActive(true);
-        TransactionManager.Instance.BuildDetailList(catagory,type);
+        TransactionManager.Instance.BuildDetailList(catagory, type);
     }
 
     public void SwitchToPieFromDetail()

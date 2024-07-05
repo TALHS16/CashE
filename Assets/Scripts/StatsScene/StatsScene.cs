@@ -22,9 +22,9 @@ public class StatsScene : MonoBehaviour
     public TMP_Text avg_outcome;
 
     public GameObject container_categories;
-    public  GameObject prefab_object;
+    public GameObject prefab_object;
 
-    public GameObject  container_graphs;
+    public GameObject container_graphs;
     public GameObject prefab_graphs;
     // Start is called before the first frame update
     void Start()
@@ -36,7 +36,7 @@ public class StatsScene : MonoBehaviour
 
     public void GetInfoMost()
     {
-        Tuple<string, float,string,float> tuple = TransactionManager.Instance.GetStatDate();
+        Tuple<string, float, string, float> tuple = TransactionManager.Instance.GetStatDate();
         outcome_date.text = tuple.Item1;
         outcome_amount.text = (tuple.Item2).ToString();
         income_date.text = tuple.Item3;
@@ -46,39 +46,39 @@ public class StatsScene : MonoBehaviour
 
     public void GetInfoAvg()
     {
-        DateTime start_project_data = new DateTime(2023,8,1);
+        DateTime start_project_data = new DateTime(2023, 8, 1);
         DateTime endOfLastMonth = GetEndOfPreviousMonth(DateTime.Now);
         float sum = 0;
         int count_month = ((endOfLastMonth.Year - start_project_data.Year) * 12) + endOfLastMonth.Month - start_project_data.Month + 1;
         List<TransactionModel> trans = TransactionManager.Instance.GetAllTransactionUntilDate(endOfLastMonth);
-        Dictionary<string, float> dic_outcome = TransactionManager.Instance.GetExpanseByCatagory(trans,TransactionType.EXPENSE);
-        Dictionary<string, float> dic_income = TransactionManager.Instance.GetExpanseByCatagory(trans,TransactionType.INCOME);
-        Dictionary<string, CategoryModel> cat_dic = CategoryManager.Instance.category;
+        Dictionary<string, float> dic_outcome = TransactionManager.Instance.GetExpanseByCatagory(trans, TransactionType.EXPENSE);
+        Dictionary<string, float> dic_income = TransactionManager.Instance.GetExpanseByCatagory(trans, TransactionType.INCOME);
+        Dictionary<string, CategoryModel> cat_dic = CategoryManager.Instance.CategoryDic;
         foreach (KeyValuePair<string, float> item in dic_outcome)
         {
             CategoryModel category = cat_dic[item.Key];
-            GameObject cat_avg = Instantiate(prefab_object,container_categories.transform);
-            cat_avg.GetComponent<CatAvgObject>().SetInfo(category,item.Value/count_month);
+            GameObject cat_avg = Instantiate(prefab_object, container_categories.transform);
+            cat_avg.GetComponent<CatAvgObject>().SetInfo(category, item.Value / count_month);
             sum += item.Value;
         }
-        avg_outcome.text = ((int)(sum/count_month)).ToString();
-        sum = sum*-1;
+        avg_outcome.text = ((int)(sum / count_month)).ToString();
+        sum = sum * -1;
         foreach (KeyValuePair<string, float> item in dic_income)
         {
             sum += item.Value;
         }
-        avg_profit.text = ((int)(sum/count_month)).ToString();
+        avg_profit.text = ((int)(sum / count_month)).ToString();
     }
 
     public void GetInfoGraph()
     {
-        Dictionary<string,List<TransactionModel>> dic_users = TransactionManager.Instance.GetAllTransactionsByUser();
+        Dictionary<string, List<TransactionModel>> dic_users = TransactionManager.Instance.GetAllTransactionsByUser();
         GameObject user_graphs = Instantiate(prefab_graphs, container_graphs.transform);
-        if(dic_users.ContainsKey(UserManager.Instance.GetCurrentUser().name))
+        if (dic_users.ContainsKey(UserManager.Instance.GetCurrentUser().name))
             user_graphs.GetComponent<SetUserGraphs>().SetInfo(dic_users[UserManager.Instance.GetCurrentUser().name]);
-        foreach (KeyValuePair<string,List<TransactionModel>> item in dic_users)
+        foreach (KeyValuePair<string, List<TransactionModel>> item in dic_users)
         {
-            if(item.Key != UserManager.Instance.GetCurrentUser().name)
+            if (item.Key != UserManager.Instance.GetCurrentUser().name)
             {
                 user_graphs = Instantiate(prefab_graphs, container_graphs.transform);
                 user_graphs.GetComponent<SetUserGraphs>().SetInfo(dic_users[item.Key]);
@@ -122,6 +122,6 @@ public class StatsScene : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }

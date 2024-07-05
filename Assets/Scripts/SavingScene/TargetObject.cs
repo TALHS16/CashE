@@ -18,11 +18,11 @@ public class TargetObject : MonoBehaviour
     private float left;
     private float bar_width;
     private GameObject history_container;
-    
-    public void SetInfo(string icon_name_, string cat, float goal_, float left_, float bar_width_,Color color,GameObject container)
+
+    public void SetInfo(string icon_name_, string cat, float goal_, float left_, float bar_width_, Color color, GameObject container)
     {
         history_container = container;
-        icon.sprite = Resources.Load<Sprite>("images/month_sceen/cat_icons/"+icon_name_);
+        FirebaseManager.Instance.DownloadImage(icon_name_, icon, "categories/", ".png", CategoryManager.Instance.imageManager, CategoryManager.Instance.imageStorage);
         icon_name = icon_name_;
         goal = goal_;
         left = left_;
@@ -31,14 +31,14 @@ public class TargetObject : MonoBehaviour
         cat_name.text = cat;
         goal_amount.text = "ח\"ש " + goal.ToString("F2");
         left_amount.text = "ח\"ש " + left.ToString("F2");
-        if(left < 0)
+        if (left < 0)
         {
             bar_width = 0f;
-            left_amount.color = new Color(0.93f,0.11f,0.14f);
+            left_amount.color = new Color(0.93f, 0.11f, 0.14f);
         }
         else
         {
-            left_amount.color = new Color(0.5849056f,0.5849056f,0.5849056f);
+            left_amount.color = new Color(0.5849056f, 0.5849056f, 0.5849056f);
         }
         bar.fillAmount = 1 - bar_width;
         bar.color = color;
@@ -46,10 +46,10 @@ public class TargetObject : MonoBehaviour
 
     public void OnClickTarget()
     {
-        if(history_container != null)
+        if (history_container != null)
         {
-            history_container.transform.position = new Vector3(gameObject.transform.position.x,gameObject.transform.position.y + 100, gameObject.transform.position.z);
-            history_container.GetComponent<PopupTargetHistory>().target_object.SetInfo(icon_name, cat_name.text, goal, left, bar_width,icon_bg.color, history_container);
+            history_container.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + 100, gameObject.transform.position.z);
+            history_container.GetComponent<PopupTargetHistory>().target_object.SetInfo(icon_name, cat_name.text, goal, left, bar_width, icon_bg.color, history_container);
             history_container.GetComponent<PopupTargetHistory>().PlayAnimationOpen();
         }
     }
