@@ -67,7 +67,7 @@ public class PieChart : MonoBehaviour
         float totalAmount = TotalAmount(expenses);
         float precent;
         CategoryManager category_manager = CategoryManager.Instance;
-        txt.GetComponent<TMP_Text>().text = totalAmount.ToString("F2");
+        txt.GetComponent<TMP_Text>().text = totalAmount.ToString("N2");
         foreach (KeyValuePair<string, float> cat in valuesToSet)
         {
             precent = cat.Value / totalAmount;

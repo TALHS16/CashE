@@ -23,6 +23,7 @@ public class ImageStorage
     public Texture2D LoadImage(string transactionIndex)
     {
         string path = GetImagePath(transactionIndex);
+        Debug.Log(path);
         if (File.Exists(path))
         {
             byte[] imageBytes = File.ReadAllBytes(path);

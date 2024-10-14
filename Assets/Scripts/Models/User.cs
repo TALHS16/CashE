@@ -1,5 +1,6 @@
 using System;
 using System.Security.Cryptography;
+using UnityEngine;
 [Serializable]
 public class User
 {
@@ -15,6 +16,8 @@ public class User
         salt = Convert.ToBase64String(salt_);
         user_name = username;
         name = name_;
+        // Debug.Log(username + ": " + salt);
+        // Debug.Log(username + ": " + password_hash);
     }
 
     public bool VerifyPassword(string password)

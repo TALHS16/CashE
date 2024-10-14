@@ -32,7 +32,6 @@ public class Loader : MonoBehaviour
         {
             Instantiate(firebase_manager, gameObject.transform);
             Instantiate(user_manager, gameObject.transform);
-            Instantiate(category_manager, gameObject.transform);
             UserManager.Instance.LogIn();
             if (UserManager.Instance.GetCurrentUser() == null)
             {
@@ -40,7 +39,7 @@ public class Loader : MonoBehaviour
             }
             else
             {
-
+                Instantiate(category_manager, gameObject.transform);
                 Instantiate(transaction_manager, gameObject.transform);
                 Instantiate(target_manager, gameObject.transform);
                 Instantiate(target_history_manager, gameObject.transform);

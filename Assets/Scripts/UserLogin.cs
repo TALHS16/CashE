@@ -61,11 +61,16 @@ public class UserLogin : MonoBehaviour
         }
         else
         {
-            Destroy(UserManager.Instance.gameObject.transform.parent.gameObject);
-            SaveUser(user);
-            
-            SceneManager.LoadScene(0);
+            UserManager.Instance.AuthSignIn(this, user, username.text, password.text);
         }
+    }
+
+    public void SwitchScene(User user)
+    {
+        Destroy(UserManager.Instance.gameObject.transform.parent.gameObject);
+        SaveUser(user);
+            
+        SceneManager.LoadScene(0);
     }
 
     private void SaveUser(User user)

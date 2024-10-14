@@ -4,7 +4,7 @@
   <string name="gcm_defaultSenderId" translatable="false">546714948853</string>
   <string name="google_storage_bucket" translatable="false">cashe-2eba2.appspot.com</string>
   <string name="project_id" translatable="false">cashe-2eba2</string>
-  <string name="google_api_key" translatable="false">AIzaSyCcJZsHVYyctos4y76VbH9sUzrjCnkLYvc</string>
-  <string name="google_crash_reporting_api_key" translatable="false">AIzaSyCcJZsHVYyctos4y76VbH9sUzrjCnkLYvc</string>
-  <string name="google_app_id" translatable="false">1:546714948853:android:1e697160ecac9d5a1d61bc</string>
+  <string name="google_api_key" translatable="false">AIzaSyDplMPmtxWLd9d2-54d_vzcpbXePr0RYXY</string>
+  <string name="google_crash_reporting_api_key" translatable="false">AIzaSyDplMPmtxWLd9d2-54d_vzcpbXePr0RYXY</string>
+  <string name="google_app_id" translatable="false">1:546714948853:ios:29715572ca33f0961d61bc</string>
 </resources>

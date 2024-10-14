@@ -196,6 +196,10 @@ public class PopUpWindow : MonoBehaviour
             newColor.a = 0;
             category_image.color = newColor;
             date.text = DateTime.Now.ToString("dd/MM/yyyy");
+            if (current_category != null){
+                current_category.SetAlpha(0f);
+                current_category = null;
+            }
             TransactionModel trans;
             if (expanseFlag)
             {
@@ -286,6 +290,10 @@ public class PopUpWindow : MonoBehaviour
             newColor.a = 0;
             category_image.color = newColor;
             date.text = DateTime.Now.ToString("dd/MM/yyyy");
+            if (current_category != null){
+                current_category.SetAlpha(0f);
+                current_category = null;
+            }
         }
         expanseFlag = expanse;
         if (expanseFlag)

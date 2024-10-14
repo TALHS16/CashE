@@ -30,6 +30,7 @@ public class MonthChooser : MonoBehaviour
             current.setBTN(item.Key,item.Value,trans,this,type);
             
         }
-        current.SetAlpha(1.0f);
+        if(current)
+            current.SetAlpha(1.0f);
     }
 }

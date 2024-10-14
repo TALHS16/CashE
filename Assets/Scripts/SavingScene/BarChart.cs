@@ -56,7 +56,7 @@ public class BarChart : MonoBehaviour
         float negative_total = GetAllOfType(true);
         float positive_total = GetAllOfType(false);
         float max_value = negative_total + positive_total;
-        total_save.text = " ח\"ש " + (positive_total - negative_total).ToString("F2");
+        total_save.text = " ח\"ש " + (positive_total - negative_total).ToString("N0");
         if(max_value == 0)
         {
             positive.sizeDelta = new Vector2(positive.sizeDelta.x,0);
@@ -68,9 +68,9 @@ public class BarChart : MonoBehaviour
             negative.sizeDelta = new Vector2(negative.sizeDelta.x,max_height_chart*(negative_total/max_value));
         }
         positive_amount.SetActive(true);
-        positive_amount.GetComponent<TMP_Text>().text = positive_total.ToString("F2");
+        positive_amount.GetComponent<TMP_Text>().text = positive_total.ToString("N0");
         negative_amount.SetActive(true);
-        negative_amount.GetComponent<TMP_Text>().text = negative_total.ToString("F2");
+        negative_amount.GetComponent<TMP_Text>().text = negative_total.ToString("N0");
         Vector2 negative_position = negative_amount.GetComponent<RectTransform>().anchoredPosition;
         negative_position.y = -negative.sizeDelta.y - 20;
         Vector2 positive_position = positive_amount.GetComponent<RectTransform>().anchoredPosition;

@@ -1,0 +1,28 @@
+{
+  "rules": {
+    "users": {
+      ".read": true,
+      ".write": false
+    },
+    "transactions":{
+      ".read": "auth !== null && (auth.uid === 'dCMuKG9ZE7TssP7XXRJjhG5ft482' || auth.uid === 's47KPexQvSgQF9xJC7R3W47SxpJ3')",
+      ".write": "auth !== null && (auth.uid === 'dCMuKG9ZE7TssP7XXRJjhG5ft482' || auth.uid === 's47KPexQvSgQF9xJC7R3W47SxpJ3')"     
+    },
+		"tokens":{
+      ".read": "auth !== null && (auth.uid === 'dCMuKG9ZE7TssP7XXRJjhG5ft482' || auth.uid === 's47KPexQvSgQF9xJC7R3W47SxpJ3')",
+      ".write": "auth !== null && (auth.uid === 'dCMuKG9ZE7TssP7XXRJjhG5ft482' || auth.uid === 's47KPexQvSgQF9xJC7R3W47SxpJ3')"     
+    },
+    "targets":{
+      ".read": "auth !== null && (auth.uid === 'dCMuKG9ZE7TssP7XXRJjhG5ft482' || auth.uid === 's47KPexQvSgQF9xJC7R3W47SxpJ3')",
+      ".write": "auth !== null && (auth.uid === 'dCMuKG9ZE7TssP7XXRJjhG5ft482' || auth.uid === 's47KPexQvSgQF9xJC7R3W47SxpJ3')"     
+    },
+    "targets_history":{
+      ".read": "auth !== null && (auth.uid === 'dCMuKG9ZE7TssP7XXRJjhG5ft482' || auth.uid === 's47KPexQvSgQF9xJC7R3W47SxpJ3')",
+      ".write": "auth !== null && (auth.uid === 'dCMuKG9ZE7TssP7XXRJjhG5ft482' || auth.uid === 's47KPexQvSgQF9xJC7R3W47SxpJ3')"     
+    },
+    "categories":{
+      ".read": "auth !== null && (auth.uid === 'dCMuKG9ZE7TssP7XXRJjhG5ft482' || auth.uid === 's47KPexQvSgQF9xJC7R3W47SxpJ3')",
+      ".write": "auth !== null && (auth.uid === 'dCMuKG9ZE7TssP7XXRJjhG5ft482' || auth.uid === 's47KPexQvSgQF9xJC7R3W47SxpJ3')"     
+    }
+  }
+}

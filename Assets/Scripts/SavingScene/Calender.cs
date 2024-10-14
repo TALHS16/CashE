@@ -112,7 +112,7 @@ public class Calender : MonoBehaviour
     void UpdateCalender(int year, int month, Transform month_tran, List<Day> days, TMP_Text month_title)
     {
         DateTime temp = new DateTime(year, month, 1);
-        month_title.text = temp.ToString("MMM") + " " + temp.Year.ToString();
+        month_title.text = temp.ToString("MMM", new System.Globalization.CultureInfo("en-US")) + " " + temp.Year.ToString();
         int start_date = (int)temp.DayOfWeek;
         int end_date = DateTime.DaysInMonth(year, month);
 

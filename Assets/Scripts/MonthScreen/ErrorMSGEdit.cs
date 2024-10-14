@@ -20,6 +20,6 @@ public class ErrorMSGEdit : MonoBehaviour
     public void DeleteTransaction()
     {
         TargetManager.Instance.DeleteTransactionFromCategory(model);
-        FirebaseManager.Instance.DeleteTransaction((model.id).ToString());
+        FirebaseManager.Instance.DeleteTransaction((model.id).ToString(),model.has_image);
     }
 }

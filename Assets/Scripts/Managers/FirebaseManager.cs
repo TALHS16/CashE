@@ -25,6 +25,7 @@ public class FirebaseManager : MonoBehaviour
         {
             if (instance == null)
             {
+                // User user1 = new User("reut_hab", "Michalhab36" ,"רעות יקיר חבושה");
                 instance = FindObjectOfType<FirebaseManager>();
                 instance.db_reference = FirebaseDatabase.DefaultInstance.RootReference;
                 instance.storage_reference = FirebaseStorage.DefaultInstance.RootReference;
@@ -430,7 +431,7 @@ public class FirebaseManager : MonoBehaviour
         });
     }
 
-    public void DeleteTransaction(string transactionID)
+    public void DeleteTransaction(string transactionID, bool hasImage)
     {
         // Delete the transaction
         db_reference.Child("transactions").Child(transactionID).RemoveValueAsync().ContinueWithOnMainThread(task =>
@@ -442,7 +443,8 @@ public class FirebaseManager : MonoBehaviour
             else if (task.IsCompleted)
             {
                 Debug.Log("Transaction deleted successfully.");
-                DeleteImage(transactionID, "images/", ".jpg", TransactionManager.Instance.imageManager, TransactionManager.Instance.imageStorage);
+                if(hasImage)
+                    DeleteImage(transactionID, "images/", ".jpg", TransactionManager.Instance.imageManager, TransactionManager.Instance.imageStorage);
                 GetAllTransactions(TransactionManager.Instance, null, TransactionType.EXPENSE, null);
             }
         });
