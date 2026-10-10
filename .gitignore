@@ -74,3 +74,6 @@ crashlytics-build.properties
 Assets/StreamingAssets/
 
 FirebaseCppApp-11_6_0.bundle
+
+Assets/Firebase/
+Assets/TextMesh Pro/
