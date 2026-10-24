@@ -25,7 +25,7 @@ public class MonthChooser : MonoBehaviour
         foreach (KeyValuePair<int, int> item in valuesToSet)
         {
             GameObject month_obj = Instantiate(prefab_month,gameObject.transform);
-            month_obj.transform.SetAsFirstSibling();
+            month_obj.transform.SetAsLastSibling();
             current = month_obj.GetComponent<MonthBTN>();
             current.setBTN(item.Key,item.Value,trans,this,type);
             

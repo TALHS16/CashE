@@ -9,16 +9,16 @@ public class ImagePicker
     {
         NativeGallery.PermissionType permissionType = NativeGallery.PermissionType.Read;
         NativeGallery.MediaType mediaType = NativeGallery.MediaType.Image;
-        NativeGallery.Permission permission = NativeGallery.CheckPermission(permissionType, mediaType);
-        if (permission == NativeGallery.Permission.Granted)
+        bool permission = NativeGallery.CheckPermission(permissionType, mediaType);
+        if (permission)
             return true;
         //permission = await NativeGallery.RequestPermissionAsync( permissionType, mediaType );
-        return permission == NativeGallery.Permission.Granted;
+        return permission;
     }
 
     public void PickImage(int maxSize)
     {
-        NativeGallery.Permission permission = NativeGallery.GetImageFromGallery((path) =>
+        NativeGallery.GetImageFromGallery((path) =>
         {
             if (path != null)
             {
@@ -38,7 +38,7 @@ public class ImagePicker
 
     public void TakePicture(int maxSize)
     {
-        NativeCamera.Permission permission = NativeCamera.TakePicture((path) =>
+        NativeCamera.TakePicture((path) =>
         {
             if (path != null)
             {
